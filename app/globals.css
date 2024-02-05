@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0A0A0A;
+}
+
+.disabledToken {
+  cursor: not-allowed;
+}
+
+.ant-dropdown-menu {
+  background-color: #101010 !important;
+  border: 1px solid #232323 !important;
+}
+
+:hover.ant-dropdown-menu-item { 
+  background-color: #171717 !important;
+}
