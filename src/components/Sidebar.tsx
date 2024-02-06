@@ -1,0 +1,267 @@
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import logo from "/public/images/Logo.svg";
+import MLogo from "/public/images/mini-logo.svg";
+import ConnectButton from "./ConnectButton";
+
+const Sidebar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const [currentPath, setCurrentPath] = useState<string>("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(window.location.pathname);
+    }
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node) && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const menuItem = (href: string, label: string) => {
+    const isPathActive = (path: string) => {
+      return currentPath === path || currentPath.startsWith(`${path}/`);
+    };
+
+    const isRootPath = href === "/";
+    let isActive = isRootPath ? isPathActive(href) : isPathActive(href);
+
+    return (
+      <li className="w-60 pr-4">
+        <Link
+          href={href}
+          passHref
+          className={`gap-2 flex items-center p-3 rounded-r-xl ${
+            isActive
+              ? "p-3 bg-[#131313] text-white shadow-xl w-full"
+              : "text-gray-400 transition-colors duration-300 hover:text-white"
+          } group`}
+        >
+          {label === "Dashboard" && (
+            <svg
+              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path
+                d="M9 21H7C4.79086 21 3 19.2091 3 17V10.7076C3 9.30884 3.73061 8.01172 4.92679 7.28676L9.92679 4.25646C11.2011 3.48418 12.7989 3.48418 14.0732 4.25646L19.0732 7.28676C20.2694 8.01172 21 9.30884 21 10.7076V17C21 19.2091 19.2091 21 17 21H15M9 21V17C9 15.3431 10.3431 14 12 14C13.6569 14 15 15.3431 15 17V21M9 21H15"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+          {label === "Lending" && (
+            <svg
+              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path
+                d="M3 20.4V3.6C3 3.26863 3.26863 3 3.6 3H20.4C20.7314 3 21 3.26863 21 3.6V20.4C21 20.7314 20.7314 21 20.4 21H3.6C3.26863 21 3 20.7314 3 20.4Z"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M15 8.5C14.315 7.81501 13.1087 7.33855 12 7.30872M12 7.30872C10.6809 7.27322 9.5 7.86998 9.5 9.50001C9.5 12.5 15 11 15 14C15 15.711 13.5362 16.4462 12 16.391M12 7.30872V5.5M9 15C9.64448 15.8593 10.8428 16.3494 12 16.391M12 16.391V18.5"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+          {label === "Swap" && (
+            <svg
+              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path
+                d="M17 20V4M17 4L20 7M17 4L14 7"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M7 4V20M7 20L10 17M7 20L4 17"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+          {label === "Vaults" && (
+            <svg
+              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path
+                d="M3 19V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19Z"
+                stroke="#868686"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M10 15C8.34315 15 7 13.6569 7 12C7 10.3431 8.34315 9 10 9C11.6569 9 13 10.3431 13 12C13 13.6569 11.6569 15 10 15Z"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path d="M18 14V10" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M12.5 9.5L13.5 8.5"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M7.5 9.5L6.5 8.5"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M6.5 15.5L7.5 14.5"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M13.5 15.5L12.5 14.5"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path d="M2 8H3" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M2 6H3" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M3 16H2" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M3 18H2" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
+          {label === "History" && (
+            <svg
+              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 6V12H18" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M21.8883 10.5C21.1645 5.68874 17.013 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C16.1006 22 19.6248 19.5318 21.1679 16"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M17 16H21.4C21.7314 16 22 16.2686 22 16.6V21"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          )}
+
+          <span className="text-md">{label}</span>
+        </Link>
+      </li>
+    );
+  };
+
+  return (
+    <>
+      <div className="flex items-center">
+        <button
+          onClick={toggleMenu}
+          data-drawer-target="logo-sidebar"
+          data-drawer-toggle="logo-sidebar"
+          aria-controls="logo-sidebar"
+          type="button"
+          className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-white rounded-lg sm:hidden "
+        >
+          <span className="sr-only">Open sidebar</span>
+          <Image src={MLogo} alt="logo" width={24} />
+        </button>
+      </div>
+
+      <aside
+        ref={sidebarRef}
+        className={`fixed top-0 left-0 z-50 w-34 h-screen transition-transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } sm:translate-x-0`}
+        aria-label="Sidebar"
+      >
+        <div className="flex flex-col justify-between h-full overflow-y-auto border-r border-[#232323] bg-[#0e0e0e]">
+          <div>
+            <a href="/" className="flex w-full">
+              <Image className="ml-4 py-8" src={logo} alt="logo" width={225} />
+            </a>
+            <ul className="text-center text-white text-sm py-8 space-y-4">
+              {menuItem("/", "Dashboard")}
+              {menuItem("/lending", "Lending")}
+              {menuItem("/swap", "Swap")}
+              {menuItem("/vaults", "Vaults")}
+              {menuItem("/history", "History")}
+            </ul>
+          </div>
+          <ConnectButton />
+        </div>
+      </aside>
+    </>
+  );
+};
+
+export default Sidebar;
