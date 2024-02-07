@@ -58,6 +58,8 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
     maximumFractionDigits: 2,
   }).format(parseInt(userDataAsset.underlyingBalance) * +asset.underlyingToken.price);
 
+  const inputTokenPrice = inputValue * +asset.underlyingToken.price;
+
   const totalLiquidityFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
     compactDisplay: "short",
@@ -197,7 +199,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
       }
       return await handleWithdraw();
     } else if (tab === "Borrow") {
-      if (inputValue > userBorrowLimit! - totalBorrowBalance!) {
+      if (inputTokenPrice > userBorrowLimit!) {
         return toast.error("You can't borrow more than your borrow limit");
       }
       return await handleBorrow();
