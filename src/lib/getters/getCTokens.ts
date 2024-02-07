@@ -58,7 +58,7 @@ const getCTokens = async () => {
           : (
               tokenPriceCall.data.pairs.filter(
                 (pair: any) => pair.chainId === CHAIN.name.toLowerCase().split(" ")[0]
-              )[0] || tokenPriceCall.data.pairs.filter((pair: any) => pair.chainId === "ethereum")[0]
+              )[0] || tokenPriceCall.data.pairs.filter((pair: any) => pair.chainId === "scroll")[0]
             ).priceUsd;
 
       const oneCTokenInUnderlying = Number(exchangeRateStored) / 10 ** (18 + underlyingToken.decimals - decimals);

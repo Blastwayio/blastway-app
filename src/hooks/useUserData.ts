@@ -7,6 +7,11 @@ import ADDRESSES from "@/config/constants/addresses";
 import { CHAIN_ID } from "@/config";
 import { CToken } from "@/types";
 
+/*
+ * This hook is used to get the user data from the blockchain
+ * It returns the user's balance, borrow balance, supply balance, and liquidity
+ * @param cTokens - The cTokens to get the user data from. It's optional because if not given, it will only return refetch function
+ */
 export const useUserData = (cTokens?: CToken[]) => {
   const { address: account } = useAccount();
 
@@ -63,9 +68,9 @@ export const useUserData = (cTokens?: CToken[]) => {
 
   const { data, refetch } = useReadContracts({ contracts });
 
-  console.log("data", data);
+  if (!cTokens) return { refetch };
 
-  const tokenData = cTokens?.map(({ address, symbol, oneCTokenInUnderlying, collateralFactor, underlyingToken }, i) => {
+  const tokenData = cTokens.map(({ address, symbol, oneCTokenInUnderlying, collateralFactor, underlyingToken }, i) => {
     const underlyingBalance = data?.[i * 4]?.result as bigint;
     const cTokenBalance = data?.[i * 4 + 1]?.result as bigint;
     const borrowBalance = data?.[i * 4 + 2]?.result as bigint;
@@ -89,13 +94,13 @@ export const useUserData = (cTokens?: CToken[]) => {
     };
   });
 
-  const totalBorrowBalance = tokenData?.reduce((acc, { borrowBalance }) => acc + Number(borrowBalance), 0) || 0;
-  const totalSupplyBalance = tokenData?.reduce((acc, { supplyBalance }) => acc + Number(supplyBalance), 0) || 0;
+  const totalBorrowBalance = tokenData.reduce((acc, { borrowBalance }) => acc + Number(borrowBalance), 0) || 0;
+  const totalSupplyBalance = tokenData.reduce((acc, { supplyBalance }) => acc + Number(supplyBalance), 0) || 0;
 
   console.log("totalBorrowBalance", totalBorrowBalance);
 
   const borrowLimit =
-    tokenData?.reduce((acc, { collateralFactor, supplyBalance }) => {
+    tokenData.reduce((acc, { collateralFactor, supplyBalance }) => {
       const collateralFactorNumber = Number(collateralFactor);
       const supplyBalanceNumber = Number(supplyBalance);
 

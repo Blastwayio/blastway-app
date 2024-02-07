@@ -14,7 +14,7 @@ const HomeContainer = ({ bannerStats, stats, assets }: Props) => {
   return (
     <main className="px-4 py-8 sm:px-10 sm:ml-60 sm:align-center">
       <LendingBanner bannerStats={bannerStats} />
-      <LendingStats stats={stats} />
+      {/* <LendingStats stats={stats} /> */}
       <LendingList assets={assets} />
     </main>
   );

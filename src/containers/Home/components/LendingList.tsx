@@ -26,38 +26,52 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
             <Image src={Arrow} alt="arrow" />
           </div>
           <div className="flex justify-center items-center space-x-1">
-            <span>Max loop %</span>
+            <span>Liquidity</span>
             <Image src={Arrow} alt="arrow" />
           </div>
         </div>
 
-        {assets.map((asset, index) => (
-          <Link
-            href={`/lending/${asset.underlyingToken.symbol}`}
-            key={index}
-            className="grid grid-cols-4 py-4 px-2 text-sm text-white items-center border-b border-[#232323] hover:bg-[#141414] transition-colors duration-300"
-          >
-            <div className="col-span-1 items-center text-center">
-              <div className="flex gap-3 items-center text-left ml-6">
-                <Image src={asset.image} alt={asset.underlyingToken.symbol} style={{ width: "38px", height: "38px" }} />
-                <div>
-                  <p className="text-md">{asset.underlyingToken.symbol}</p>
-                  <p className="text-[#848484] text-sm">Deposited: {0}</p>
-                  <p className="text-[#848484] text-sm">Borrowed: {0}</p>
+        {assets.map((asset, index) => {
+          const totalLiquidityFormatted = new Intl.NumberFormat("en-US", {
+            notation: "compact",
+            compactDisplay: "short",
+            maximumFractionDigits: 2,
+          }).format(+asset.totalCash / 10 ** asset.underlyingToken.decimals);
+
+          return (
+            <Link
+              href={`/lending?asset=${asset.underlyingToken.symbol}`}
+              key={index}
+              className="grid grid-cols-4 py-4 px-2 text-sm text-white items-center border-b border-[#232323] hover:bg-[#141414] transition-colors duration-300"
+            >
+              <div className="col-span-1 items-center text-center">
+                <div className="flex gap-3 items-center text-left ml-6">
+                  <Image
+                    src={asset.image}
+                    alt={asset.underlyingToken.symbol}
+                    style={{ width: "38px", height: "38px" }}
+                  />
+                  <div>
+                    <p className="text-md">{asset.underlyingToken.symbol}</p>
+                    {/*                     <p className="text-[#848484] text-sm">Deposited: {0}</p>
+                    <p className="text-[#848484] text-sm">Borrowed: {0}</p> */}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-span-1 items-center text-center">
-              <p className="text-lg">%{asset.supplyApy}</p>
-            </div>
-            <div className="col-span-1 items-center text-center">
-              <p className="text-lg">%{asset.borrowApy}</p>
-            </div>
-            <div className="col-span-1 items-center text-center">
-              <p className="text-lg">{0}</p>
-            </div>
-          </Link>
-        ))}
+              <div className="col-span-1 items-center text-center">
+                <p className="text-lg">%{asset.supplyApy}</p>
+              </div>
+              <div className="col-span-1 items-center text-center">
+                <p className="text-lg">%{asset.borrowApy}</p>
+              </div>
+              <div className="col-span-1 items-center text-center">
+                <p className="text-lg">
+                  {totalLiquidityFormatted} {asset.underlyingToken.symbol}
+                </p>
+              </div>
+            </Link>
+          );
+        })}
       </div>
 
       <div className="flex flex-col sm:hidden">
@@ -67,7 +81,7 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
 
         {assets.map((asset, index) => (
           <Link
-            href={`/lending/${asset.name}`}
+            href={`/lending?asset=${asset.name}`}
             key={index}
             className="py-4 text-sm text-white items-center border-b border-[#232323] hover:bg-[#141414] transition-colors duration-300"
           >
@@ -78,8 +92,8 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
                   <p className="text-md">{asset.name}</p>
                 </div>
                 <div className="flex justify-end space-x-4">
-                  <p className="text-[#848484] text-sm">Deposited: {0}</p>
-                  <p className="text-[#848484] text-sm">Borrowed: {0}</p>
+                  {/*  <p className="text-[#848484] text-sm">Deposited: {0}</p>
+                  <p className="text-[#848484] text-sm">Borrowed: {0}</p> */}
                 </div>
               </div>
             </div>
