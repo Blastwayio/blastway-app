@@ -53,7 +53,10 @@ const getCTokens = async () => {
       );
 
       const underlyingTokenPrice =
-        underlyingToken.symbol === "USDC" || underlyingToken.symbol === "USDT" || underlyingToken.symbol === "DAI"
+        underlyingToken.symbol === "USDC" ||
+        underlyingToken.symbol === "USDT" ||
+        underlyingToken.symbol === "DAI" ||
+        underlyingToken.symbol === "USDB"
           ? "1.00"
           : (
               tokenPriceCall.data.pairs.filter(

@@ -13,7 +13,7 @@ interface Props {
 const HomeContainer = ({ bannerStats, stats, assets }: Props) => {
   return (
     <main className="px-4 py-8 sm:px-10 sm:ml-60 sm:align-center">
-      <LendingBanner bannerStats={bannerStats} />
+      <LendingBanner bannerStats={bannerStats} assets={assets} />
       {/* <LendingStats stats={stats} /> */}
       <LendingList assets={assets} />
     </main>

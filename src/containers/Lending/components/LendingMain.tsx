@@ -315,10 +315,10 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
                   <p className="text-gray-400 text-md">Supply APY</p>
                   <p className="text-white text-md">{asset.supplyApy}%</p>
                 </div>
-                <div className="flex justify-between items-center py-2">
+                {/*                 <div className="flex justify-between items-center py-2">
                   <p className="text-gray-400 text-md">Total Supply</p>
                   <p className="text-white text-md">$ 634.2K</p>
-                </div>
+                </div> */}
               </>
             ) : tab === "Withdraw" ? (
               <>

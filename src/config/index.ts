@@ -4,7 +4,7 @@ import { zkSync, zkSyncSepoliaTestnet, mainnet, goerli, optimism, optimismGoerli
 10: optimism
 324: zksync
 */
-export const CHAIN_ID = 10;
+export const CHAIN_ID = 168587773;
 
 const CHAINS = [mainnet, goerli, optimism, optimismGoerli, zkSync, zkSyncSepoliaTestnet, blastSepolia];
 export const CHAIN = CHAINS.find((chain) => +chain.id === CHAIN_ID)!;

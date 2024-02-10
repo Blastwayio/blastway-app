@@ -18,8 +18,8 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats }) => {
         <div className="relative w-full sm:w-3/3">
           <Image src={banner} alt="banner" className="bg-[#0E0E0E] rounded-xl border border-[#171717] w-full" />
           <div className="absolute inset-0 flex flex-col justify-center items-center">
-            <span className="text-2xl sm:text-6xl font-bold text-white">Unleash the Full</span>
-            <span className="text-2xl sm:text-6xl font-bold text-white">
+            <span className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white">Unleash the Full</span>
+            <span className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white">
               Power of{" "}
               <span className="bg-gradient-to-r from-[#FFF200] to-[#BDFF00] text-transparent bg-clip-text">BLAST</span>
             </span>
