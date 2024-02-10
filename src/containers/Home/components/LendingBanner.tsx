@@ -1,6 +1,7 @@
 import React from "react";
 import banner from "/public/images/Vector.svg";
 import Image from "next/image";
+import { CToken } from "@/types";
 
 interface BannerStatus {
   statOne: string;
@@ -9,9 +10,12 @@ interface BannerStatus {
 
 interface LendingBannerProps {
   bannerStats: BannerStatus[];
+  assets: CToken[];
 }
 
-const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats }) => {
+const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) => {
+  const maxSupplyApyToken = assets.sort((a, b) => +b.supplyApy - +a.supplyApy)[0];
+  const minBorrowApyToken = assets.sort((a, b) => +a.borrowApy - +b.borrowApy)[0];
   return (
     <>
       <div className="flex flex-col sm:flex-row px-0 sm:px-4 justify-center items-center space-x-0 space-y-4 sm:space-x-4 sm:space-y-0">
@@ -27,7 +31,7 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats }) => {
           </div>
         </div>
 
-        {/*         <div className="hidden sm:block space-y-4 w-full sm:w-1/3">
+        <div className="hidden sm:block space-y-4 w-full sm:w-1/3">
           <div className="bg-[#0E0E0E] rounded-xl border border-[#171717] text-right pl-16 pr-6 py-8">
             <h1 className="text-[#FFFFFF]/75 text-3xl sm:text-4xl font-bold">{bannerStats[0].statOne}%</h1>
             <p className="text-[#6E6E6E] text-lg sm:text-xl">Max APR on locked dLP</p>
@@ -36,7 +40,7 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats }) => {
             <h1 className="text-[#FFFFFF]/75 text-3xl sm:text-4xl font-bold">{bannerStats[0].statTwo}%</h1>
             <p className="text-[#6E6E6E] text-lg sm:text-xl">Max APR on locked dLP</p>
           </div>
-        </div> */}
+        </div>
 
         {/*         <div className="sm:hidden w-full bg-[#0E0E0E] rounded-xl border border-[#171717]">
           <div className="flex w-full justify-between px-4 py-4 items-center border-b border-[#171717]">
