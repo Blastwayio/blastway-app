@@ -28,13 +28,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen`}>
+      <body className={`${inter.className} grid grid-rows-[auto_1fr_auto] relative min-h-screen overflow-x-hidden`}>
         <Providers initialState={initialState}>
           <Sidebar />
-          <div className="flex items-center mx-auto px-2 gap-2 sm:hidden">
-            <FaucetGasButton />
-            <FaucetButton />
-          </div>
           {children}
           {/* <FaucetModal />  */}
           <Footer />
