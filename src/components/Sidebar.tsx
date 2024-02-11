@@ -7,6 +7,7 @@ import MLogo from "/public/images/mini-logo.svg";
 import ConnectButton from "./ConnectButton";
 import FaucetButton from "./FaucetButton";
 import { usePathname } from "next/navigation";
+import FaucetGasButton from "./FaucetGasButton";
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -304,6 +305,7 @@ const Sidebar: React.FC = () => {
           </div>
           <div className="hidden sm:flex flex-col">
             <ConnectButton />
+            <FaucetGasButton />
             <FaucetButton  />
           </div>
         </div>
