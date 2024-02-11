@@ -33,25 +33,45 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) =>
 
         <div className="hidden sm:block space-y-4 w-full sm:w-1/3">
           <div className="bg-[#0E0E0E] rounded-xl border border-[#171717] text-right pl-16 pr-6 py-8">
-            <h1 className="text-[#FFFFFF]/75 text-3xl sm:text-4xl font-bold">{bannerStats[0].statOne}%</h1>
-            <p className="text-[#6E6E6E] text-lg sm:text-xl">Max APR on locked dLP</p>
+            <div className="flex items-center justify-end gap-2 self-end text-[#FFFFFF]/75 text-2xl">
+              <span>
+                <Image
+                  src={maxSupplyApyToken.image}
+                  alt={maxSupplyApyToken.underlyingToken.symbol}
+                  width={32}
+                  height={32}
+                />
+              </span>
+              {maxSupplyApyToken.underlyingToken.symbol} {maxSupplyApyToken.supplyApy}%
+            </div>
+            <p className="text-[#6E6E6E] text-lg sm:text-2xl">Highest Supply APY</p>
           </div>
           <div className="bg-[#0E0E0E] rounded-xl border border-[#171717] text-right pl-16 pr-6 py-8">
-            <h1 className="text-[#FFFFFF]/75 text-3xl sm:text-4xl font-bold">{bannerStats[0].statTwo}%</h1>
-            <p className="text-[#6E6E6E] text-lg sm:text-xl">Max APR on locked dLP</p>
+            <div className="flex items-center justify-end gap-2 self-end text-[#FFFFFF]/75 text-2xl">
+              <span>
+                <Image
+                  src={minBorrowApyToken.image}
+                  alt={minBorrowApyToken.underlyingToken.symbol}
+                  width={32}
+                  height={32}
+                />
+              </span>
+              {minBorrowApyToken.underlyingToken.symbol} {minBorrowApyToken.supplyApy}%
+            </div>
+            <p className="text-[#6E6E6E] text-lg sm:text-2xl">Lowest Borrow APY</p>
           </div>
         </div>
 
-        {/*         <div className="sm:hidden w-full bg-[#0E0E0E] rounded-xl border border-[#171717]">
+        <div className="sm:hidden w-full bg-[#0E0E0E] rounded-xl border border-[#171717]">
           <div className="flex w-full justify-between px-4 py-4 items-center border-b border-[#171717]">
-            <p className="text-[#6E6E6E] text-md">Max APR on locked dLP</p>
-            <h1 className="text-[#FFFFFF]/75 text-xl">{bannerStats[0].statOne}%</h1>
+            <p className="text-[#6E6E6E] text-md">Highest Supply APY</p>
+            <h1 className="text-[#FFFFFF]/75 text-xl">{maxSupplyApyToken.supplyApy}%</h1>
           </div>
           <div className="flex w-full justify-between px-4 py-4 items-center">
-            <p className="text-[#6E6E6E] text-md">Max APR on locked dLP</p>
-            <h1 className="text-[#FFFFFF]/75 text-xl">{bannerStats[0].statTwo}%</h1>
+            <p className="text-[#6E6E6E] text-md">Lowest Borrow APY</p>
+            <h1 className="text-[#FFFFFF]/75 text-xl">{minBorrowApyToken.supplyApy}%</h1>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

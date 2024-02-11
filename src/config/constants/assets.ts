@@ -7,16 +7,16 @@ import ETH from "/public/images/tokens/eth.svg";
 
 const assets: CTokenConfig[] = [
   {
-    name: "bUSDB",
-    symbol: "cUSDB",
+    name: "bUSDC",
+    symbol: "bUSDC",
     image: USDC,
     address: ADDRESSES.ctokens.cUSDC[CHAIN_ID] as `0x${string}`,
     decimals: 8,
     underlyingToken: {
-      name: "USDB",
-      symbol: "USDB",
+      name: "USDC",
+      symbol: "USDC",
       image: USDC,
-      address: ADDRESSES.USDC[CHAIN_ID] as `0x${string}`,
+      address: ADDRESSES.TestUSDC[CHAIN_ID] as `0x${string}`,
       decimals: 18,
     },
   },
@@ -44,7 +44,7 @@ const assets: CTokenConfig[] = [
       name: "WETH",
       symbol: "WETH",
       image: ETH,
-      address: ADDRESSES.WETH[CHAIN_ID] as `0x${string}`,
+      address: ADDRESSES.TestWETH[CHAIN_ID] as `0x${string}`,
       decimals: 18,
     },
   },
