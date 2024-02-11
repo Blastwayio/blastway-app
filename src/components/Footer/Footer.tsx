@@ -13,6 +13,24 @@ const Footer = () => {
       className="flex flex-col px-4 py-8 sm:px-10 sm:ml-60 sm:align-center justify-end gap-[52px] h-fit "
     >
       <div className="flex flex-col-reverse gap-5 sm:flex-row justify-between items-center">
+        <div className=" flex flex-col gap-4 max-sm:items-center">
+          <p className="flex text-[#C2C2C2] text-center text-sm sm:text-base leading-[17.6px] font-normal">
+            <a
+              href="https://docs.blastway.io/about-us/privacy-policy"
+              target="_blank"
+            >
+              Privacy Policy
+            </a>
+          </p>
+          <p className="flex text-[#C2C2C2] text-center text-sm sm:text-base leading-[17.6px] font-normal">
+            <a
+              href="https://docs.blastway.io/about-us/terms-of-service"
+              target="_blank"
+            >
+              Terms of Service
+            </a>
+          </p>
+        </div>
         <p className="flex text-[#C2C2C2] text-center text-sm sm:text-base leading-[17.6px] font-normal">
           <a href="#">Blastway</a>
           &nbsp;© 2024 all rights reserved
