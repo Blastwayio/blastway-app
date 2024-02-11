@@ -9,6 +9,7 @@ import { headers } from "next/headers";
 import { config } from "@/config/Walletconnect";
 import FaucetButton from "@/components/FaucetButton";
 import FaucetGasButton from "@/components/FaucetGasButton";
+import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} min-h-screen`}>
         <Providers initialState={initialState}>
           <Sidebar />
           <div className="flex items-center mx-auto px-2 gap-2 sm:hidden">
@@ -35,7 +36,8 @@ export default function RootLayout({
             <FaucetButton />
           </div>
           {children}
-          {/* <FaucetModal /> */}
+          {/* <FaucetModal />  */}
+          <Footer />
         </Providers>
       </body>
     </html>
