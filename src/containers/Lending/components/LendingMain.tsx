@@ -279,7 +279,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
                 onChange={(e) => setInputValue(Number(e.target.value))}
               />
               <div className="flex items-center space-x-2">
-                <button className="text-[#838383] hover:text-white transition-colors duration-400 text-sm">MAX</button>
+                {/* <button className="text-[#838383] hover:text-white transition-colors duration-400 text-sm">MAX</button> */}
                 <button className="flex items-center bg-[#171717] space-x-2 w-20 px-2 py-2 rounded-l-full">
                   <div className="flex items-center gap-1">
                     <Image src={asset.image} alt={asset.underlyingToken.symbol} className="rounded-full h-4" />
