@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from "/public/images/Logo.svg";
 import MLogo from "/public/images/mini-logo.svg";
 import ConnectButton from "./ConnectButton";
+import FaucetButton from "./FaucetButton";
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,11 @@ const Sidebar: React.FC = () => {
       setCurrentPath(window.location.pathname);
     }
     const handleClickOutside = (event: MouseEvent) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node) && isOpen) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node) &&
+        isOpen
+      ) {
         setIsOpen(false);
       }
     };
@@ -149,7 +154,13 @@ const Sidebar: React.FC = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <path d="M18 14V10" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M18 14V10"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
               <path
                 d="M12.5 9.5L13.5 8.5"
                 stroke="#868686"
@@ -178,10 +189,34 @@ const Sidebar: React.FC = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <path d="M2 8H3" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M2 6H3" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M3 16H2" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M3 18H2" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M2 8H3"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2 6H3"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M3 16H2"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M3 18H2"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           )}
           {label === "History" && (
@@ -197,7 +232,13 @@ const Sidebar: React.FC = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path d="M12 6V12H18" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M12 6V12H18"
+                stroke="#868686"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
               <path
                 d="M21.8883 10.5C21.1645 5.68874 17.013 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C16.1006 22 19.6248 19.5318 21.1679 16"
                 stroke="#868686"
@@ -257,7 +298,10 @@ const Sidebar: React.FC = () => {
               {menuItem("/history", "History")}
             </ul>
           </div>
-          <ConnectButton />
+          <div className="flex flex-col">
+            <ConnectButton />
+            <FaucetButton />
+          </div>
         </div>
       </aside>
     </>
