@@ -288,8 +288,8 @@ const Sidebar: React.FC = () => {
               {menuItem("/", "Dashboard")}
               {menuItem("/lending", "Lending")}
               {menuItem("/swap", "Swap", true)}
-              {menuItem("/vaults", "Vaults")}
-              {menuItem("/history", "History")}
+              {menuItem("/vaults", "Vaults", true)}
+              {menuItem("/history", "History", true)}
             </ul>
           </div>
           <div className="flex flex-col">
