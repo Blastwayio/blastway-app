@@ -26,7 +26,7 @@ const metadata = {
 
 // Create wagmiConfig
 export const config = defaultWagmiConfig({
-  chains: [mainnet, sepolia, goerli, zkSync, zkSyncSepoliaTestnet, optimism, optimismGoerli, blastSepolia], // required
+  chains: [blastSepolia], // required
   projectId, // required
   metadata, // required
   ssr: true,
