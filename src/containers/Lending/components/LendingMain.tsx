@@ -46,8 +46,6 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
   const [collateralChecked, setCollateralChecked] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
-  console.log("userDataAsset", userDataAsset);
-
   const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
     compactDisplay: "short",

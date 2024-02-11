@@ -97,15 +97,8 @@ export const useUserData = (cTokens?: CToken[]) => {
   const totalBorrowBalance = tokenData.reduce((acc, { borrowBalance }) => acc + Number(borrowBalance), 0) || 0;
   const totalSupplyBalance = tokenData.reduce((acc, { supplyBalance }) => acc + Number(supplyBalance), 0) || 0;
 
-  console.log("totalBorrowBalance", totalBorrowBalance);
-
-  const borrowLimit =
-    tokenData.reduce((acc, { collateralFactor, supplyBalance }) => {
-      const collateralFactorNumber = Number(collateralFactor);
-      const supplyBalanceNumber = Number(supplyBalance);
-
-      return acc + collateralFactorNumber * supplyBalanceNumber;
-    }, 0) || 0;
+  //@ts-ignore
+  const borrowLimit = Number(data?.[data.length - 1]?.result?.[1]) / 1e18 || 0;
 
   const accountLiquidity = Number((data?.[data.length - 1]?.result as bigint[])?.[1]) / 1e18;
   const borrowPercentage = (totalBorrowBalance / (borrowLimit || 1)) * 100;
