@@ -15,6 +15,7 @@ export const RPC_URLS = {
   42161: "https://arbitrum-mainnet.infura.io", // Arbitrum Mainnet
   43114: "https://avalanche-mainnet.infura.io", // AVAX Mainnet
   80001: "https://matic-mumbai.chainstacklabs.com", // Polygon Testnet (Polygon)
+  168587773: "https://sepolia.blast.io", // Sepolia Testnet (Blast)
 };
 
 export const RPC_URL = RPC_URLS[CHAIN_ID];

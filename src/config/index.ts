@@ -1,4 +1,4 @@
-import { zkSync, zkSyncSepoliaTestnet, mainnet, goerli, optimism, optimismGoerli, blastSepolia } from "viem/chains";
+import { zkSync, zkSyncSepoliaTestnet, mainnet, goerli, optimism, optimismGoerli, blastSepolia } from "wagmi/chains";
 
 /* 
 10: optimism
