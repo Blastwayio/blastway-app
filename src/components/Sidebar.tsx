@@ -15,7 +15,11 @@ const Sidebar: React.FC = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node) && isOpen) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node) &&
+        isOpen
+      ) {
         setIsOpen(false);
       }
     };
@@ -50,7 +54,13 @@ const Sidebar: React.FC = () => {
         >
           {label === "Dashboard" && (
             <svg
-              className={isActive ? "text-[#FFF200]" : isDisabled ? "text-gray-600" : "text-gray-400"}
+              className={
+                isActive
+                  ? "text-[#FFF200]"
+                  : isDisabled
+                  ? "text-gray-600"
+                  : "text-gray-400"
+              }
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -294,7 +304,7 @@ const Sidebar: React.FC = () => {
           </div>
           <div className="flex flex-col">
             <ConnectButton />
-            <FaucetButton />
+            <FaucetButton  />
           </div>
         </div>
       </aside>

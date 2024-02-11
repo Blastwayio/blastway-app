@@ -7,6 +7,7 @@ import Sidebar from "@/components/Sidebar";
 import { cookieToInitialState } from "wagmi";
 import { headers } from "next/headers";
 import { config } from "@/config/Walletconnect";
+import FaucetModal from "@/components/FaucetModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         <Providers initialState={initialState}>
           <Sidebar />
           {children}
+          <FaucetModal />
         </Providers>
       </body>
     </html>
