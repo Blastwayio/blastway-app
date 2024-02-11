@@ -13,7 +13,7 @@ const useApprove = (tokenAddress: string, spender: string) => {
   const { address: account } = useAccount();
   const { refetch } = useUserData();
 
-  const { data: allowanceData } = useReadContract({
+  const { data: allowanceData, refetch: refetchAllowance } = useReadContract({
     abi: cErc20Abi,
     address: tokenAddress as `0x${string}`,
     functionName: "allowance",
@@ -33,6 +33,7 @@ const useApprove = (tokenAddress: string, spender: string) => {
     });
     await waitForTransactionReceipt(publicClient, { hash });
     await refetch();
+    await refetchAllowance();
   }, [writeContractAsync, tokenAddress, spender, refetch]);
 
   return { isApproved, onApprove: handleApprove };

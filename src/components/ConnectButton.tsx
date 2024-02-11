@@ -6,12 +6,14 @@ import { useAccount, useAccountEffect, useSwitchChain } from "wagmi";
 import { formatAddress } from "@/lib/utils";
 import { CHAIN_ID } from "@/config";
 
-export default function ConnectButton() {
+interface Props {
+  className?: string;
+}
+
+export default function ConnectButton({ className }: Props) {
   const { open } = useWeb3Modal();
   const { address: account, chainId } = useAccount();
   const { chains, switchChainAsync } = useSwitchChain();
-
-  console.log("chainId", chainId);
 
   useAccountEffect({
     onConnect: async () => {
@@ -23,7 +25,7 @@ export default function ConnectButton() {
   });
 
   return (
-    <Button className="w-[80%] mb-4 mx-auto" onClick={() => open()}>
+    <Button className={`w-[80%] mb-4 mx-auto ${className}`} onClick={() => open()}>
       {account ? formatAddress(account) : "Connect Wallet"}
     </Button>
   );

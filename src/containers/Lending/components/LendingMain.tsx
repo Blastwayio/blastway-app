@@ -18,6 +18,8 @@ import useRepay from "@/hooks/useRepay";
 import useApprove from "@/hooks/useApprove";
 import { Switch } from "@/components/ui/switch";
 import { CToken } from "@/types";
+import { useAccount } from "wagmi";
+import ConnectButton from "@/components/ConnectButton";
 
 interface LendingMainProps {
   asset: CToken;
@@ -28,6 +30,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
   const { tokenData: userTokenData, borrowLimit: userBorrowLimit, totalBorrowBalance, borrowPercentage } = userData;
 
   const router = useRouter();
+  const { address: account } = useAccount();
 
   const { onEnterMarkets } = useEnterMarkets([asset.address]);
   const { onExitMarket } = useExitMarket(asset.address);
@@ -455,9 +458,13 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
           </div>
 
           <div className="mt-12 sm:mt-36">
-            <Button disabled={disabled} onClick={handleButtonClick} className="w-full py-2">
-              {isApproved ? tab : "Approve"}
-            </Button>
+            {account ? (
+              <Button disabled={disabled} onClick={handleButtonClick} className="w-full py-2">
+                {isApproved ? tab : "Approve"}
+              </Button>
+            ) : (
+              <ConnectButton className="w-full" />
+            )}
           </div>
         </div>
 
