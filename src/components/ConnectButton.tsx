@@ -25,7 +25,7 @@ export default function ConnectButton({ className }: Props) {
   });
 
   return (
-    <Button className={`w-[80%] mb-4 mx-auto ${className}`} onClick={() => open()}>
+    <Button className={`w-[80%] mb-4 mx-auto text-black ${className}`} onClick={() => open()}>
       {account ? formatAddress(account) : "Connect Wallet"}
     </Button>
   );
