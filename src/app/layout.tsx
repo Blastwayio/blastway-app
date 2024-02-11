@@ -30,7 +30,7 @@ export default function RootLayout({
         <Providers initialState={initialState}>
           <Sidebar />
           {children}
-          <FaucetModal />
+          {/* <FaucetModal /> */}
         </Providers>
       </body>
     </html>
