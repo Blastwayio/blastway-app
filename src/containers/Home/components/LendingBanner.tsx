@@ -32,33 +32,17 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) =>
         </div>
 
         <div className="hidden sm:block space-y-4 w-full sm:w-1/3">
-          <div className="bg-[#0E0E0E] rounded-xl border border-[#171717] text-right pl-16 pr-6 py-8">
-            <div className="flex items-center justify-end gap-2 self-end text-[#FFFFFF]/75 text-2xl">
-              <span>
-                <Image
-                  src={maxSupplyApyToken.image}
-                  alt={maxSupplyApyToken.underlyingToken.symbol}
-                  width={32}
-                  height={32}
-                />
-              </span>
-              {maxSupplyApyToken.underlyingToken.symbol} {maxSupplyApyToken.supplyApy}%
+          <div className="bg-[#0E0E0E] space-y-3 rounded-xl border border-[#171717] text-right pl-16 px-4 py-8">
+            <div className="flex items-center justify-end gap-2 self-end text-[#FFFFFF]/75 text-3xl">
+              $1.1Mn
             </div>
-            <p className="text-[#6E6E6E] text-lg sm:text-2xl">Highest Supply APY</p>
+            <p className="text-[#6E6E6E] text-lg sm:text-xl">Total Value Locked</p>
           </div>
-          <div className="bg-[#0E0E0E] rounded-xl border border-[#171717] text-right pl-16 pr-6 py-8">
-            <div className="flex items-center justify-end gap-2 self-end text-[#FFFFFF]/75 text-2xl">
-              <span>
-                <Image
-                  src={minBorrowApyToken.image}
-                  alt={minBorrowApyToken.underlyingToken.symbol}
-                  width={32}
-                  height={32}
-                />
-              </span>
-              {minBorrowApyToken.underlyingToken.symbol} {minBorrowApyToken.supplyApy}%
+          <div className="bg-[#0E0E0E] space-y-3 rounded-xl border border-[#171717] text-right pl-16 px-4 py-8">
+            <div className="flex items-center justify-end gap-2 self-end text-[#FFFFFF]/75 text-3xl">
+              $102.2k
             </div>
-            <p className="text-[#6E6E6E] text-lg sm:text-2xl">Lowest Borrow APY</p>
+            <p className="text-[#6E6E6E] text-lg sm:text-xl">Total Borrow</p>
           </div>
         </div>
 

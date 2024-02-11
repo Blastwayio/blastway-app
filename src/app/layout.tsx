@@ -7,7 +7,7 @@ import Sidebar from "@/components/Sidebar";
 import { cookieToInitialState } from "wagmi";
 import { headers } from "next/headers";
 import { config } from "@/config/Walletconnect";
-import FaucetModal from "@/components/FaucetModal";
+import FaucetButton from "@/components/FaucetButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +29,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers initialState={initialState}>
           <Sidebar />
+          <div className="flex items-center mx-auto px-2 gap-2 sm:hidden">
+            <FaucetButton />
+          </div>
           {children}
           {/* <FaucetModal /> */}
         </Providers>

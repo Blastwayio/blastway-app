@@ -268,18 +268,21 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      <div className="flex items-center">
+      <div className="flex justify-between items-center p-2 mt-2">
         <button
           onClick={toggleMenu}
           data-drawer-target="logo-sidebar"
           data-drawer-toggle="logo-sidebar"
           aria-controls="logo-sidebar"
           type="button"
-          className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-white rounded-lg sm:hidden "
+          className="items-center text-sm text-white rounded-lg sm:hidden "
         >
           <span className="sr-only">Open sidebar</span>
           <Image src={MLogo} alt="logo" width={24} />
         </button>
+        <div className="flex items-center space-x-4 pt-2 sm:hidden">
+            <ConnectButton />
+        </div>
       </div>
 
       <aside
@@ -297,12 +300,9 @@ const Sidebar: React.FC = () => {
             <ul className="text-center text-white text-sm py-8 space-y-4">
               {menuItem("/", "Dashboard")}
               {menuItem("/lending", "Lending")}
-              {menuItem("/swap", "Swap", true)}
-              {menuItem("/vaults", "Vaults", true)}
-              {menuItem("/history", "History", true)}
             </ul>
           </div>
-          <div className="flex flex-col">
+          <div className="hidden sm:flex flex-col">
             <ConnectButton />
             <FaucetButton  />
           </div>

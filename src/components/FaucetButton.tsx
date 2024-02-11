@@ -9,8 +9,11 @@ import useRequestTokens from "@/hooks/useRequestTokens";
 import { CHAIN_ID } from "@/config";
 import faucetAbi from "@/config/abi/Faucet.json";
 import ADDRESSES from "@/config/constants/addresses";
+import { useRouter } from 'next/navigation';
+
 
 export default function FaucetButton() {
+  const { push } = useRouter();
   const { address: account } = useAccount();
   const [disabled, setDisabled] = useState(false);
 
@@ -35,14 +38,24 @@ export default function FaucetButton() {
     }
   };
 
+  const gasFaucet = async () => {
+    push('https://discord.gg/7SzNJn7X');
+  }
+
   return (
     <>
+      <Button
+        className="w-[80%] mb-4 mx-auto text-black"
+        onClick={gasFaucet}
+      >
+        {"Gas Faucet"}
+      </Button>
       <Button
         className="w-[80%] mb-4 mx-auto text-black"
         onClick={onButtonClick}
         disabled={!allowedToWithdraw || disabled}
       >
-        {"Faucet"}
+        {"Token Faucet"}
       </Button>
     </>
   );
