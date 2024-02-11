@@ -23,7 +23,7 @@ export default function ConnectButton() {
   });
 
   return (
-    <Button className="w-[80%] mb-4 mx-auto" onClick={() => open()}>
+    <Button className="w-[80%] mb-4 mx-auto text-black" onClick={() => open()}>
       {account ? formatAddress(account) : "Connect Wallet"}
     </Button>
   );

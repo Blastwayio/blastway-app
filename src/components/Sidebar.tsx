@@ -29,7 +29,7 @@ const Sidebar: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  const menuItem = (href: string, label: string) => {
+  const menuItem = (href: string, label: string, isDisabled?: boolean) => {
     const isPathActive = (path: string) => {
       return pathname === path || pathname.startsWith(`${path}/`);
     };
@@ -40,7 +40,7 @@ const Sidebar: React.FC = () => {
     return (
       <li className="w-60 pr-4">
         <Link
-          href={href}
+          href={isDisabled ? "#" : href}
           passHref
           className={`gap-2 flex items-center p-3 rounded-r-xl ${
             isActive
@@ -50,7 +50,7 @@ const Sidebar: React.FC = () => {
         >
           {label === "Dashboard" && (
             <svg
-              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
+              className={isActive ? "text-[#FFF200]" : isDisabled ? "text-gray-600" : "text-gray-400"}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -109,14 +109,14 @@ const Sidebar: React.FC = () => {
             >
               <path
                 d="M17 20V4M17 4L20 7M17 4L14 7"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M7 4V20M7 20L10 17M7 20L4 17"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -138,49 +138,79 @@ const Sidebar: React.FC = () => {
             >
               <path
                 d="M3 19V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19Z"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
               />
               <path
                 d="M10 15C8.34315 15 7 13.6569 7 12C7 10.3431 8.34315 9 10 9C11.6569 9 13 10.3431 13 12C13 13.6569 11.6569 15 10 15Z"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <path d="M18 14V10" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M18 14V10"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
               <path
                 d="M12.5 9.5L13.5 8.5"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M7.5 9.5L6.5 8.5"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M6.5 15.5L7.5 14.5"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M13.5 15.5L12.5 14.5"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <path d="M2 8H3" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M2 6H3" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M3 16H2" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M3 18H2" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M2 8H3"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M2 6H3"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M3 16H2"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M3 18H2"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           )}
           {label === "History" && (
@@ -196,17 +226,23 @@ const Sidebar: React.FC = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path d="M12 6V12H18" stroke="#868686" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M12 6V12H18"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
               <path
                 d="M21.8883 10.5C21.1645 5.68874 17.013 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C16.1006 22 19.6248 19.5318 21.1679 16"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M17 16H21.4C21.7314 16 22 16.2686 22 16.6V21"
-                stroke="#868686"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -251,7 +287,7 @@ const Sidebar: React.FC = () => {
             <ul className="text-center text-white text-sm py-8 space-y-4">
               {menuItem("/", "Dashboard")}
               {menuItem("/lending", "Lending")}
-              {menuItem("/swap", "Swap")}
+              {menuItem("/swap", "Swap", true)}
               {menuItem("/vaults", "Vaults")}
               {menuItem("/history", "History")}
             </ul>
