@@ -23,6 +23,5 @@ const stats = [
 export default async function Home() {
   const cTokens = await getCTokens();
 
-  console.log("cTokens", cTokens);
   return <HomeContainer assets={cTokens} bannerStats={bannerStats} stats={stats} />;
 }
