@@ -21,7 +21,7 @@ export default function FaucetButton() {
     abi: faucetAbi,
     address: ADDRESSES.faucet[CHAIN_ID] as `0x${string}`,
     functionName: "allowedToWithdraw",
-    args: [account],
+    args: [account || "0x"],
     chainId: CHAIN_ID,
   });
 

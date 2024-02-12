@@ -23,6 +23,7 @@ const LendingContainer = ({ assets }: Props) => {
 
   const [asset, setAsset] = useState(assets[0]);
 
+  // if asset is not found, soft navigate to the first asset
   useEffect(() => {
     if (!searchParamsAsset) return router.push(`${pathname}?asset=${assets[0].underlyingToken.symbol}`);
 
@@ -43,7 +44,7 @@ const LendingContainer = ({ assets }: Props) => {
     }
 
     setAsset(asset);
-  }, [searchParamsAsset, assets, pathname, router]);
+  }, [searchParamsAsset, assets, pathname, router, searchParams]);
 
   console.log("asset", asset);
 

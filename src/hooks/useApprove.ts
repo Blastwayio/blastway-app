@@ -31,7 +31,7 @@ const useApprove = (tokenAddress: `0x${string}`, spender: `0x${string}`) => {
     await waitForTransactionReceipt(publicClient, { hash });
     await refetch();
     await refetchAllowance();
-  }, [writeContractAsync, tokenAddress, spender, refetch]);
+  }, [writeContractAsync, tokenAddress, spender, refetch, refetchAllowance]);
 
   return { allowanceData, onApprove: handleApprove };
 };
