@@ -42,13 +42,13 @@ const LendingTopStats: React.FC<LendingTopAssetProps> = ({ asset }) => {
 
   return (
     <>
-      <div className="hidden sm:flex w-full justify-between gap-32 items-center bg-[#0E0E0E] border border-[#171717] rounded-xl pr-4">
+      <div className="hidden lg:flex w-full gap-20 items-center bg-[#0E0E0E] border border-[#171717] rounded-xl">
         <div className="bg-[#141414] py-6 rounded-l-xl text-white">
           <Dropdown overlay={() => CustomMenu({ asset })} trigger={["click"]}>
             <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
               <Space>
                 {asset ? (
-                  <div className="flex items-center justify-between space-x-8 px-4 w-60">
+                  <div className="flex items-center justify-between px-5 gap-16">
                     <div className="flex items-center space-x-2">
                       <Image src={asset.image} alt={asset.name} className="rounded-full" width="48" height="48" />
                       <div className="w-full flex flex-col">
@@ -56,7 +56,7 @@ const LendingTopStats: React.FC<LendingTopAssetProps> = ({ asset }) => {
                         <span className="text-[#838383] text-sm">{asset.name}</span>
                       </div>
                     </div>
-                    <Image src={Arrow} alt="Arrow" />
+                    <Image src={Arrow} alt="Arrow" className="mx-5" />
                   </div>
                 ) : (
                   "Select Asset"
@@ -65,20 +65,21 @@ const LendingTopStats: React.FC<LendingTopAssetProps> = ({ asset }) => {
             </a>
           </Dropdown>
         </div>
+        <div className="flex w-full justify-between pr-16 gap-5 mx-auto">
+          <div className="flex flex-col items-center py-6">
+            <p className="text-[#838383] text-md">Asset price</p>
+            <p className="text-white text-xl">{priceFormatted}</p>
+          </div>
 
-        <div className="flex flex-col items-center py-6">
-          <p className="text-[#838383] text-md">Asset price</p>
-          <p className="text-white text-xl">{priceFormatted}</p>
-        </div>
+          <div className="flex flex-col items-center py-6">
+            <p className="text-[#838383] text-md">Borrow APY</p>
+            <p className="text-white text-xl">{asset.borrowApy}%</p>
+          </div>
 
-        <div className="flex flex-col items-center py-6">
-          <p className="text-[#838383] text-md">Borrow APY</p>
-          <p className="text-white text-xl">{asset.borrowApy}%</p>
-        </div>
-
-        <div className="flex flex-col items-center py-6">
-          <p className="text-[#838383] text-md">Supply APY</p>
-          <p className="text-white text-xl">{asset.supplyApy}%</p>
+          <div className="flex flex-col items-center py-6">
+            <p className="text-[#838383] text-md">Supply APY</p>
+            <p className="text-white text-xl">{asset.supplyApy}%</p>
+          </div>
         </div>
 
         {/*         <div className="flex flex-col items-center py-6">
@@ -92,7 +93,7 @@ const LendingTopStats: React.FC<LendingTopAssetProps> = ({ asset }) => {
         </div> */}
       </div>
 
-      <div className="sm:hidden space-y-4">
+      <div className="lg:hidden space-y-4">
         <div className="bg-[#141414] py-4 rounded-xl">
           <Dropdown overlay={() => CustomMenu({ asset })} trigger={["click"]}>
             <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
