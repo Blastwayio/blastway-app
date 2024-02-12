@@ -100,12 +100,6 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
           </Link>
         ))}
       </div>
-      <div className="text-white opacity-50 text-center mt-5">
-        Powered by{" "}
-        <a href="https://pyth.network/" target="_blank" className="underline">
-          Pyth
-        </a>
-      </div>
     </div>
   );
 };
