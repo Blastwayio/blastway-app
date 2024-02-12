@@ -219,13 +219,13 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row sm:flex-col-2 w-full space-y-4">
-        <div className="bg-[#0E0E0E] w-full sm:w-8/12 px-2 sm:px-6 py-4 rounded-xl mx-auto border border-[#171717] flex flex-col gap-8 ">
-          <div className="w-full flex justify-between bg-[#161616] py-1.5 px-1 sm:px-1.5 rounded-lg">
+      <div className="flex flex-col lg:flex-row lg:flex-col-2 w-full space-y-4">
+        <div className="bg-[#0E0E0E] w-full lg:w-8/12 px-2 lg:px-6 py-4 rounded-xl mx-auto border border-[#171717] flex flex-col gap-8 ">
+          <div className="w-full flex justify-between bg-[#161616] py-1.5 px-1 lg:px-1.5 rounded-lg">
             <button
               className={`w-1/4 ${
                 tab === "Supply" ? "bg-[#323232]" : "text-[#8A8A8A]"
-              } py-2 rounded text-white text-xs sm:text-sm`}
+              } py-2 rounded text-white text-xs lg:text-sm`}
               onClick={() => setTab("Supply")}
             >
               Supply
@@ -233,7 +233,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
             <button
               className={`w-1/4 ${
                 tab === "Withdraw" ? "bg-[#323232]" : "text-[#8A8A8A]"
-              } py-2 rounded text-white text-xs sm:text-sm`}
+              } py-2 rounded text-white text-xs lg:text-sm`}
               onClick={() => setTab("Withdraw")}
             >
               Withdraw
@@ -241,7 +241,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
             <button
               className={`w-1/4 ${
                 tab === "Borrow" ? "bg-[#323232]" : "text-[#8A8A8A]"
-              } py-2 rounded text-white text-xs sm:text-sm`}
+              } py-2 rounded text-white text-xs lg:text-sm`}
               onClick={() => setTab("Borrow")}
             >
               Borrow
@@ -249,7 +249,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
             <button
               className={`w-1/4 ${
                 tab === "Repay" ? "bg-[#323232]" : "text-[#8A8A8A]"
-              } py-2 rounded text-white text-xs sm:text-sm`}
+              } py-2 rounded text-white text-xs lg:text-sm`}
               onClick={() => setTab("Repay")}
             >
               Repay
@@ -258,8 +258,8 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
 
           <div className="w-full">
             <div className="flex justify-between">
-              <p className="text-[#C3C3C3] py-2 px-1 text-sm sm:text-md">{tab}</p>
-              <div className="flex flex-col items-end py-2 px-1 text-[#C3C3C3] text-sm sm:text-md">
+              <p className="text-[#C3C3C3] py-2 px-1 text-sm lg:text-md">{tab}</p>
+              <div className="flex flex-col items-end py-2 px-1 text-[#C3C3C3] text-sm lg:text-md">
                 <p>
                   Wallet Balance: {totalBalanceFormatted} {asset.underlyingToken.symbol}
                 </p>
@@ -270,7 +270,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
               <input
                 type="number"
                 placeholder="0.00"
-                className="focus:outline-none py-3 bg-[#0B0B0B] text-white/80124 text-md text-white sm:text-xl w-full"
+                className="focus:outline-none py-3 bg-[#0B0B0B] text-white/80124 text-md text-white lg:text-xl w-full"
                 onChange={(e) => setInputValue(Number(e.target.value))}
               />
               <div className="flex items-center space-x-2">

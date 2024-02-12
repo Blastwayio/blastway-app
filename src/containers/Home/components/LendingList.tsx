@@ -11,7 +11,7 @@ interface LendingListProps {
 const LendingList: React.FC<LendingListProps> = ({ assets }) => {
   return (
     <div className="mt-8 px-0 sm:px-4 w-full container mx-auto">
-      <div className="hidden sm:grid bg-[#0e0e0e] border border-[#232323] rounded-xl shadow-lg">
+      <div className="hidden lg:grid bg-[#0e0e0e] border border-[#232323] rounded-xl shadow-lg">
         <div className="bg-[#141414] text-[#848484] border-b border-[#232323] rounded-t-xl grid grid-cols-4 py-6 px-8">
           <div className="flex justify-left items-center space-x-1">
             <span>Assets</span>
@@ -74,7 +74,7 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
         })}
       </div>
 
-      <div className="flex flex-col sm:hidden">
+      <div className="flex flex-col lg:hidden">
         <div className="text-gray-200 border-b border-[#2E2F31] w-full py-4">
           <p className="px-5 text-md">Assets to Supply & Borrow</p>
         </div>

@@ -18,7 +18,7 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) =>
   const minBorrowApyToken = assets.sort((a, b) => +a.borrowApy - +b.borrowApy)[0];
   return (
     <>
-      <div className="flex flex-col sm:flex-row px-0 sm:px-4 justify-center items-center space-x-0 space-y-4 sm:space-x-4 sm:space-y-0">
+      <div className="flex flex-col lg:flex-row px-0 sm:px-4 justify-center items-center space-x-0 space-y-4 lg:space-x-4 lg:space-y-0">
         <div className="relative w-full sm:w-3/3">
           <Image src={banner} alt="banner" className="bg-[#0E0E0E] rounded-xl border border-[#171717] w-full" />
           <div className="absolute inset-0 flex flex-col justify-center items-center">
@@ -31,7 +31,7 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) =>
           </div>
         </div>
 
-        <div className="hidden sm:block space-y-4 w-full sm:w-1/3">
+        <div className="hidden lg:block space-y-4 w-full sm:w-1/3">
           <div className="bg-[#0E0E0E] space-y-3 rounded-xl border border-[#171717] text-right pl-16 px-4 py-8">
             <div className="flex items-center justify-end gap-2 self-end text-[#FFFFFF]/75 text-3xl">
               $1.1Mn
@@ -46,7 +46,7 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) =>
           </div>
         </div>
 
-        <div className="sm:hidden w-full bg-[#0E0E0E] rounded-xl border border-[#171717]">
+        <div className="lg:hidden w-full bg-[#0E0E0E] rounded-xl border border-[#171717]">
           <div className="flex w-full justify-between px-4 py-4 items-center border-b border-[#171717]">
             <p className="text-[#6E6E6E] text-md">Highest Supply APY</p>
             <h1 className="text-[#FFFFFF]/75 text-xl">{maxSupplyApyToken.supplyApy}%</h1>

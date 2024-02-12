@@ -260,12 +260,12 @@ const Sidebar: React.FC = () => {
 
       <aside
         ref={sidebarRef}
-        className={`fixed top-0 left-0 z-50 w-34 h-screen transition-transform ${
+        className={`fixed top-0 left-0 z-50 w-34 min-h-screen transition-transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } sm:translate-x-0`}
         aria-label="Sidebar"
       >
-        <div className="flex flex-col justify-between h-full overflow-y-auto border-r border-[#232323] bg-[#0e0e0e]">
+        <div className="flex flex-col justify-between min-h-screen overflow-y-auto border-r border-[#232323] bg-[#0e0e0e]">
           <div>
             <a href="/" className="flex w-full">
               <Image className="ml-4 py-8" src={logo} alt="logo" width={225} />
