@@ -7,14 +7,9 @@ import Link from "next/link";
 import { useState } from "react"; // Import useState
 import useRequestTokens from "@/hooks/useRequestTokens";
 import { CHAIN_ID } from "@/config";
-import faucetAbi from "@/config/abi/Faucet.json";
+import faucetAbi from "@/config/abi/Faucet";
 import ADDRESSES from "@/config/constants/addresses";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 
 export default function FaucetButton() {
   const { address: account } = useAccount();

@@ -1,7 +1,7 @@
 import { CToken } from "@/types";
 import { getContract } from "viem";
-import CErc20Abi from "@/config/abi/CErc20.json";
-import ComptrollerAbi from "@/config/abi/Comptroller.json";
+import CErc20Abi from "@/config/abi/CErc20";
+import ComptrollerAbi from "@/config/abi/Comptroller";
 import { publicClient } from "@/lib/viem";
 import { BLOCK_PER_DAY, CHAIN, CHAIN_ID, DAYS_PER_YEAR } from "@/config";
 import axios from "axios";
@@ -54,24 +54,24 @@ const getCTokens = async () => {
 
       const underlyingTokenPrice =
         underlyingToken.symbol === "USDC" ||
-        underlyingToken.symbol === "USDT" ||
-        underlyingToken.symbol === "DAI" ||
-        underlyingToken.symbol === "USDB"
+          underlyingToken.symbol === "USDT" ||
+          underlyingToken.symbol === "DAI" ||
+          underlyingToken.symbol === "USDB"
           ? "1.00"
           : (
-              tokenPriceCall.data.pairs.filter(
-                (pair: any) => pair.chainId === CHAIN.name.toLowerCase().split(" ")[0]
-              )[0] || tokenPriceCall.data.pairs.filter((pair: any) => pair.chainId === "scroll")[0]
-            ).priceUsd;
+            tokenPriceCall.data.pairs.filter(
+              (pair: any) => pair.chainId === CHAIN.name.toLowerCase().split(" ")[0]
+            )[0] || tokenPriceCall.data.pairs.filter((pair: any) => pair.chainId === "scroll")[0]
+          ).priceUsd;
 
       const oneCTokenInUnderlying = Number(exchangeRateStored) / 10 ** (18 + underlyingToken.decimals - decimals);
 
-      console.log(`1 ${symbol} = ${oneCTokenInUnderlying} ${underlyingToken.symbol}`);
+      // console.log(`1 ${symbol} = ${oneCTokenInUnderlying} ${underlyingToken.symbol}`);
 
       const supplyApy = (Math.pow((Number(supplyRatePerBlock) / 1e18) * BLOCK_PER_DAY + 1, DAYS_PER_YEAR) - 1) * 100;
       const borrowApy = (Math.pow((Number(borrowRatePerBlock) / 1e18) * BLOCK_PER_DAY + 1, DAYS_PER_YEAR) - 1) * 100;
-      console.log(`Supply APY for ${symbol} is ${supplyApy} %`);
-      console.log(`Borrow APY for ${symbol} is ${borrowApy} %`);
+      // console.log(`Supply APY for ${symbol} is ${supplyApy} %`);
+      // console.log(`Borrow APY for ${symbol} is ${borrowApy} %`);
 
       return {
         accrualBlockNumber: accrualBlockNumber.toString(),

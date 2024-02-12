@@ -1,4 +1,4 @@
-[
+const abi = [
   {
     "inputs": [
       {
@@ -360,4 +360,6 @@
     "stateMutability": "pure",
     "type": "function"
   }
-]
+] as const
+
+export default abi

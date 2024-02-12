@@ -129,11 +129,9 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
     try {
       setDisabled(true);
       console.log(
-        `supplying ${BigInt(inputValue * 10 ** asset.underlyingToken.decimals).toString()} ${
-          asset.underlyingToken.symbol
-        }`
+        `supplying ${BigInt(inputValue * 10 ** asset.underlyingToken.decimals)} ${asset.underlyingToken.symbol}`
       );
-      await onSupply(BigInt(inputValue * 10 ** asset.underlyingToken.decimals).toString());
+      await onSupply(BigInt(inputValue * 10 ** asset.underlyingToken.decimals));
       toast.success("Supply successful");
     } catch (error) {
       console.log(error);
@@ -146,11 +144,9 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
     try {
       setDisabled(true);
       console.log(
-        `withdrawing ${BigInt(inputValue * 10 ** asset.underlyingToken.decimals).toString()} ${
-          asset.underlyingToken.symbol
-        }`
+        `withdrawing ${BigInt(inputValue * 10 ** asset.underlyingToken.decimals)} ${asset.underlyingToken.symbol}`
       );
-      await onWithdraw(BigInt(inputValue * 10 ** asset.underlyingToken.decimals).toString());
+      await onWithdraw(BigInt(inputValue * 10 ** asset.underlyingToken.decimals));
       toast.success("Withdraw successful");
     } catch (error) {
       console.log(error);
@@ -163,11 +159,9 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
     try {
       setDisabled(true);
       console.log(
-        `borrowing ${BigInt(inputValue * 10 ** asset.underlyingToken.decimals).toString()} ${
-          asset.underlyingToken.symbol
-        }`
+        `borrowing ${BigInt(inputValue * 10 ** asset.underlyingToken.decimals)} ${asset.underlyingToken.symbol}`
       );
-      await onBorrow(BigInt(inputValue * 10 ** asset.underlyingToken.decimals).toString());
+      await onBorrow(BigInt(inputValue * 10 ** asset.underlyingToken.decimals));
       toast.success("Borrow successful");
     } catch (error) {
       console.log(error);
@@ -180,11 +174,9 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
     try {
       setDisabled(true);
       console.log(
-        `repaying ${BigInt(inputValue * 10 ** asset.underlyingToken.decimals).toString()} ${
-          asset.underlyingToken.symbol
-        }`
+        `repaying ${BigInt(inputValue * 10 ** asset.underlyingToken.decimals)} ${asset.underlyingToken.symbol}`
       );
-      await onRepay(BigInt(inputValue * 10 ** asset.underlyingToken.decimals).toString());
+      await onRepay(BigInt(inputValue * 10 ** asset.underlyingToken.decimals));
       toast.success("Repay successful");
     } catch (error) {
       console.log(error);
