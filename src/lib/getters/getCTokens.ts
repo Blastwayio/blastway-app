@@ -1,7 +1,7 @@
 import { CToken } from "@/types";
 import { getContract } from "viem";
-import CErc20Abi from "@/config/abi/CErc20.json";
-import ComptrollerAbi from "@/config/abi/Comptroller.json";
+import CErc20Abi from "@/config/abi/CErc20";
+import ComptrollerAbi from "@/config/abi/Comptroller";
 import { publicClient } from "@/lib/viem";
 import { BLOCK_PER_DAY, CHAIN, CHAIN_ID, DAYS_PER_YEAR } from "@/config";
 import axios from "axios";

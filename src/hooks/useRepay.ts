@@ -2,19 +2,19 @@ import { useCallback } from "react";
 import { useWriteContract } from "wagmi";
 import { useUserData } from "./useUserData";
 import { CHAIN_ID } from "@/config";
-import cErc20Abi from "@/config/abi/CErc20.json";
+import cErc20Abi from "@/config/abi/CErc20";
 import { waitForTransactionReceipt } from "viem/actions";
 import { publicClient } from "@/lib/viem";
 
-const useRepay = (tokenAddress: string) => {
+const useRepay = (tokenAddress: `0x${string}`) => {
   const { writeContractAsync } = useWriteContract();
   const { refetch } = useUserData();
 
   const handleRepay = useCallback(
-    async (amount: string) => {
+    async (amount: bigint) => {
       const hash = await writeContractAsync({
         abi: cErc20Abi,
-        address: tokenAddress as `0x${string}`,
+        address: tokenAddress,
         functionName: "repayBorrow",
         args: [amount],
         chainId: CHAIN_ID,

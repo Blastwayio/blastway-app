@@ -1,7 +1,7 @@
 import { useAccount, useReadContracts } from "wagmi";
 import assets from "@/config/constants/assets";
-import cErc20Abi from "@/config/abi/CErc20.json";
-import comptrollerAbi from "@/config/abi/Comptroller.json";
+import cErc20Abi from "@/config/abi/CErc20";
+import comptrollerAbi from "@/config/abi/Comptroller";
 import { Abi } from "viem";
 import ADDRESSES from "@/config/constants/addresses";
 import { CHAIN_ID } from "@/config";

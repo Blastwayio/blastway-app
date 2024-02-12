@@ -1,4 +1,4 @@
-[
+const abi = [
   {
     "inputs": [],
     "name": "AcceptAdminPendingAdminCheck",
@@ -1570,4 +1570,6 @@
     "stateMutability": "view",
     "type": "function"
   }
-]
+] as const
+
+export default abi

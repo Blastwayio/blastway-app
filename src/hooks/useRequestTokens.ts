@@ -2,7 +2,7 @@ import { useWriteContract } from "wagmi";
 import { useUserData } from "./useUserData";
 import { useCallback } from "react";
 import { CHAIN_ID } from "@/config";
-import faucetABI from "@/config/abi/Faucet.json";
+import faucetABI from "@/config/abi/Faucet";
 import { waitForTransactionReceipt } from "viem/actions";
 import { publicClient } from "@/lib/viem";
 import ADDRESSES from "@/config/constants/addresses";
