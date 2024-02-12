@@ -20,8 +20,6 @@ const useApprove = (tokenAddress: `0x${string}`, spender: `0x${string}`) => {
     chainId: CHAIN_ID,
   });
 
-  const isApproved = BigInt((allowanceData || "0") as string) > BigInt(1);
-
   const handleApprove = useCallback(async () => {
     const hash = await writeContractAsync({
       abi: cErc20Abi,
@@ -35,7 +33,7 @@ const useApprove = (tokenAddress: `0x${string}`, spender: `0x${string}`) => {
     await refetchAllowance();
   }, [writeContractAsync, tokenAddress, spender, refetch]);
 
-  return { isApproved, allowanceData, onApprove: handleApprove };
+  return { allowanceData, onApprove: handleApprove };
 };
 
 export default useApprove;

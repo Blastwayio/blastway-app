@@ -38,7 +38,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
   const { onWithdraw } = useWithdraw(asset.address);
   const { onBorrow } = useBorrow(asset.address);
   const { onRepay } = useRepay(asset.address);
-  const { onApprove, isApproved } = useApprove(asset.underlyingToken.address, asset.address);
+  const { onApprove, allowanceData } = useApprove(asset.underlyingToken.address, asset.address);
 
   const [tab, setTab] = useState("Supply");
   const [userDataAsset, setUserDataAsset] = useState(userTokenData![0]);
@@ -66,6 +66,10 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
     compactDisplay: "short",
   }).format(+asset.totalCash / 10 ** asset.underlyingToken.decimals);
 
+  const isApproved = BigInt(allowanceData || "0") >= BigInt(inputValue * 10 ** asset.underlyingToken.decimals);
+
+  console.log("allowanceData", allowanceData);
+
   useEffect(() => {
     const userDataAsset = userTokenData!.find(
       (userDataAsset) => userDataAsset.symbol.toLowerCase() === asset.symbol.toLowerCase()
@@ -87,6 +91,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
     }
   }, [userDataAsset.isInMarket]);
 
+  // disabling button if input is 0
   useEffect(() => {
     if (isApproved && inputValue === 0) {
       setDisabled(true);
