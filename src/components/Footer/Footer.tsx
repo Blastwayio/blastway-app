@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="flex flex-col-reverse items-center lg:items-end justify-between text-[#C2C2C2] px-4 pb-4 pt-12 sm:px-10 lg:flex-row lg:py-6 mt-16 sm:ml-60 select-none"
+      className="flex flex-col-reverse items-center lg:items-end justify-between text-[#C2C2C2] px-4 pb-4 pt-12 sm:px-10 lg:flex-row lg:py-6 mt-10 sm:ml-60 select-none"
     >
       <div className="flex flex-1  text-center  text-sm leading-[17.6px] font-normal">
         <span>

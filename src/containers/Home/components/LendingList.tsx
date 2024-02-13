@@ -49,7 +49,8 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
                   <Image
                     src={asset.image}
                     alt={asset.underlyingToken.symbol}
-                    style={{ width: "38px", height: "38px" }}
+                    className="select-none w-[38px] h-[38px]"
+                    draggable={false}
                   />
                   <div>
                     <p className="text-md">{asset.underlyingToken.symbol}</p>

@@ -19,29 +19,30 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) =>
   return (
     <>
       <div className="flex flex-col lg:flex-row px-0 sm:px-4 justify-center items-center space-x-0 space-y-4 lg:space-x-4 lg:space-y-0">
-        <div className="relative w-full sm:w-3/3">
-          <Image src={banner} alt="banner" className="bg-[#0E0E0E] rounded-xl border border-[#171717] w-full" />
+        <div className="relative w-full sm:w-3/3 select-none">
+          <Image
+            src={banner}
+            alt="banner"
+            className="bg-[#0E0E0E] rounded-xl border border-[#171717] w-full"
+            draggable="false"
+          />
           <div className="absolute inset-0 flex flex-col justify-center items-center">
             <span className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white">Unleash the Full</span>
             <span className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white">
               Power of{" "}
-              <span className="bg-gradient-to-r from-[#FFF200] to-[#BDFF00] text-transparent bg-clip-text">BLAST</span>
+              <a href="https://blast.io/en" target="_blank" className="bg-gradient-to-r from-[#FFF200] to-[#BDFF00] text-transparent bg-clip-text">BLAST</a>
             </span>
             <span className="text-xs sm:text-xl text-white/40 py-2">Earn protocol fees paid in blue chip assets</span>
           </div>
         </div>
 
         <div className="hidden lg:block space-y-4 w-full sm:w-1/3">
-          <div className="bg-[#0E0E0E] space-y-3 rounded-xl border border-[#171717] text-right pl-16 px-4 py-8">
-            <div className="flex items-center justify-end gap-2 self-end text-[#FFFFFF]/75 text-3xl">
-              $1.1Mn
-            </div>
+          <div className="bg-[#0E0E0E] space-y-3 rounded-xl border border-[#171717] flex flex-col items-center px-4 py-8">
+            <div className="flex items-center  gap-2  text-[#FFFFFF]/75 text-3xl">$1.1Mn</div>
             <p className="text-[#6E6E6E] text-lg sm:text-xl">Total Value Locked</p>
           </div>
-          <div className="bg-[#0E0E0E] space-y-3 rounded-xl border border-[#171717] text-right pl-16 px-4 py-8">
-            <div className="flex items-center justify-end gap-2 self-end text-[#FFFFFF]/75 text-3xl">
-              $102.2k
-            </div>
+          <div className="bg-[#0E0E0E] space-y-3 rounded-xl border border-[#171717] flex flex-col items-center px-4 py-8">
+            <div className="flex items-center gap-2  text-[#FFFFFF]/75 text-3xl">$102.2k</div>
             <p className="text-[#6E6E6E] text-lg sm:text-xl">Total Borrow</p>
           </div>
         </div>
