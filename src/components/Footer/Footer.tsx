@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="flex flex-col-reverse items-center lg:items-end justify-between text-[#C2C2C2] px-4 pb-4 pt-12 sm:px-10 lg:flex-row lg:py-6 sm:ml-60 select-none"
+      className="flex flex-col-reverse items-center lg:items-end justify-between text-[#C2C2C2] px-4 pb-4 pt-12 sm:px-10 lg:flex-row lg:py-6 mt-16 sm:ml-60 select-none"
     >
       <div className="flex flex-1  text-center  text-sm leading-[17.6px] font-normal">
         <span>
@@ -21,27 +21,16 @@ const Footer = () => {
       </div>
       <div className="flex flex-col gap-10 items-center py-10 lg:py-0">
         <a href="https://pyth.network" target="_blank">
-          <Image
-            src={Pyth}
-            alt="Pyth Powered"
-            className="w-28 mr-5 "
-            draggable="false"
-          />
+          <Image src={Pyth} alt="Pyth Powered" className="w-28 mr-5 " draggable="false" />
         </a>
         <div className="flex">
           <p className="px-4 text-sm sm:px-8  hover:text-white">
-            <a
-              href="https://docs.blastway.io/about-us/privacy-policy"
-              target="_blank"
-            >
+            <a href="https://docs.blastway.io/about-us/privacy-policy" target="_blank">
               Privacy Policy
             </a>
           </p>
           <p className="px-4 text-sm sm:px-8  hover:text-white">
-            <a
-              href="https://docs.blastway.io/about-us/terms-of-service"
-              target="_blank"
-            >
+            <a href="https://docs.blastway.io/about-us/terms-of-service" target="_blank">
               Terms of Service
             </a>
           </p>

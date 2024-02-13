@@ -4,6 +4,7 @@ import ADDRESSES from "./addresses";
 import USDC from "/public/images/tokens/usdc.svg";
 import USDT from "/public/images/tokens/usdt.svg";
 import ETH from "/public/images/tokens/eth.svg";
+import BLUR from "/public/images/tokens/blur.webp";
 
 const assets: CTokenConfig[] = [
   {
@@ -45,6 +46,20 @@ const assets: CTokenConfig[] = [
       symbol: "WETH",
       image: ETH,
       address: ADDRESSES.TestWETH[CHAIN_ID] as `0x${string}`,
+      decimals: 18,
+    },
+  },
+  {
+    name: "bBLUR",
+    symbol: "bBLUR",
+    image: BLUR,
+    address: ADDRESSES.ctokens.cBLUR[CHAIN_ID] as `0x${string}`,
+    decimals: 8,
+    underlyingToken: {
+      name: "BLUR",
+      symbol: "BLUR",
+      image: BLUR,
+      address: ADDRESSES.TestBLUR[CHAIN_ID] as `0x${string}`,
       decimals: 18,
     },
   },
