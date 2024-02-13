@@ -5,8 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatAddress(address: string) {
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+export function formatAddress(address: string, startingChars = 6, endingChars = 4) {
+  return `${address.slice(0, startingChars)}...${address.slice(-endingChars)}`;
 }
 
 export function delay(ms: number) {

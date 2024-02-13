@@ -124,7 +124,7 @@ const Sidebar: React.FC = () => {
               />
             </svg>
           )}
-          {label === "Vaults" && (
+          {label === "Quests" && (
             <svg
               className={isActive ? "text-[#FFF200]" : "text-gray-400"}
               xmlns="http://www.w3.org/2000/svg"
@@ -273,6 +273,7 @@ const Sidebar: React.FC = () => {
             <ul className="text-center text-white text-sm py-8 space-y-4">
               {menuItem("/", "Dashboard")}
               {menuItem("/lending", "Lending")}
+              {menuItem("/quests", "Quests")}
             </ul>
           </div>
           <div className="hidden sm:flex flex-col">

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import APP_COLORS from "./src/config/constants/APP_COLORS";
 
 const config = {
   darkMode: ["class"],
@@ -14,6 +15,7 @@ const config = {
     },
     extend: {
       colors: {
+        ...APP_COLORS,
         bwPrimary: {
           DEFAULT: "hsl(var(--bw-primary))",
           foreground: "hsl(var(--bw-primary-foreground))",
