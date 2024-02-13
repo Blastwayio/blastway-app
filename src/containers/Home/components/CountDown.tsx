@@ -3,7 +3,7 @@ import useCountDown from "@/hooks/useCountDown";
 import moment from "moment";
 
 const CountDown = () => {
-  const { time } = useCountDown(1707955200);
+  const { time } = useCountDown(1707908400);
   const timeDuration = moment.duration(time, "seconds");
   return (
     <div className="flex flex-col w-full items-center justify-center text-bwPrimary gap-2 my-4 select-none">
