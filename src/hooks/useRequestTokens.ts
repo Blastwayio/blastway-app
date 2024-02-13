@@ -31,7 +31,7 @@ const useRequestTokens = () => {
     await waitForTransactionReceipt(publicClient, { hash });
     await refetch();
     await refetchAllowedToWithdraw();
-  }, [writeContractAsync, refetch]);
+  }, [writeContractAsync, refetch, refetchAllowedToWithdraw]);
 
   return { allowedToWithdraw, onRequestTokens: handleRequestTokens, refetchAllowedToWithdraw };
 };
