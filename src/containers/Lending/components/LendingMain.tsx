@@ -305,7 +305,9 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
                   </p>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <p className="text-gray-400 text-md">Use as Collateral</p>
+                  <p className="flex gap-2 items-center text-gray-400 text-md">
+                    Use as Collateral <TooltipInfo text="Toggle to enable borrowing against the assets." />
+                  </p>
                   <Switch
                     checked={collateralChecked}
                     onClick={collateralChecked ? exitMarket : enterMarket}
