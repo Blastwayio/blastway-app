@@ -6,5 +6,5 @@ export const publicClient = createPublicClient({
     multicall: true,
   },
   chain: CHAIN,
-  transport: http(),
+  transport: http(process.env.RPC_URL),
 });
