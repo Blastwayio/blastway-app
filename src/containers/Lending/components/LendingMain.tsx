@@ -20,6 +20,8 @@ import { Switch } from "@/components/ui/switch";
 import { CToken } from "@/types";
 import { useAccount } from "wagmi";
 import ConnectButton from "@/components/ConnectButton";
+import { InfoIcon } from "lucide-react";
+import TooltipInfo from "@/components/TooltipInfo";
 
 interface LendingMainProps {
   asset: CToken;
@@ -204,7 +206,11 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
       return await handleWithdraw();
     } else if (tab === "Borrow") {
       if (inputTokenPrice > userBorrowLimit!) {
-        return toast.error("You can't borrow more than your borrow limit");
+        return toast.error(
+          `Borrow limit exceeded. Add more collateral (${
+            +asset.collateralFactor * 100
+          }% factor) to increase limit. Ensure assets are marked as collateral.`
+        );
       }
       return await handleBorrow();
     } else if (tab === "Repay") {
@@ -307,7 +313,10 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
                   />
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <p className="text-gray-400 text-md">Loan-To-Value</p>
+                  <p className="flex gap-2 items-center text-gray-400 text-md">
+                    Collateral Factor{" "}
+                    <TooltipInfo text="The percentage of the asset value that can be used as collateral" />
+                  </p>
                   <p className="text-white text-md">{+asset.collateralFactor * 100}%</p>
                 </div>
                 <div className="flex justify-between items-center py-2">
