@@ -1,4 +1,3 @@
-import Sidebar from "@/components/Sidebar";
 import HomeContainer from "@/containers/Home";
 import getCTokens from "@/lib/getters/getCTokens";
 

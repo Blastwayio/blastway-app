@@ -1,6 +1,4 @@
 import React from "react";
-import banner from "/public/images/Vector.svg";
-import Image from "next/image";
 import { CToken } from "@/types";
 
 interface BannerStatus {
@@ -38,7 +36,9 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) =>
                 BLAST
               </a>
             </span>
-            <span className="text-base text-center sm:text-xl text-white/40 py-2">Earn protocol fees paid in blue chip assets</span>
+            <span className="text-base text-center sm:text-xl text-white/40 py-2">
+              Earn protocol fees paid in blue chip assets
+            </span>
           </div>
         </div>
 
