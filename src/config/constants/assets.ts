@@ -5,6 +5,7 @@ import USDC from "/public/images/tokens/usdc.svg";
 import USDT from "/public/images/tokens/usdt.svg";
 import ETH from "/public/images/tokens/eth.svg";
 import BLUR from "/public/images/tokens/blur.webp";
+import BLAST from "/public/images/tokens/blast.png";
 
 const assets: CTokenConfig[] = [
   {
@@ -21,20 +22,6 @@ const assets: CTokenConfig[] = [
       decimals: 18,
     },
   },
-  /*   {
-    name: "cUSDT",
-    symbol: "cUSDT",
-    image: USDT,
-    address: ADDRESSES.ctokens.cUSDT[CHAIN_ID] as `0x${string}`,
-    decimals: 8,
-    underlyingToken: {
-      name: "USDT",
-      symbol: "USDT",
-      image: USDT,
-      address: ADDRESSES.USDT[CHAIN_ID] as `0x${string}`,
-      decimals: 6,
-    },
-  }, */
   {
     name: "bWETH",
     symbol: "bWETH",
@@ -60,6 +47,34 @@ const assets: CTokenConfig[] = [
       symbol: "BLUR",
       image: BLUR,
       address: ADDRESSES.TestBLUR[CHAIN_ID] as `0x${string}`,
+      decimals: 18,
+    },
+  },
+  {
+    name: "bUSDT",
+    symbol: "bUSDT",
+    image: USDT,
+    address: ADDRESSES.ctokens.cUSDT[CHAIN_ID] as `0x${string}`,
+    decimals: 8,
+    underlyingToken: {
+      name: "USDT",
+      symbol: "USDT",
+      image: USDT,
+      address: ADDRESSES.TestUSDT[CHAIN_ID] as `0x${string}`,
+      decimals: 18,
+    },
+  },
+  {
+    name: "bBLAST",
+    symbol: "bBLAST",
+    image: BLAST,
+    address: ADDRESSES.ctokens.cBLAST[CHAIN_ID] as `0x${string}`,
+    decimals: 8,
+    underlyingToken: {
+      name: "BLAST",
+      symbol: "BLAST",
+      image: BLAST,
+      address: ADDRESSES.TestBLAST[CHAIN_ID] as `0x${string}`,
       decimals: 18,
     },
   },
