@@ -51,8 +51,8 @@ const assets: CTokenConfig[] = [
     },
   },
   {
-    name: "cUSDT",
-    symbol: "cUSDT",
+    name: "bUSDT",
+    symbol: "bUSDT",
     image: USDT,
     address: ADDRESSES.ctokens.cUSDT[CHAIN_ID] as `0x${string}`,
     decimals: 8,
@@ -65,8 +65,8 @@ const assets: CTokenConfig[] = [
     },
   },
   {
-    name: "cBLAST",
-    symbol: "cBLAST",
+    name: "bBLAST",
+    symbol: "bBLAST",
     image: BLAST,
     address: ADDRESSES.ctokens.cBLAST[CHAIN_ID] as `0x${string}`,
     decimals: 8,
