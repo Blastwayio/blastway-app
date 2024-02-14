@@ -38,6 +38,12 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
             maximumFractionDigits: 2,
           }).format(+asset.totalCash / 10 ** asset.underlyingToken.decimals);
 
+          const totalLiquidityPriceFormatted = new Intl.NumberFormat("en-US", {
+            notation: "compact",
+            compactDisplay: "short",
+            maximumFractionDigits: 2,
+          }).format((+asset.totalCash / 10 ** asset.underlyingToken.decimals) * +asset.underlyingToken.price);
+
           return (
             <Link
               href={`/lending?asset=${asset.underlyingToken.symbol}`}
@@ -69,6 +75,7 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
                 <p className="text-lg">
                   {totalLiquidityFormatted} {asset.underlyingToken.symbol}
                 </p>
+                <p>~{totalLiquidityPriceFormatted}$</p>
               </div>
             </Link>
           );
