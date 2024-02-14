@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SwapButton from "@/components/SwapButton";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import SwapArrows from "../../../../public/images/swap/swap-arrows.svg";
 import ETHTokenImage from "../../../../public/images/tokens/eth.svg";
 
@@ -53,7 +54,14 @@ const SwapMain = () => {
           </div>
         </div>
 
-        <SwapButton />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <SwapButton />
+          </TooltipTrigger>
+          <TooltipContent className="bg-[#18181b] border-none text-white">
+            <p>The swap feature is currently disabled, coming soon!</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
     </div>
   );
