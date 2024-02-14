@@ -18,32 +18,38 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) =>
   const minBorrowApyToken = assets.sort((a, b) => +a.borrowApy - +b.borrowApy)[0];
   return (
     <>
-      <div className="flex flex-col lg:flex-row px-0 sm:px-4 justify-center items-center space-x-0 space-y-4 lg:space-x-4 lg:space-y-0">
-        <div className="relative w-full sm:w-3/3 select-none">
-          <Image
+      <div className="flex flex-col lg:flex-row px-0 md:h-[19rem] xl:h-[26rem] sm:px-4 justify-center items-center space-x-0  space-y-4 lg:space-x-4 lg:space-y-0">
+        <div className="relative w-full h-full select-none min-h-48 sm:min-h-64 flex bg-cover bg-banner bg-no-repeat bg-center rounded-xl border border-[#171717] bg-[#0E0E0E] ">
+          {/* <Image
             src={banner}
             alt="banner"
-            className="bg-[#0E0E0E] rounded-xl border border-[#171717] w-full"
+            className="bg-[#0E0E0E] rounded-xl border border-[#171717] w-full bg-cover"
             draggable="false"
-          />
-          <div className="absolute inset-0 flex flex-col justify-center items-center">
-            <span className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white">Unleash the Full</span>
-            <span className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white">
+          /> */}
+          <div className="absolute inset-0 flex flex-col justify-center items-center px-2">
+            <span className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white">Unleash the Full</span>
+            <span className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white">
               Power of{" "}
-              <a href="https://blast.io/en" target="_blank" className="bg-gradient-to-r from-[#FFF200] to-[#BDFF00] text-transparent bg-clip-text">BLAST</a>
+              <a
+                href="https://blast.io/en"
+                target="_blank"
+                className="bg-gradient-to-r from-[#FFF200] to-[#BDFF00] text-transparent bg-clip-text"
+              >
+                BLAST
+              </a>
             </span>
-            <span className="text-xs sm:text-xl text-white/40 py-2">Earn protocol fees paid in blue chip assets</span>
+            <span className="text-base text-center sm:text-xl text-white/40 py-2">Earn protocol fees paid in blue chip assets</span>
           </div>
         </div>
 
-        <div className="hidden lg:block space-y-4 w-full sm:w-1/3">
-          <div className="bg-[#0E0E0E] space-y-3 rounded-xl border border-[#171717] flex flex-col items-center px-4 py-8">
-            <div className="flex items-center  gap-2  text-[#FFFFFF]/75 text-3xl">$1.1Mn</div>
-            <p className="text-[#6E6E6E] text-lg sm:text-xl">Total Value Locked</p>
+        <div className="hidden lg:flex lg:flex-col h-full w-full md:gap-4 xl:gap-12 justify-between sm:w-1/3">
+          <div className="bg-[#0E0E0E] rounded-xl border border-[#171717] flex flex-col flex-1 items-center justify-center px-4 py-8">
+            <div className="flex items-center  gap-2  text-[#FFFFFF]/75 md:text-2xl xl:text-3xl">$1.1Mn</div>
+            <p className="text-[#6E6E6E] text-center text-base xl:text-xl">Total Value Locked</p>
           </div>
-          <div className="bg-[#0E0E0E] space-y-3 rounded-xl border border-[#171717] flex flex-col items-center px-4 py-8">
-            <div className="flex items-center gap-2  text-[#FFFFFF]/75 text-3xl">$102.2k</div>
-            <p className="text-[#6E6E6E] text-lg sm:text-xl">Total Borrow</p>
+          <div className="bg-[#0E0E0E] rounded-xl border border-[#171717] flex flex-col flex-1 items-center justify-center px-4 py-8">
+            <div className="flex items-center gap-2 text-center text-[#FFFFFF]/75 md:text-2xl xl:text-3xl">$102.2k</div>
+            <p className="text-[#6E6E6E] text-base xl:text-xl">Total Borrow</p>
           </div>
         </div>
 
