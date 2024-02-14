@@ -274,6 +274,8 @@ const Sidebar: React.FC = () => {
               {menuItem("/", "Dashboard")}
               {menuItem("/lending", "Lending")}
               {menuItem("/quests", "Quests")}
+              {menuItem("/swap", "Swap")}
+              {/* {menuItem("/history", "History")} */}
             </ul>
           </div>
           <div className="hidden sm:flex flex-col">
