@@ -31,58 +31,57 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
           </div>
         </div>
 
-        {assets.map((asset, index) => {
-          const totalLiquidityFormatted = new Intl.NumberFormat("en-US", {
-            notation: "compact",
-            compactDisplay: "short",
-            maximumFractionDigits: 2,
-          }).format(+asset.totalCash / 10 ** asset.underlyingToken.decimals);
+        {assets
+          .sort((a, b) => a.symbol.localeCompare(b.symbol))
+          .map((asset, index) => {
+            const totalLiquidityFormatted = new Intl.NumberFormat("en-US", {
+              notation: "compact",
+              compactDisplay: "short",
+              maximumFractionDigits: 2,
+            }).format(+asset.totalCash / 10 ** asset.underlyingToken.decimals);
 
-          const totalLiquidityPriceFormatted = new Intl.NumberFormat("en-US", {
-            notation: "compact",
-            compactDisplay: "short",
-            maximumFractionDigits: 2,
-          }).format(
-            (+asset.totalCash / 10 ** asset.underlyingToken.decimals) *
-              +asset.underlyingToken.price
-          );
+            const totalLiquidityPriceFormatted = new Intl.NumberFormat("en-US", {
+              notation: "compact",
+              compactDisplay: "short",
+              maximumFractionDigits: 2,
+            }).format((+asset.totalCash / 10 ** asset.underlyingToken.decimals) * +asset.underlyingToken.price);
 
-          return (
-            <Link
-              href={`/lending?asset=${asset.underlyingToken.symbol}`}
-              key={index}
-              className="grid grid-cols-4 py-4 px-2 text-sm text-white items-center border-b border-[#232323] hover:bg-[#141414] transition-colors duration-300"
-            >
-              <div className="col-span-1 items-center text-center">
-                <div className="flex gap-3 items-center text-left ml-6">
-                  <Image
-                    src={asset.image}
-                    alt={asset.underlyingToken.symbol}
-                    className="select-none w-[38px] h-[38px]"
-                    draggable={false}
-                  />
-                  <div>
-                    <p className="text-md">{asset.underlyingToken.symbol}</p>
-                    {/*                     <p className="text-[#848484] text-sm">Deposited: {0}</p>
+            return (
+              <Link
+                href={`/lending?asset=${asset.underlyingToken.symbol}`}
+                key={index}
+                className="grid grid-cols-4 py-4 px-2 text-sm text-white items-center border-b border-[#232323] hover:bg-[#141414] transition-colors duration-300"
+              >
+                <div className="col-span-1 items-center text-center">
+                  <div className="flex gap-3 items-center text-left ml-6">
+                    <Image
+                      src={asset.image}
+                      alt={asset.underlyingToken.symbol}
+                      className="select-none w-[38px] h-[38px]"
+                      draggable={false}
+                    />
+                    <div>
+                      <p className="text-md">{asset.underlyingToken.symbol}</p>
+                      {/*                     <p className="text-[#848484] text-sm">Deposited: {0}</p>
                     <p className="text-[#848484] text-sm">Borrowed: {0}</p> */}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-span-1 items-center text-center">
-                <p className="text-lg">%{asset.supplyApy}</p>
-              </div>
-              <div className="col-span-1 items-center text-center">
-                <p className="text-lg">%{asset.borrowApy}</p>
-              </div>
-              <div className="col-span-1 items-center text-center">
-                <p className="text-lg">
-                  {totalLiquidityFormatted} {asset.underlyingToken.symbol}
-                </p>
-                <p>~{totalLiquidityPriceFormatted}$</p>
-              </div>
-            </Link>
-          );
-        })}
+                <div className="col-span-1 items-center text-center">
+                  <p className="text-lg">%{asset.supplyApy}</p>
+                </div>
+                <div className="col-span-1 items-center text-center">
+                  <p className="text-lg">%{asset.borrowApy}</p>
+                </div>
+                <div className="col-span-1 items-center text-center">
+                  <p className="text-lg">
+                    {totalLiquidityFormatted} {asset.underlyingToken.symbol}
+                  </p>
+                  <p>~{totalLiquidityPriceFormatted}$</p>
+                </div>
+              </Link>
+            );
+          })}
       </div>
 
       <div className="flex flex-col lg:hidden">
@@ -99,11 +98,7 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
             <div className="col-span-1 items-center text-center px-2">
               <div className="flex gap-3 items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Image
-                    src={asset.image}
-                    alt={asset.name}
-                    style={{ width: "38px", height: "38px" }}
-                  />
+                  <Image src={asset.image} alt={asset.name} style={{ width: "38px", height: "38px" }} />
                   <p className="text-md">{asset.name}</p>
                 </div>
                 <div className="flex justify-end space-x-4">

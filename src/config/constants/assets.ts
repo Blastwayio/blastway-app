@@ -78,6 +78,6 @@ const assets: CTokenConfig[] = [
       decimals: 18,
     },
   },
-];
+].sort((a, b) => a.symbol.localeCompare(b.symbol));
 
 export default assets;

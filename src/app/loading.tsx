@@ -3,19 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import Arrow from "/public/images/arrow.svg";
 import type { CToken } from "@/types";
+import assets from "@/config/constants/assets";
 import React from "react";
+
 interface LoadingListProps {
   assets: CToken[];
 }
-const DashBoardLoading: React.FC<LoadingListProps> = ({ assets }) => {
+const DashBoardLoading: React.FC<LoadingListProps> = () => {
   return (
     <main className="px-4 py-8 sm:px-10 sm:ml-60 sm:align-center">
       <div className="flex flex-col lg:flex-row px-0 md:h-[19rem] xl:h-[26rem] sm:px-4 justify-center items-center space-x-0  space-y-4 lg:space-x-4 lg:space-y-0">
         <div className="relative w-full h-full select-none min-h-48 sm:min-h-64 flex bg-cover bg-banner bg-no-repeat bg-center rounded-xl border border-[#171717] bg-[#0E0E0E] ">
           <div className="absolute inset-0 flex flex-col justify-center items-center px-2">
-            <span className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white">
-              Unleash the Full
-            </span>
+            <span className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white">Unleash the Full</span>
             <span className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white">
               Power of{" "}
               <a
@@ -45,15 +45,11 @@ const DashBoardLoading: React.FC<LoadingListProps> = ({ assets }) => {
 
         <div className="lg:hidden w-full bg-[#0E0E0E] rounded-xl border border-[#171717]">
           <div className="mt-1 flex w-full justify-between px-4 py-4 items-center border-b border-[#171717]">
-            <p className="text-[#6E6E6E] text-md leading-6">
-              Highest Supply APY
-            </p>
+            <p className="text-[#6E6E6E] text-md leading-6">Highest Supply APY</p>
             <div className="h-6 bg-gray-400 bg-opacity-40 rounded-full animate-pulse w-3/12"></div>
           </div>
           <div className="mt-1 flex w-full justify-between px-4 py-4 items-center">
-            <p className="text-[#6E6E6E] text-md leading-6">
-              Lowest Borrow APY
-            </p>
+            <p className="text-[#6E6E6E] text-md leading-6">Lowest Borrow APY</p>
             <div className="h-6 bg-gray-400 bg-opacity-40 rounded-full animate-pulse w-3/12"></div>
           </div>
         </div>
@@ -129,11 +125,7 @@ const DashBoardLoading: React.FC<LoadingListProps> = ({ assets }) => {
               <div className="col-span-1 items-center text-center px-2">
                 <div className="flex gap-3 items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <Image
-                      src={asset.image}
-                      alt={asset.name}
-                      style={{ width: "38px", height: "38px" }}
-                    />
+                    <Image src={asset.image} alt={asset.name} style={{ width: "38px", height: "38px" }} />
                     <p className="text-md">{asset.name}</p>
                   </div>
                   <div className="flex justify-end space-x-4"></div>
