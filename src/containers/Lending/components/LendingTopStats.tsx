@@ -17,17 +17,9 @@ const CustomMenu = ({ asset }: LendingTopAssetProps) => (
       <Menu.Item key={asset.underlyingToken.symbol}>
         <Link href={`/lending?asset=${asset.underlyingToken.symbol}`}>
           <div className="flex items-center space-x-4">
-            <Image
-              src={asset.image}
-              alt={asset.name}
-              className="rounded-full"
-              width="24"
-              height="24"
-            />
+            <Image src={asset.image} alt={asset.name} className="rounded-full" width="24" height="24" />
             <div className="w-full flex flex-col">
-              <span className="text-white text-base">
-                {asset.underlyingToken.symbol}
-              </span>
+              <span className="text-white text-base">{asset.underlyingToken.symbol}</span>
               <span className="text-[#838383] text-sm">{asset.name}</span>
             </div>
           </div>
@@ -46,17 +38,12 @@ const LendingTopStats: React.FC<LendingTopAssetProps> = ({ asset }) => {
     maximumFractionDigits: 2,
   }).format(+asset.underlyingToken.price);
 
-  console.log("asset", asset);
-
   return (
     <>
       <div className="hidden lg:flex w-full gap-20 items-center bg-[#0E0E0E] border border-[#171717] rounded-xl">
         <div className="bg-[#141414] py-6 rounded-l-xl text-white cursor-pointer">
           <Dropdown overlay={() => CustomMenu({ asset })} trigger={["click"]}>
-            <a
-              className="ant-dropdown-link"
-              onClick={(e) => e.preventDefault()}
-            >
+            <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
               <Space>
                 {asset ? (
                   <div className="flex items-center justify-between px-5 gap-16">
@@ -68,12 +55,8 @@ const LendingTopStats: React.FC<LendingTopAssetProps> = ({ asset }) => {
                         draggable="false"
                       />
                       <div className="w-full flex flex-col">
-                        <span className="text-white text-base">
-                          {asset.underlyingToken.symbol}
-                        </span>
-                        <span className="text-[#838383] text-sm">
-                          {asset.name}
-                        </span>
+                        <span className="text-white text-base">{asset.underlyingToken.symbol}</span>
+                        <span className="text-[#838383] text-sm">{asset.name}</span>
                       </div>
                     </div>
                     <Image src={Arrow} alt="Arrow" className="mx-5" />
@@ -116,27 +99,14 @@ const LendingTopStats: React.FC<LendingTopAssetProps> = ({ asset }) => {
       <div className="lg:hidden space-y-4">
         <div className="bg-[#141414] py-4 rounded-xl">
           <Dropdown overlay={() => CustomMenu({ asset })} trigger={["click"]}>
-            <a
-              className="ant-dropdown-link"
-              onClick={(e) => e.preventDefault()}
-            >
+            <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
               {asset ? (
                 <div className="flex items-center justify-between px-2 w-full ">
                   <div className="flex items-center space-x-2">
-                    <Image
-                      src={asset.image}
-                      alt={asset.name}
-                      className="rounded-full"
-                      width="48"
-                      height="48"
-                    />
+                    <Image src={asset.image} alt={asset.name} className="rounded-full" width="48" height="48" />
                     <div className="w-full flex flex-col">
-                      <span className="text-white text-base">
-                        {asset.underlyingToken.symbol}
-                      </span>
-                      <span className="text-[#838383] text-sm">
-                        {asset.name}
-                      </span>
+                      <span className="text-white text-base">{asset.underlyingToken.symbol}</span>
+                      <span className="text-[#838383] text-sm">{asset.name}</span>
                     </div>
                   </div>
                   <Image src={Arrow} alt="Arrow" />

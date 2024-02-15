@@ -91,7 +91,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
       setDisabled(false);
       setWarningText("");
     }
-  }, [inputTokenPrice, borrowLimit]);
+  }, [inputTokenPrice, borrowLimit, +asset.collateralFactor]);
 
   return (
     <>
