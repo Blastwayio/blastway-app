@@ -3,7 +3,6 @@ import useRepay from "@/hooks/useRepay";
 import { useUserData } from "@/hooks/useUserData";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import TabButton from "./TabButton";
 
 interface RepayTabProps {
