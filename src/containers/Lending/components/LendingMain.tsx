@@ -44,7 +44,7 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
   return (
     <>
       <div className="flex flex-col sm:flex-row sm:flex-col-2 w-full space-y-4">
-        <div className="bg-[#0E0E0E] w-full sm:w-8/12 px-2 sm:px-6 py-4 rounded-xl mx-auto border border-[#171717] flex flex-col">
+        <div className="bg-[#0E0E0E] w-full xl:w-8/12 px-2 sm:px-6 py-4 rounded-xl mx-auto border border-[#171717] flex flex-col">
           <div className="w-full flex justify-between bg-[#161616] py-1.5 px-1 sm:px-1.5 rounded-lg">
             {tabs.map((tab, index) => (
               <button
