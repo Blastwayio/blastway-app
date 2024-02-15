@@ -2,10 +2,15 @@
 import React, { useState } from "react";
 import { useUserData } from "@/hooks/useUserData";
 import { CToken } from "@/types";
-import SupplyTab from "./tabs/SupplyTab";
+
 import WithdrawTab from "./tabs/WithdrawTab";
 import BorrowTab from "./tabs/BorrowTab";
 import RepayTab from "./tabs/RepayTab";
+import SupplyTab from "./tabs/SupplyTab";
+import SupplyTabLoading from "./tabs/SupplyTab";
+import WithdrawTabLoading from "./tabs/WithdrawTab";
+import BorrowTabLoading from "./tabs/BorrowTab";
+import RepayTabLoading from "./tabs/RepayTab";
 
 interface LendingMainProps {
   asset: CToken;
@@ -18,25 +23,50 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
   const [activeTab, setActiveTab] = useState("Supply");
 
   const userDataAsset = userTokenData!.find(
-    (userDataAsset: any) => userDataAsset.symbol.toLowerCase() === asset.symbol.toLowerCase()
+    (userDataAsset: any) =>
+      userDataAsset.symbol.toLowerCase() === asset.symbol.toLowerCase()
   )!;
 
   const tabs = [
     {
       title: "Supply",
-      tab: <SupplyTab userDataAsset={userDataAsset} asset={asset} userData={userData} />,
+      tab: (
+        <SupplyTab
+          userDataAsset={userDataAsset}
+          asset={asset}
+          userData={userData}
+        />
+      ),
     },
     {
       title: "Withdraw",
-      tab: <WithdrawTab userDataAsset={userDataAsset} asset={asset} userData={userData} />,
+      tab: (
+        <WithdrawTab
+          userDataAsset={userDataAsset}
+          asset={asset}
+          userData={userData}
+        />
+      ),
     },
     {
       title: "Borrow",
-      tab: <BorrowTab userDataAsset={userDataAsset} asset={asset} userData={userData} />,
+      tab: (
+        <BorrowTab
+          userDataAsset={userDataAsset}
+          asset={asset}
+          userData={userData}
+        />
+      ),
     },
     {
       title: "Repay",
-      tab: <RepayTab userDataAsset={userDataAsset} asset={asset} userData={userData} />,
+      tab: (
+        <RepayTab
+          userDataAsset={userDataAsset}
+          asset={asset}
+          userData={userData}
+        />
+      ),
     },
   ];
 

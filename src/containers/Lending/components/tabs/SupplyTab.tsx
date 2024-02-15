@@ -17,7 +17,11 @@ interface SupplyTabProps {
   userData: ReturnType<typeof useUserData>;
 }
 
-const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData }) => {
+const SupplyTab: React.FC<SupplyTabProps> = ({
+  userDataAsset,
+  asset,
+  userData,
+}) => {
   const { borrowLimit } = userData;
 
   const [inputValue, setInputValue] = useState(0);
@@ -31,7 +35,8 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
 
   const newWalletBalance = userDataAsset.underlyingBalance + inputValue;
   const newAmountSupplied = userDataAsset.supplyBalance + inputValue;
-  const newBorrowLimit = borrowLimit! + inputValue * +asset.underlyingToken.price;
+  const newBorrowLimit =
+    borrowLimit! + inputValue * +asset.underlyingToken.price;
 
   const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
@@ -44,7 +49,9 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
     style: "currency",
     currency: "USD",
     maximumFractionDigits: 2,
-  }).format(userDataAsset.underlyingBalance * +asset.underlyingToken.price);
+  }).format(
+    parseInt(userDataAsset.underlyingBalance) * +asset.underlyingToken.price
+  );
 
   const handleInputChange = (value: number) => {
     setInputValue(value);
@@ -91,9 +98,10 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
       <div className="w-full mt-8">
         <div className="flex justify-between">
           <p className="text-[#C3C3C3] py-2 px-1 text-sm sm:text-md">Supply</p>
-          <div className="flex flex-col items-end py-2 px-1 text-[#C3C3C3] text-sm sm:text-md">
+          <div className="flex flex-col items-end py-2 px-1 w-full text-white text-sm sm:text-md">
             <p>
-              Wallet Balance: {totalBalanceFormatted} {asset.underlyingToken.symbol}
+              Wallet Balance: {totalBalanceFormatted}{" "}
+              {asset.underlyingToken.symbol}
             </p>
             <p>~{totalBalancePriceFormatted}</p>
           </div>
@@ -114,8 +122,14 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
           <div className="flex items-center space-x-2">
             <button className="flex items-center bg-[#171717] space-x-2 w-20 px-2 py-2 rounded-l-full">
               <div className="flex items-center gap-1">
-                <Image src={asset.image} alt={asset.underlyingToken.symbol} className="rounded-full h-4" />
-                <span className="text-[#8A8A8A] text-sm">{asset.underlyingToken.symbol}</span>
+                <Image
+                  src={asset.image}
+                  alt={asset.underlyingToken.symbol}
+                  className="rounded-full h-4"
+                />
+                <span className="text-[#8A8A8A] text-sm">
+                  {asset.underlyingToken.symbol}
+                </span>
               </div>
             </button>
           </div>
@@ -125,17 +139,21 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
           onChange={(value) => handleInputChange(value)}
           maxValue={userDataAsset.underlyingBalance}
         />
-        {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
+        {warningText && (
+          <p className="text-yellow-600 text-center mt-4">{warningText}</p>
+        )}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Wallet Balance</p>
             <div className="flex gap-2">
               <p className="text-white text-md">
-                {userDataAsset.underlyingBalance.toFixed(4)} {asset.underlyingToken.symbol}
+                {userDataAsset.underlyingBalance.toFixed(4)}{" "}
+                {asset.underlyingToken.symbol}
               </p>
               {!!inputValue && (
                 <p className="text-green-700 text-md">
-                  {"->"} ${newWalletBalance.toFixed(4)} ${asset.underlyingToken.symbol}
+                  {"->"} ${newWalletBalance.toFixed(4)} $
+                  {asset.underlyingToken.symbol}
                 </p>
               )}
             </div>
@@ -144,18 +162,21 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
             <p className="text-gray-400 text-md">Amount Supplied</p>
             <div className="flex gap-2">
               <p className="text-white text-md">
-                {userDataAsset.supplyBalance.toFixed(4)} {asset.underlyingToken.symbol}
+                {userDataAsset.supplyBalance.toFixed(4)}{" "}
+                {asset.underlyingToken.symbol}
               </p>
               {!!inputValue && (
                 <p className="text-green-700 text-md">
-                  {"->"} {newAmountSupplied.toFixed(4)} {asset.underlyingToken.symbol}
+                  {"->"} {newAmountSupplied.toFixed(4)}{" "}
+                  {asset.underlyingToken.symbol}
                 </p>
               )}
             </div>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="flex gap-2 items-center text-gray-400 text-md">
-              Use as Collateral <TooltipInfo text="Toggle to enable borrowing against the assets." />
+              Use as Collateral{" "}
+              <TooltipInfo text="Toggle to enable borrowing against the assets." />
             </p>
             <Switch
               checked={collateralChecked}
@@ -165,9 +186,12 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="flex gap-2 items-center text-gray-400 text-md">
-              Collateral Factor <TooltipInfo text="The percentage of the asset value that can be used as collateral" />
+              Collateral Factor{" "}
+              <TooltipInfo text="The percentage of the asset value that can be used as collateral" />
             </p>
-            <p className="text-white text-md">{+asset.collateralFactor * 100}%</p>
+            <p className="text-white text-md">
+              {+asset.collateralFactor * 100}%
+            </p>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Borrow Limit</p>
@@ -188,7 +212,11 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
       </div>
       <TabButton
         text="Supply"
-        method={async () => await onSupply(BigInt(inputValue * 10 ** asset.underlyingToken.decimals))}
+        method={async () =>
+          await onSupply(
+            BigInt(inputValue * 10 ** asset.underlyingToken.decimals)
+          )
+        }
         asset={asset}
         inputValue={inputValue}
         disabled={disabled}
