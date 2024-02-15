@@ -86,16 +86,16 @@ export const useUserData = (cTokens?: CToken[]) => {
       symbol,
       address,
       collateralFactor,
-      underlyingBalance: underlyingBalanceFormatted.toFixed(4),
-      cTokenBalance: cTokenBalanceFormatted?.toFixed(4),
-      borrowBalance: borrowBalanceFormatted?.toFixed(4),
-      supplyBalance: supplyBalance.toFixed(4),
+      underlyingBalance: underlyingBalanceFormatted,
+      cTokenBalance: cTokenBalanceFormatted,
+      borrowBalance: borrowBalanceFormatted,
+      supplyBalance: supplyBalance,
       isInMarket,
     };
   });
 
-  const totalBorrowBalance = tokenData.reduce((acc, { borrowBalance }) => acc + Number(borrowBalance), 0) || 0;
-  const totalSupplyBalance = tokenData.reduce((acc, { supplyBalance }) => acc + Number(supplyBalance), 0) || 0;
+  const totalBorrowBalance = tokenData.reduce((acc, { borrowBalance }) => acc + borrowBalance, 0) || 0;
+  const totalSupplyBalance = tokenData.reduce((acc, { supplyBalance }) => acc + supplyBalance, 0) || 0;
 
   //@ts-ignore
   const borrowLimit = Number(data?.[data.length - 1]?.result?.[1]) / 1e18 || 0;

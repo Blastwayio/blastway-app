@@ -6,6 +6,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import TabButton from "./TabButton";
+import ValueSlider from "@/components/ValueSlider";
 
 interface WithdrawTabProps {
   userDataAsset: any; // Replace with the actual type
@@ -14,7 +15,7 @@ interface WithdrawTabProps {
 }
 
 const WithdrawTab: React.FC<WithdrawTabProps> = ({ userDataAsset, asset, userData }) => {
-  const { borrowLimit, borrowPercentage } = userData;
+  const { borrowLimit, borrowPercentage, totalBorrowBalance } = userData;
 
   const [inputValue, setInputValue] = useState(0);
   const [disabled, setDisabled] = useState(false);
@@ -25,7 +26,7 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({ userDataAsset, asset, userDat
   const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
     compactDisplay: "short",
-  }).format(parseInt(userDataAsset.underlyingBalance));
+  }).format(userDataAsset.underlyingBalance);
 
   const totalBalancePriceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
@@ -33,21 +34,25 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({ userDataAsset, asset, userDat
     style: "currency",
     currency: "USD",
     maximumFractionDigits: 2,
-  }).format(parseInt(userDataAsset.underlyingBalance) * +asset.underlyingToken.price);
+  }).format(userDataAsset.underlyingBalance * +asset.underlyingToken.price);
+
+  const newAmountSupplied = userDataAsset.supplyBalance - inputValue;
+  const newBorrowLimit = borrowLimit! - inputValue * +asset.underlyingToken.price;
+  const newBorrowUtilization = (totalBorrowBalance! / newBorrowLimit!) * 100;
 
   const handleInputChange = (value: number) => {
     setInputValue(value);
   };
 
   useEffect(() => {
-    if (inputValue > +userDataAsset.supplyBalance) {
+    if (inputValue > userDataAsset.supplyBalance) {
       setDisabled(true);
-      setWarningText("You can't withdraw more than you supplied");
+      setWarningText("You can't withdraw more than you supplied.");
     } else {
       setDisabled(false);
       setWarningText("");
     }
-  }, [inputValue, +userDataAsset.supplyBalance]);
+  }, [inputValue, userDataAsset.supplyBalance]);
 
   return (
     <>
@@ -83,8 +88,12 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({ userDataAsset, asset, userDat
           </div>
         </div>
 
-        {/* @todo: Add the ValueSlider component here */}
-        {warningText && <p className="text-yellow-600">{warningText}</p>}
+        <ValueSlider
+          value={inputValue}
+          onChange={(value) => handleInputChange(value)}
+          maxValue={userDataAsset.supplyBalance}
+        />
+        {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
 
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
@@ -95,17 +104,38 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({ userDataAsset, asset, userDat
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Amount Supplied</p>
-            <p className="text-white text-md">
-              {userDataAsset.supplyBalance} {asset.underlyingToken.symbol}
-            </p>
+            <div className="flex gap-2">
+              <p className="text-white text-md">
+                {userDataAsset.supplyBalance.toFixed(4)} {asset.underlyingToken.symbol}{" "}
+              </p>
+              {!!inputValue && (
+                <p className="text-red-700 text-md">
+                  {"->"} {newAmountSupplied.toFixed(4)} {asset.underlyingToken.symbol}
+                </p>
+              )}
+            </div>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Borrow Limit</p>
-            <p className="text-white text-md">${borrowLimit?.toFixed(2)}</p>
+            <div className="flex gap-2">
+              <p className="text-white text-md">${borrowLimit?.toFixed(2)}</p>
+              {!!inputValue && (
+                <p className="text-red-700 text-md">
+                  {"->"} ${newBorrowLimit.toFixed(4)}
+                </p>
+              )}
+            </div>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Borrow Utilization</p>
-            <p className="text-white text-md">{borrowPercentage!.toFixed(2)}%</p>
+            <div className="flex gap-2">
+              <p className="text-white text-md">{borrowPercentage!.toFixed(2)}%</p>
+              {!!inputValue && (
+                <p className="text-red-700 text-md">
+                  {"->"} {newBorrowUtilization.toFixed(2)}%
+                </p>
+              )}
+            </div>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Supply APY</p>

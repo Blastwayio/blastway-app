@@ -21,12 +21,10 @@ const RepayTab: React.FC<RepayTabProps> = ({ userDataAsset, asset, userData }) =
 
   const { onRepay } = useRepay(asset.address);
 
-  const totalBorrowBalanceFormatted = totalBorrowBalance ? +totalBorrowBalance : 0;
-
   const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
     compactDisplay: "short",
-  }).format(parseInt(userDataAsset.underlyingBalance));
+  }).format(userDataAsset.underlyingBalance);
 
   const totalBalancePriceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
@@ -34,21 +32,21 @@ const RepayTab: React.FC<RepayTabProps> = ({ userDataAsset, asset, userData }) =
     style: "currency",
     currency: "USD",
     maximumFractionDigits: 2,
-  }).format(parseInt(userDataAsset.underlyingBalance) * +asset.underlyingToken.price);
+  }).format(userDataAsset.underlyingBalance * +asset.underlyingToken.price);
 
   const handleInputChange = (value: number) => {
     setInputValue(value);
   };
 
   useEffect(() => {
-    if (inputValue > +userDataAsset.borrowBalance) {
+    if (inputValue > userDataAsset.borrowBalance) {
       setDisabled(true);
-      setWarningText("You can't repay more than you borrowed");
+      setWarningText("You can't repay more than you borrowed.");
     } else {
       setDisabled(false);
       setWarningText("");
     }
-  }, [inputValue, +userDataAsset.borrowBalance]);
+  }, [inputValue, userDataAsset.borrowBalance]);
 
   return (
     <>
@@ -86,14 +84,14 @@ const RepayTab: React.FC<RepayTabProps> = ({ userDataAsset, asset, userData }) =
         <ValueSlider
           value={inputValue}
           onChange={(value) => handleInputChange(value)}
-          maxValue={totalBorrowBalanceFormatted}
+          maxValue={userDataAsset.borrowBalance || 0}
         />
-        {warningText && <p className="text-yellow-600">{warningText}</p>}
+        {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Wallet Balance</p>
             <p className="text-white text-md">
-              {userDataAsset.underlyingBalance} {asset.underlyingToken.symbol}
+              {userDataAsset.underlyingBalance.toFixed(4)} {asset.underlyingToken.symbol}
             </p>
           </div>
           <div className="flex justify-between items-center py-2">

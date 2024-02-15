@@ -34,7 +34,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
   const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
     compactDisplay: "short",
-  }).format(parseInt(userDataAsset.underlyingBalance));
+  }).format(userDataAsset.underlyingBalance);
 
   const totalBalancePriceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
@@ -42,7 +42,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
     style: "currency",
     currency: "USD",
     maximumFractionDigits: 2,
-  }).format(parseInt(userDataAsset.underlyingBalance) * +asset.underlyingToken.price);
+  }).format(userDataAsset.underlyingBalance * +asset.underlyingToken.price);
 
   const totalLiquidityFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
@@ -131,7 +131,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
           onChange={(value) => handleInputChange(value)}
           maxValue={userBorrowLimitFormatted}
         />
-        {warningText && <p className="text-yellow-600">{warningText}</p>}
+        {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Total Borrow Balance</p>

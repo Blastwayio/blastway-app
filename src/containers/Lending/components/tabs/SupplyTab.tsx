@@ -29,10 +29,14 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
   const { onEnterMarkets } = useEnterMarkets([asset.address]);
   const { onExitMarket } = useExitMarket(asset.address);
 
+  const newWalletBalance = userDataAsset.underlyingBalance + inputValue;
+  const newAmountSupplied = userDataAsset.supplyBalance + inputValue;
+  const newBorrowLimit = borrowLimit! + inputValue * +asset.underlyingToken.price;
+
   const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
     compactDisplay: "short",
-  }).format(parseInt(userDataAsset.underlyingBalance));
+  }).format(userDataAsset.underlyingBalance);
 
   const totalBalancePriceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
@@ -40,7 +44,7 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
     style: "currency",
     currency: "USD",
     maximumFractionDigits: 2,
-  }).format(parseInt(userDataAsset.underlyingBalance) * +asset.underlyingToken.price);
+  }).format(userDataAsset.underlyingBalance * +asset.underlyingToken.price);
 
   const handleInputChange = (value: number) => {
     setInputValue(value);
@@ -73,9 +77,9 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
   }, [userDataAsset.isInMarket]);
 
   useEffect(() => {
-    if (inputValue > +userDataAsset.underlyingBalance) {
+    if (inputValue > userDataAsset.underlyingBalance) {
       setDisabled(true);
-      setWarningText("You can't supply more than you have");
+      setWarningText("You can't supply more than you have.");
     } else {
       setDisabled(false);
       setWarningText("");
@@ -119,21 +123,35 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
         <ValueSlider
           value={inputValue}
           onChange={(value) => handleInputChange(value)}
-          maxValue={parseInt(userDataAsset.underlyingBalance)}
+          maxValue={userDataAsset.underlyingBalance}
         />
-        {warningText && <p className="text-yellow-600">{warningText}</p>}
+        {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Wallet Balance</p>
-            <p className="text-white text-md">
-              {userDataAsset.underlyingBalance} {asset.underlyingToken.symbol}
-            </p>
+            <div className="flex gap-2">
+              <p className="text-white text-md">
+                {userDataAsset.underlyingBalance.toFixed(4)} {asset.underlyingToken.symbol}
+              </p>
+              {!!inputValue && (
+                <p className="text-green-700 text-md">
+                  {"->"} ${newWalletBalance.toFixed(4)} ${asset.underlyingToken.symbol}
+                </p>
+              )}
+            </div>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Amount Supplied</p>
-            <p className="text-white text-md">
-              {userDataAsset.supplyBalance} {asset.underlyingToken.symbol}
-            </p>
+            <div className="flex gap-2">
+              <p className="text-white text-md">
+                {userDataAsset.supplyBalance.toFixed(4)} {asset.underlyingToken.symbol}
+              </p>
+              {!!inputValue && (
+                <p className="text-green-700 text-md">
+                  {"->"} {newAmountSupplied.toFixed(4)} {asset.underlyingToken.symbol}
+                </p>
+              )}
+            </div>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="flex gap-2 items-center text-gray-400 text-md">
@@ -153,7 +171,14 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Borrow Limit</p>
-            <p className="text-white text-md">${borrowLimit?.toFixed(2)}</p>
+            <div className="flex gap-2">
+              <p className="text-white text-md">${borrowLimit?.toFixed(2)}</p>
+              {!!inputValue && (
+                <p className="text-green-700 text-md">
+                  {"->"} ${newBorrowLimit.toFixed(4)}
+                </p>
+              )}
+            </div>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Supply APY</p>
