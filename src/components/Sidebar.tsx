@@ -190,40 +190,22 @@ const Sidebar: React.FC = () => {
               <path d="M3 18H2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           )}
-          {label === "History" && (
+          {label === "Profile" && (
             <svg
-              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-square-user-round"
             >
-              <path
-                d="M12 6V12H18"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M21.8883 10.5C21.1645 5.68874 17.013 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C16.1006 22 19.6248 19.5318 21.1679 16"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M17 16H21.4C21.7314 16 22 16.2686 22 16.6V21"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M18 21a6 6 0 0 0-12 0" />
+              <circle cx="12" cy="11" r="4" />
+              <rect width="18" height="18" x="3" y="3" rx="2" />
             </svg>
           )}
 
@@ -275,7 +257,8 @@ const Sidebar: React.FC = () => {
               {menuItem("/lending", "Lending")}
               {menuItem("/quests", "Quests")}
               {menuItem("/swap", "Swap")}
-              {/* {menuItem("/history", "History")} */}
+              {/* @todo: add profile page later, use if needed as a reference */}
+              {/* {menuItem("/profile", "Profile")} */}
             </ul>
           </div>
           <div className="hidden sm:flex flex-col">
