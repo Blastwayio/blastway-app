@@ -129,7 +129,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
         <ValueSlider
           value={inputValue}
           onChange={(value) => handleInputChange(value)}
-          maxValue={userBorrowLimitFormatted}
+          maxValue={userBorrowLimitFormatted || 100}
         />
         {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
