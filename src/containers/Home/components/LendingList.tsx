@@ -34,6 +34,7 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
         {assets
           .sort((a, b) => a.symbol.localeCompare(b.symbol))
           .map((asset, index) => {
+            console.log("asset", asset);
             const totalLiquidityFormatted = new Intl.NumberFormat("en-US", {
               notation: "compact",
               compactDisplay: "short",
@@ -67,11 +68,21 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
                     </div>
                   </div>
                 </div>
-                <div className="col-span-1 items-center text-center">
+                <div className="flex flex-col col-span-1 items-center text-center">
                   <p className="text-lg">%{asset.supplyApy}</p>
+                  {asset.canEarnPoints === "deposit" ? (
+                    <p className="py-1 px-3 rounded-full text-center bg-red-800 text-[12px}">+2x POINTS</p>
+                  ) : (
+                    <p className="py-1 px-3 rounded-full text-center text-black bg-lime-400 text-[12px}">+POINTS</p>
+                  )}
                 </div>
-                <div className="col-span-1 items-center text-center">
+                <div className="flex flex-col col-span-1 items-center text-center">
                   <p className="text-lg">%{asset.borrowApy}</p>
+                  {asset.canEarnPoints === "borrow" ? (
+                    <p className="py-1 px-3 rounded-full text-center bg-red-800 text-[12px]">+2x POINTS</p>
+                  ) : (
+                    <p className="py-1 px-3 rounded-full text-center text-black bg-lime-400 text-[12px}">+POINTS</p>
+                  )}
                 </div>
                 <div className="col-span-1 items-center text-center">
                   <p className="text-lg">

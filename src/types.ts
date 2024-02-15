@@ -10,6 +10,7 @@ export interface TokenConfig {
 
 export interface CTokenConfig extends TokenConfig {
   underlyingToken: TokenConfig;
+  canEarnPoints?: "deposit" | "borrow" | "both";
 }
 
 export interface Token extends TokenConfig {

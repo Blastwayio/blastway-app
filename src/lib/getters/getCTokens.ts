@@ -10,7 +10,7 @@ import ADDRESSES from "@/config/constants/addresses";
 
 const getCTokens = async () => {
   return await Promise.all(
-    assets.map(async ({ address, decimals, name, symbol, image, underlyingToken }) => {
+    assets.map(async ({ address, decimals, name, symbol, image, canEarnPoints, underlyingToken }) => {
       const cErc20Contract = getContract({
         abi: CErc20Abi,
         address,
@@ -54,15 +54,15 @@ const getCTokens = async () => {
 
       const underlyingTokenPrice =
         underlyingToken.symbol === "USDC" ||
-          underlyingToken.symbol === "USDT" ||
-          underlyingToken.symbol === "DAI" ||
-          underlyingToken.symbol === "USDB"
+        underlyingToken.symbol === "USDT" ||
+        underlyingToken.symbol === "DAI" ||
+        underlyingToken.symbol === "USDB"
           ? "1.00"
           : (
-            tokenPriceCall.data.pairs.filter(
-              (pair: any) => pair.chainId === CHAIN.name.toLowerCase().split(" ")[0]
-            )[0] || tokenPriceCall.data.pairs.filter((pair: any) => pair.dexId === "uniswap")[0]
-          ).priceUsd;
+              tokenPriceCall.data.pairs.filter(
+                (pair: any) => pair.chainId === CHAIN.name.toLowerCase().split(" ")[0]
+              )[0] || tokenPriceCall.data.pairs.filter((pair: any) => pair.dexId === "uniswap")[0]
+            ).priceUsd;
 
       const oneCTokenInUnderlying = Number(exchangeRateStored) / 10 ** (18 + underlyingToken.decimals - decimals);
 
@@ -98,6 +98,7 @@ const getCTokens = async () => {
         collateralFactor: (Number(collateralFactorMantissa) / 1e18).toString(),
         isListed,
         isComped,
+        canEarnPoints,
         underlyingToken: {
           ...underlyingToken,
           price: underlyingTokenPrice,
