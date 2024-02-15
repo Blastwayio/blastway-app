@@ -127,3 +127,17 @@ body {
 :hover.ant-dropdown-menu-item {
   background-color: #171717 !important;
 }
+
+.rc-slider-handle:focus-visible {
+  border-color: #e7db01 !important;
+  box-shadow: 0 0 0 3px #e7db01 !important;
+}
+
+.rc-slider-handle:active {
+  border-color: #e7db01 !important;
+  box-shadow: 0 0 10px #e7db01 !important;
+  cursor: grabbing !important;
+}
+.rc-slider-handle:hover {
+  border-color: #e7db01 !important;
+}

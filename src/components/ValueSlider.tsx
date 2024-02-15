@@ -21,7 +21,7 @@ const ValueSlider: React.FC<ValueSliderProps> = ({ value, onChange, maxValue }) 
   };
 
   return (
-    <div className="flex w-1/2 self-center">
+    <div className="flex w-full max-sm:px-5 xl:w-1/2 self-center">
       <Slider
         min={0}
         max={maxValue}
@@ -36,6 +36,7 @@ const ValueSlider: React.FC<ValueSliderProps> = ({ value, onChange, maxValue }) 
           rail: { backgroundColor: "#141414" },
           handle: { backgroundColor: "#e7db01", borderColor: "#e7db01" },
         }}
+        className="focus-visible:shadow-green-600"
       />
     </div>
   );
