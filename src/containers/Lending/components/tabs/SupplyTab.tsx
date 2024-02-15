@@ -3,7 +3,6 @@ import { Switch } from "@/components/ui/switch";
 import TooltipInfo from "@/components/TooltipInfo";
 import Image from "next/image";
 import ValueSlider from "@/components/ValueSlider";
-import { toast } from "react-toastify";
 import useSupply from "@/hooks/useSupply";
 import useEnterMarkets from "@/hooks/useEnterMarkets";
 import useExitMarket from "@/hooks/useExitMarket";

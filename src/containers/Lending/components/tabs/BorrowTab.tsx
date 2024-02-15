@@ -7,7 +7,6 @@ import { useUserData } from "@/hooks/useUserData";
 import { CToken } from "@/types";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import TabButton from "./TabButton";
 
 interface BorrowTabProps {
