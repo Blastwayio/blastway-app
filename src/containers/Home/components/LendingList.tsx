@@ -42,7 +42,10 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
             notation: "compact",
             compactDisplay: "short",
             maximumFractionDigits: 2,
-          }).format((+asset.totalCash / 10 ** asset.underlyingToken.decimals) * +asset.underlyingToken.price);
+          }).format(
+            (+asset.totalCash / 10 ** asset.underlyingToken.decimals) *
+              +asset.underlyingToken.price
+          );
 
           return (
             <Link
@@ -96,7 +99,11 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
             <div className="col-span-1 items-center text-center px-2">
               <div className="flex gap-3 items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Image src={asset.image} alt={asset.name} style={{ width: "38px", height: "38px" }} />
+                  <Image
+                    src={asset.image}
+                    alt={asset.name}
+                    style={{ width: "38px", height: "38px" }}
+                  />
                   <p className="text-md">{asset.name}</p>
                 </div>
                 <div className="flex justify-end space-x-4">
