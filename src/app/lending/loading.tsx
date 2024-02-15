@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useStat } from "react";
+import React, { useState } from "react";
 import { Dropdown, Menu, Space } from "antd";
 import Arrow from "/public/images/arrow.svg";
 import Image from "next/image";
@@ -63,23 +63,11 @@ const LendingLoading: React.FC<LendingMainProps> = ({ asset, userData }) => {
   const tabs = [
     {
       title: "Supply",
-      tab: (
-        <SupplyTabLoading
-          userDataAsset={userDataAsset}
-          asset={asset}
-          userData={userData}
-        />
-      ),
+      tab: <SupplyTabLoading asset={asset} />,
     },
     {
       title: "Withdraw",
-      tab: (
-        <WithdrawTabLoading
-          userDataAsset={userDataAsset}
-          asset={asset}
-          userData={userData}
-        />
-      ),
+      tab: <WithdrawTabLoading asset={asset} />,
     },
     {
       title: "Borrow",
@@ -87,13 +75,7 @@ const LendingLoading: React.FC<LendingMainProps> = ({ asset, userData }) => {
     },
     {
       title: "Repay",
-      tab: (
-        <RepayTabLoading
-          userDataAsset={userDataAsset}
-          asset={asset}
-          userData={userData}
-        />
-      ),
+      tab: <RepayTabLoading asset={asset} />,
     },
   ];
 

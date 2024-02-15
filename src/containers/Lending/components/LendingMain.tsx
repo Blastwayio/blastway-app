@@ -7,10 +7,10 @@ import WithdrawTab from "./tabs/WithdrawTab";
 import BorrowTab from "./tabs/BorrowTab";
 import RepayTab from "./tabs/RepayTab";
 import SupplyTab from "./tabs/SupplyTab";
-import SupplyTabLoading from "./tabs/loadings/SupplyTabLoading";
-import WithdrawTabLoading from "./tabs/loadings/WithdrawTabLoading";
-import BorrowTabLoading from "./tabs/loadings/BorrowTabLoading";
-import RepayTabLoading from "./tabs/loadings/RepayTabLoading";
+import SupplyTabLoading from "./tabs/SupplyTab";
+import WithdrawTabLoading from "./tabs/WithdrawTab";
+import BorrowTabLoading from "./tabs/BorrowTab";
+import RepayTabLoading from "./tabs/RepayTab";
 
 interface LendingMainProps {
   asset: CToken;
@@ -30,19 +30,43 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
   const tabs = [
     {
       title: "Supply",
-      tab: <SupplyTabLoading asset={asset} />,
+      tab: (
+        <SupplyTab
+          userDataAsset={userDataAsset}
+          asset={asset}
+          userData={userData}
+        />
+      ),
     },
     {
       title: "Withdraw",
-      tab: <WithdrawTabLoading asset={asset} />,
+      tab: (
+        <WithdrawTab
+          userDataAsset={userDataAsset}
+          asset={asset}
+          userData={userData}
+        />
+      ),
     },
     {
       title: "Borrow",
-      tab: <BorrowTabLoading asset={asset} />,
+      tab: (
+        <BorrowTab
+          userDataAsset={userDataAsset}
+          asset={asset}
+          userData={userData}
+        />
+      ),
     },
     {
       title: "Repay",
-      tab: <RepayTabLoading asset={asset} />,
+      tab: (
+        <RepayTab
+          userDataAsset={userDataAsset}
+          asset={asset}
+          userData={userData}
+        />
+      ),
     },
   ];
 
