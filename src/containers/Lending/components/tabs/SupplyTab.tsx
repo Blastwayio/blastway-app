@@ -89,8 +89,8 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
     <>
       <div className="w-full mt-8">
         <div className="flex justify-between">
-          <p className="text-[#C3C3C3] py-2 px-1 text-sm sm:text-md">Supply</p>
-          <div className="flex flex-col items-end py-2 px-1 w-full text-white text-sm sm:text-md">
+          <p className="text-[#C3C3C3] py-2 px-1 text-xs sm:text-sm md:text-base">Supply</p>
+          <div className="flex flex-col items-end py-2 px-1 w-full text-white text-xs sm:text-sm md:text-base">
             <p>
               Wallet Balance: {totalBalanceFormatted} {asset.underlyingToken.symbol}
             </p>
@@ -127,33 +127,33 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
         {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Wallet Balance</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Wallet Balance</p>
             <div className="flex gap-2">
-              <p className="text-white text-md">
+              <p className="text-white text-xs sm:text-sm md:text-base">
                 {userDataAsset.underlyingBalance.toFixed(4)} {asset.underlyingToken.symbol}
               </p>
               {!!inputValue && (
-                <p className="text-red-700 text-md">
+                <p className="text-red-700 text-xs sm:text-sm md:text-base">
                   {"->"} {newWalletBalance.toFixed(4)} {asset.underlyingToken.symbol}
                 </p>
               )}
             </div>
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Amount Supplied</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Amount Supplied</p>
             <div className="flex gap-2">
-              <p className="text-white text-md">
+              <p className="text-white text-xs sm:text-sm md:text-base">
                 {userDataAsset.supplyBalance.toFixed(4)} {asset.underlyingToken.symbol}
               </p>
               {!!inputValue && (
-                <p className="text-green-700 text-md">
+                <p className="text-green-700 text-xs sm:text-sm md:text-base">
                   {"->"} {newAmountSupplied.toFixed(4)} {asset.underlyingToken.symbol}
                 </p>
               )}
             </div>
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="flex gap-2 items-center text-gray-400 text-md">
+            <p className="flex gap-2 items-center text-gray-400 text-xs sm:text-sm md:text-base">
               Use as Collateral <TooltipInfo text="Toggle to enable borrowing against the assets." />
             </p>
             <Switch
@@ -163,25 +163,25 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
             />
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="flex gap-2 items-center text-gray-400 text-md">
+            <p className="flex gap-2 items-center text-gray-400 text-xs sm:text-sm md:text-base">
               Collateral Factor <TooltipInfo text="The percentage of the asset value that can be used as collateral" />
             </p>
-            <p className="text-white text-md">{+asset.collateralFactor * 100}%</p>
+            <p className="text-white text-xs sm:text-sm md:text-base">{+asset.collateralFactor * 100}%</p>
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Borrow Limit</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Borrow Limit</p>
             <div className="flex gap-2">
-              <p className="text-white text-md">${borrowLimit?.toFixed(2)}</p>
+              <p className="text-white text-xs sm:text-sm md:text-base">${borrowLimit?.toFixed(2)}</p>
               {!!inputValue && (
-                <p className="text-green-700 text-md">
+                <p className="text-green-700 text-xs sm:text-sm md:text-base">
                   {"->"} ${newBorrowLimit.toFixed(4)}
                 </p>
               )}
             </div>
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Supply APY</p>
-            <p className="text-white text-md">{asset.supplyApy}%</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Supply APY</p>
+            <p className="text-white text-xs sm:text-sm md:text-base">{asset.supplyApy}%</p>
           </div>
         </div>
       </div>

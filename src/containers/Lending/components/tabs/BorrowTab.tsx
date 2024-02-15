@@ -96,8 +96,8 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
     <>
       <div className="w-full mt-8">
         <div className="flex justify-between">
-          <p className="text-[#C3C3C3] py-2 px-1 text-sm sm:text-md">Borrow</p>
-          <div className="flex flex-col items-end py-2 px-1 text-[#C3C3C3] text-sm sm:text-md">
+          <p className="text-[#C3C3C3] py-2 px-1 text-xs sm:text-sm md:text-base">Borrow</p>
+          <div className="flex flex-col items-end py-2 px-1 text-[#C3C3C3] text-xs sm:text-sm md:text-base">
             <p>
               Wallet Balance: {totalBalanceFormatted} {asset.underlyingToken.symbol}
             </p>
@@ -133,15 +133,15 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
         {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Total Borrow Balance</p>
-            <p className="text-white text-md">${totalBorrowBalance}</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Total Borrow Balance</p>
+            <p className="text-white text-xs sm:text-sm md:text-base">${totalBorrowBalance}</p>
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Borrow Limit</p>
-            <p className="text-white text-md">${borrowLimit?.toFixed(2)}</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Borrow Limit</p>
+            <p className="text-white text-xs sm:text-sm md:text-base">${borrowLimit?.toFixed(2)}</p>
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Use as Collateral</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Use as Collateral</p>
             <Switch
               checked={collateralChecked}
               onClick={collateralChecked ? exitMarket : enterMarket}
@@ -149,22 +149,22 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
             />
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Borrow Utilization</p>
-            <p className="text-white text-md">{borrowPercentage!.toFixed(2)}%</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Borrow Utilization</p>
+            <p className="text-white text-xs sm:text-sm md:text-base">{borrowPercentage!.toFixed(2)}%</p>
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Borrow APY</p>
-            <p className="text-white text-md">{asset.borrowApy}%</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Borrow APY</p>
+            <p className="text-white text-xs sm:text-sm md:text-base">{asset.borrowApy}%</p>
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">Available Liquidity</p>
-            <p className="text-white text-md">
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">Available Liquidity</p>
+            <p className="text-white text-xs sm:text-sm md:text-base">
               {totalLiquidityFormatted} {asset.underlyingToken.symbol}
             </p>
           </div>
           <div className="flex justify-between items-center py-2">
-            <p className="text-gray-400 text-md">% of Supply Borrowed</p>
-            <p className="text-white text-md">0%</p>
+            <p className="text-gray-400 text-xs sm:text-sm md:text-base">% of Supply Borrowed</p>
+            <p className="text-white text-xs sm:text-sm md:text-base">0%</p>
           </div>
         </div>
       </div>
