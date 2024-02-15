@@ -1,11 +1,17 @@
+'use client';
 import Image from "next/image";
 import TelegramIcon from "../../../public/images/footer/telegram-icon.svg";
 import DiscordIcon from "../../../public/images/footer/discord-icon.svg";
 import MailIcon from "../../../public/images/footer/mail-icon.svg";
 import XIcon from "../../../public/images/footer/x-icon.svg";
 import Pyth from "../../../public/images/footer/pyth-powered.svg";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  const isPythShown = pathname === "/" || pathname === "/lending";
+
   return (
     <footer
       id="footer"
@@ -20,9 +26,11 @@ const Footer = () => {
         </span>
       </div>
       <div className="flex flex-col gap-10 items-center py-10 lg:py-0">
-        <a href="https://pyth.network" target="_blank">
-          <Image src={Pyth} alt="Pyth Powered" className="w-28 mr-5 " draggable="false" />
-        </a>
+        {isPythShown && (
+          <a href="https://pyth.network" target="_blank">
+            <Image src={Pyth} alt="Pyth Powered" className="w-28 mr-5 " draggable="false" />
+          </a>
+        )}
         <div className="flex">
           <p className="px-4 text-sm sm:px-8  hover:text-white">
             <a href="https://docs.blastway.io/about-us/privacy-policy" target="_blank">
