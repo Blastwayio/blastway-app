@@ -1,27 +1,68 @@
 import ValueSlider from "@/components/ValueSlider";
+import useRepay from "@/hooks/useRepay";
+import { useUserData } from "@/hooks/useUserData";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import TabButton from "./TabButton";
 
 interface RepayTabProps {
   userDataAsset: any;
-  borrowPercentage: number | undefined;
-  totalBorrowBalance: number | undefined;
   asset: any;
-  inputValue: number;
-  onInputChange: (value: number) => void;
+  userData: ReturnType<typeof useUserData>;
 }
 
-const RepayTab: React.FC<RepayTabProps> = ({
-  userDataAsset,
-  totalBorrowBalance,
-  borrowPercentage,
-  asset,
-  inputValue,
-  onInputChange,
-}) => {
+const RepayTab: React.FC<RepayTabProps> = ({ userDataAsset, asset, userData }) => {
+  const { borrowPercentage, totalBorrowBalance } = userData;
+
+  const [inputValue, setInputValue] = useState(0);
+  const [disabled, setDisabled] = useState(false);
+  const [warningText, setWarningText] = useState("");
+
+  const { onRepay } = useRepay(asset.address);
+
   const totalBorrowBalanceFormatted = totalBorrowBalance ? +totalBorrowBalance : 0;
+
+  const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    compactDisplay: "short",
+  }).format(parseInt(userDataAsset.underlyingBalance));
+
+  const totalBalancePriceFormatted = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    compactDisplay: "short",
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 2,
+  }).format(parseInt(userDataAsset.underlyingBalance) * +asset.underlyingToken.price);
+
+  const handleInputChange = (value: number) => {
+    setInputValue(value);
+  };
+
+  useEffect(() => {
+    if (inputValue > +userDataAsset.borrowBalance) {
+      setDisabled(true);
+      setWarningText("You can't repay more than you borrowed");
+    } else {
+      setDisabled(false);
+      setWarningText("");
+    }
+  }, [inputValue, +userDataAsset.borrowBalance]);
+
   return (
     <>
+      <div className="w-full mt-8">
+        <div className="flex justify-between">
+          <p className="text-[#C3C3C3] py-2 px-1 text-sm sm:text-md">Repay</p>
+          <div className="flex flex-col items-end py-2 px-1 text-[#C3C3C3] text-sm sm:text-md">
+            <p>
+              Wallet Balance: {totalBalanceFormatted} {asset.underlyingToken.symbol}
+            </p>
+            <p>~{totalBalancePriceFormatted}</p>
+          </div>
+        </div>
+      </div>
       <div className="flex flex-col w-full gap-8">
         <div className="flex items-center bg-[#0B0B0B] px-2 rounded-lg border border-[#171717] gap-8">
           <input
@@ -30,7 +71,7 @@ const RepayTab: React.FC<RepayTabProps> = ({
             min={0}
             value={inputValue === 0 ? "" : inputValue}
             className="focus:outline-none py-3 bg-[#0B0B0B] text-white/80124 text-md text-white sm:text-xl w-full"
-            onChange={(e) => onInputChange(Number(e.target.value))}
+            onChange={(e) => handleInputChange(Number(e.target.value))}
           />
 
           <div className="flex items-center space-x-2">
@@ -42,7 +83,12 @@ const RepayTab: React.FC<RepayTabProps> = ({
             </button>
           </div>
         </div>
-        <ValueSlider value={inputValue} onChange={(value) => onInputChange(value)} maxValue={totalBorrowBalanceFormatted} />
+        <ValueSlider
+          value={inputValue}
+          onChange={(value) => handleInputChange(value)}
+          maxValue={totalBorrowBalanceFormatted}
+        />
+        {warningText && <p className="text-yellow-600">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Wallet Balance</p>
@@ -64,6 +110,13 @@ const RepayTab: React.FC<RepayTabProps> = ({
           </div>
         </div>
       </div>
+      <TabButton
+        text="Repay"
+        method={async () => await onRepay(BigInt(inputValue * 10 ** asset.underlyingToken.decimals))}
+        asset={asset}
+        inputValue={inputValue}
+        disabled={disabled}
+      />
     </>
   );
 };

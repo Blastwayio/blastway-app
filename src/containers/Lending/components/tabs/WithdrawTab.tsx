@@ -1,26 +1,67 @@
 // components/LendingTabs/WithdrawTab.tsx
+import { useUserData } from "@/hooks/useUserData";
+import useWithdraw from "@/hooks/useWithdraw";
+import { CToken } from "@/types";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import TabButton from "./TabButton";
 
 interface WithdrawTabProps {
   userDataAsset: any; // Replace with the actual type
-  userBorrowLimit: number | undefined;
-  borrowPercentage: number | undefined;
-  asset: any; // Replace with the actual type
-  inputValue: number;
-  onInputChange: (value: number) => void;
+  asset: CToken; // Replace with the actual type
+  userData: ReturnType<typeof useUserData>;
 }
 
-const WithdrawTab: React.FC<WithdrawTabProps> = ({
-  userDataAsset,
-  userBorrowLimit,
-  borrowPercentage,
-  asset,
-  inputValue,
-  onInputChange,
-}) => {
+const WithdrawTab: React.FC<WithdrawTabProps> = ({ userDataAsset, asset, userData }) => {
+  const { borrowLimit, borrowPercentage } = userData;
+
+  const [inputValue, setInputValue] = useState(0);
+  const [disabled, setDisabled] = useState(false);
+  const [warningText, setWarningText] = useState("");
+
+  const { onWithdraw } = useWithdraw(asset.address);
+
+  const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    compactDisplay: "short",
+  }).format(parseInt(userDataAsset.underlyingBalance));
+
+  const totalBalancePriceFormatted = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    compactDisplay: "short",
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 2,
+  }).format(parseInt(userDataAsset.underlyingBalance) * +asset.underlyingToken.price);
+
+  const handleInputChange = (value: number) => {
+    setInputValue(value);
+  };
+
+  useEffect(() => {
+    if (inputValue > +userDataAsset.supplyBalance) {
+      setDisabled(true);
+      setWarningText("You can't withdraw more than you supplied");
+    } else {
+      setDisabled(false);
+      setWarningText("");
+    }
+  }, [inputValue, +userDataAsset.supplyBalance]);
+
   return (
     <>
+      <div className="w-full mt-8">
+        <div className="flex justify-between">
+          <p className="text-[#C3C3C3] py-2 px-1 text-sm sm:text-md">Withdraw</p>
+          <div className="flex flex-col items-end py-2 px-1 text-[#C3C3C3] text-sm sm:text-md">
+            <p>
+              Wallet Balance: {totalBalanceFormatted} {asset.underlyingToken.symbol}
+            </p>
+            <p>~{totalBalancePriceFormatted}</p>
+          </div>
+        </div>
+      </div>
       <div className="flex flex-col w-full gap-8">
         <div className="flex items-center bg-[#0B0B0B] px-2 rounded-lg border border-[#171717] gap-8">
           <input
@@ -29,7 +70,7 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({
             min={0}
             value={inputValue === 0 ? "" : inputValue}
             className="focus:outline-none py-3 bg-[#0B0B0B] text-white/80124 text-md text-white sm:text-xl w-full"
-            onChange={(e) => onInputChange(Number(e.target.value))}
+            onChange={(e) => handleInputChange(Number(e.target.value))}
           />
 
           <div className="flex items-center space-x-2">
@@ -43,14 +84,14 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({
         </div>
 
         {/* @todo: Add the ValueSlider component here */}
+        {warningText && <p className="text-yellow-600">{warningText}</p>}
 
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Max Withdrawal</p>
 
-            {/* @todo: Set the value of the max withdrawal */}          
+            {/* @todo: Set the value of the max withdrawal */}
             <p className="text-white text-md">0 {asset.underlyingToken.symbol}</p>
-
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Amount Supplied</p>
@@ -60,7 +101,7 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Borrow Limit</p>
-            <p className="text-white text-md">${userBorrowLimit?.toFixed(2)}</p>
+            <p className="text-white text-md">${borrowLimit?.toFixed(2)}</p>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Borrow Utilization</p>
@@ -72,6 +113,13 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({
           </div>
         </div>
       </div>
+      <TabButton
+        text="Withdraw"
+        method={async () => await onWithdraw(BigInt(inputValue * 10 ** asset.underlyingToken.decimals))}
+        asset={asset}
+        inputValue={inputValue}
+        disabled={disabled}
+      />
     </>
   );
 };

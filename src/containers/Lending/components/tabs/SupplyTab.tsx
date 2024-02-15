@@ -1,34 +1,100 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import TooltipInfo from "@/components/TooltipInfo";
 import Image from "next/image";
 import ValueSlider from "@/components/ValueSlider";
+import { toast } from "react-toastify";
+import useSupply from "@/hooks/useSupply";
+import useEnterMarkets from "@/hooks/useEnterMarkets";
+import useExitMarket from "@/hooks/useExitMarket";
+import { CToken } from "@/types";
+import { useUserData } from "@/hooks/useUserData";
+import TabButton from "./TabButton";
 
 interface SupplyTabProps {
   userDataAsset: any;
-  collateralChecked: boolean;
-  exitMarket: () => void;
-  enterMarket: () => void;
-  userBorrowLimit: number | undefined;
-  asset: any;
-  totalBalanceFormatted: string;
-  inputValue: number;
-  onInputChange: (value: number) => void;
+  asset: CToken;
+  userData: ReturnType<typeof useUserData>;
 }
 
-const SupplyTab: React.FC<SupplyTabProps> = ({
-  userDataAsset,
-  collateralChecked,
-  exitMarket,
-  enterMarket,
-  userBorrowLimit,
-  asset,
-  totalBalanceFormatted,
-  inputValue,
-  onInputChange,
-}) => {
+const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData }) => {
+  const { borrowLimit } = userData;
+
+  const [inputValue, setInputValue] = useState(0);
+  const [disabled, setDisabled] = useState(false);
+  const [warningText, setWarningText] = useState("");
+  const [collateralChecked, setCollateralChecked] = useState(false);
+
+  const { onSupply } = useSupply(asset.address);
+  const { onEnterMarkets } = useEnterMarkets([asset.address]);
+  const { onExitMarket } = useExitMarket(asset.address);
+
+  const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    compactDisplay: "short",
+  }).format(parseInt(userDataAsset.underlyingBalance));
+
+  const totalBalancePriceFormatted = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    compactDisplay: "short",
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 2,
+  }).format(parseInt(userDataAsset.underlyingBalance) * +asset.underlyingToken.price);
+
+  const handleInputChange = (value: number) => {
+    setInputValue(value);
+  };
+
+  const enterMarket = async () => {
+    try {
+      await onEnterMarkets();
+      setCollateralChecked(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const exitMarket = async () => {
+    try {
+      await onExitMarket();
+      setCollateralChecked(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (userDataAsset.isInMarket) {
+      setCollateralChecked(true);
+    } else {
+      setCollateralChecked(false);
+    }
+  }, [userDataAsset.isInMarket]);
+
+  useEffect(() => {
+    if (inputValue > +userDataAsset.underlyingBalance) {
+      setDisabled(true);
+      setWarningText("You can't supply more than you have");
+    } else {
+      setDisabled(false);
+      setWarningText("");
+    }
+  }, [inputValue]);
+
   return (
     <>
+      <div className="w-full mt-8">
+        <div className="flex justify-between">
+          <p className="text-[#C3C3C3] py-2 px-1 text-sm sm:text-md">Supply</p>
+          <div className="flex flex-col items-end py-2 px-1 text-[#C3C3C3] text-sm sm:text-md">
+            <p>
+              Wallet Balance: {totalBalanceFormatted} {asset.underlyingToken.symbol}
+            </p>
+            <p>~{totalBalancePriceFormatted}</p>
+          </div>
+        </div>
+      </div>
       <div className="flex flex-col w-full gap-8">
         <div className="flex items-center bg-[#0B0B0B] px-2 rounded-lg border border-[#171717] gap-8">
           <input
@@ -38,7 +104,7 @@ const SupplyTab: React.FC<SupplyTabProps> = ({
             max={+totalBalanceFormatted}
             value={inputValue === 0 ? "" : inputValue}
             className="focus:outline-none py-3 bg-[#0B0B0B] text-white/80124 text-md text-white sm:text-xl w-full"
-            onChange={(e) => onInputChange(Number(e.target.value))}
+            onChange={(e) => handleInputChange(Number(e.target.value))}
           />
 
           <div className="flex items-center space-x-2">
@@ -50,7 +116,12 @@ const SupplyTab: React.FC<SupplyTabProps> = ({
             </button>
           </div>
         </div>
-        <ValueSlider value={inputValue} onChange={(value) => onInputChange(value)} maxValue={+totalBalanceFormatted} />
+        <ValueSlider
+          value={inputValue}
+          onChange={(value) => handleInputChange(value)}
+          maxValue={parseInt(userDataAsset.underlyingBalance)}
+        />
+        {warningText && <p className="text-yellow-600">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Wallet Balance</p>
@@ -82,7 +153,7 @@ const SupplyTab: React.FC<SupplyTabProps> = ({
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Borrow Limit</p>
-            <p className="text-white text-md">${userBorrowLimit?.toFixed(2)}</p>
+            <p className="text-white text-md">${borrowLimit?.toFixed(2)}</p>
           </div>
           <div className="flex justify-between items-center py-2">
             <p className="text-gray-400 text-md">Supply APY</p>
@@ -90,6 +161,13 @@ const SupplyTab: React.FC<SupplyTabProps> = ({
           </div>
         </div>
       </div>
+      <TabButton
+        text="Supply"
+        method={async () => await onSupply(BigInt(inputValue * 10 ** asset.underlyingToken.decimals))}
+        asset={asset}
+        inputValue={inputValue}
+        disabled={disabled}
+      />
     </>
   );
 };
