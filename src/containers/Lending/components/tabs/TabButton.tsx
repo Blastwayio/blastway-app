@@ -50,14 +50,19 @@ const TabButton = ({ text, method, asset, inputValue, disabled }: Props) => {
 
   if (!isApproved) {
     return (
-      <Button onClick={handleApprove} className="w-full py-2 mt-8">
+      <Button onClick={handleApprove} loading={loading} className="w-full py-2 mt-8">
         {loading ? "Approving..." : "Approve"}
       </Button>
     );
   }
 
   return (
-    <Button disabled={disabled || (isApproved && inputValue === 0)} onClick={handleMethod} className="w-full py-2 mt-8">
+    <Button
+      disabled={disabled || (isApproved && inputValue === 0)}
+      loading={loading}
+      onClick={handleMethod}
+      className="w-full py-2 mt-8 text-black"
+    >
       {loading ? `${text}ing...` : text}
     </Button>
   );
