@@ -7,8 +7,6 @@ import Sidebar from "@/components/Sidebar";
 import { cookieToInitialState } from "wagmi";
 import { headers } from "next/headers";
 import { config } from "@/config/Walletconnect";
-import FaucetButton from "@/components/FaucetButton";
-import FaucetGasButton from "@/components/FaucetGasButton";
 import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useAccount } from "wagmi";
-import { toast } from "react-toastify";
 import ConnectButton from "@/components/ConnectButton";
 import useApprove from "@/hooks/useApprove";
 import { CToken } from "@/types";
