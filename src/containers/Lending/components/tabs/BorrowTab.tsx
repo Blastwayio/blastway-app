@@ -28,7 +28,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
   const { onExitMarket } = useExitMarket(asset.address);
 
   const userBorrowLimitFormatted = borrowLimit ? +borrowLimit : 0;
-  const inputTokenPrice = inputValue * +asset.underlyingToken.price;
+  const inputTokenPrice = inputValue;
 
   const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
