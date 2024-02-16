@@ -49,7 +49,7 @@ const Sidebar: React.FC = () => {
               : "text-gray-400 transition-colors duration-300 hover:text-white"
           } group`}
         >
-          {label === "Dashboard" && (
+          {label === "Markets" && (
             <svg
               className={isActive ? "text-[#FFF200]" : isDisabled ? "text-gray-600" : "text-gray-400"}
               xmlns="http://www.w3.org/2000/svg"
@@ -190,8 +190,9 @@ const Sidebar: React.FC = () => {
               <path d="M3 18H2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           )}
-          {label === "Profile" && (
+          {label === "Dashboard" && (
             <svg
+              className={`${isActive ? "text-[#FFF200]" : "text-gray-400"} lucide lucide-square-user-round`}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -201,7 +202,6 @@ const Sidebar: React.FC = () => {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              className="lucide lucide-square-user-round"
             >
               <path d="M18 21a6 6 0 0 0-12 0" />
               <circle cx="12" cy="11" r="4" />
@@ -253,12 +253,12 @@ const Sidebar: React.FC = () => {
               <Image className="ml-4 py-8" src={logo} alt="logo" width={225} />
             </a>
             <ul className="text-center text-white text-sm py-8 space-y-4">
-              {menuItem("/", "Dashboard")}
+              {menuItem("/", "Markets")}
               {menuItem("/lending", "Lending")}
-              {menuItem("/quests", "Quests")}
               {menuItem("/swap", "Swap")}
+              {menuItem("/quests", "Quests")}
               {/* @todo: add profile page later, use if needed as a reference */}
-              {/* {menuItem("/profile", "Profile")} */}
+              {menuItem("/dashboard", "Dashboard")}
             </ul>
           </div>
           <div className="hidden sm:flex flex-col">
