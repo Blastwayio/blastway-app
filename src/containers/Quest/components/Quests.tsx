@@ -41,23 +41,29 @@ const Quests = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-4"
         >
           {questsWithCompletedData.map((quest, index) => {
-            return <QuestCard key={index} {...quest} />;
+            return (
+              <a href={quest.questLink} target="_blank">
+                <QuestCard key={index} {...quest} />
+              </a>
+            );
           })}
         </TabsContent>
-        <TabsContent
-          value="completedquests"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-4"
-        >
-          {questsWithCompletedData.filter((quest) => quest.isCompleted).length > 0 ? (
-            questsWithCompletedData
+        {questsWithCompletedData.filter((quest) => quest.isCompleted).length > 0 ? (
+          <TabsContent
+            value="completedquests"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-4"
+          >
+            {questsWithCompletedData
               .filter((quest) => quest.isCompleted)
               .map((quest, index) => {
                 return <QuestCard key={index} {...quest} />;
-              })
-          ) : (
-            <div className="text-center text-white w-full">No Completed Quests</div>
-          )}
-        </TabsContent>
+              })}
+          </TabsContent>
+        ) : (
+          <div className="text-center text-white w-full font-bold mt-5">
+            Note: Points and completed quests will be calculated later.
+          </div>
+        )}
       </Tabs>
     </section>
   );

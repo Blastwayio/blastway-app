@@ -1,22 +1,23 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import CardBackground from "/public/images/card-background.png";
 
 interface QuestProps {
   questName: string;
   questDescription: string;
+  questImage: StaticImageData;
   questReward: string;
   questProgress: string;
   isCompleted: boolean;
 }
 
-const QuestCard: React.FC<QuestProps> = ({ questName, questDescription, questReward, questProgress, isCompleted }) => {
+const QuestCard: React.FC<QuestProps> = ({ questName, questDescription, questReward, questProgress, isCompleted, questImage }) => {
   return (
     <div className="flex flex-col h-[350px] max-w-[348px] rounded-md bg-[#64600926] p-[10px] justify-between relative">
       <div className="flex flex-col gap-4">
         <Image
-          src={CardBackground}
+          src={questImage}
           alt="Quest Card"
-          className="w-[328px] h-[170px] rounded bg-cover bg-center prevent-select"
+          className="w-[328px] h-[170px] rounded select-none"
           draggable="false"
         />
         <div className="flex flex-col gap-1">
