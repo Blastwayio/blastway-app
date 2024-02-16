@@ -42,7 +42,7 @@ const Quests = () => {
         >
           {questsWithCompletedData.map((quest, index) => {
             return (
-              <a href={quest.questLink} target="_blank">
+              <a key={`${quest.questName}#${index}`} href={quest.questLink} target="_blank">
                 <QuestCard key={index} {...quest} />
               </a>
             );
