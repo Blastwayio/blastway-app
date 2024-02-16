@@ -255,8 +255,8 @@ const Sidebar: React.FC = () => {
             <ul className="text-center text-white text-sm py-8 space-y-4">
               {menuItem("/", "Markets")}
               {menuItem("/lending", "Lending")}
-              {menuItem("/quests", "Quests")}
               {menuItem("/swap", "Swap")}
+              {menuItem("/quests", "Quests")}
               {/* @todo: add profile page later, use if needed as a reference */}
               {menuItem("/dashboard", "Dashboard")}
             </ul>
