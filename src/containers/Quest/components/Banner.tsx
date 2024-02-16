@@ -30,7 +30,7 @@ const Banner: React.FC<BannerProps> = ({ username, bxpAmount, userImage, userBac
         >
           <div className="w-full h-full absolute top-0 right-0 rounded-2xl bg-black bg-opacity-75 " />
           <button className="flex w-8 h-8 p-1 justify-center items-center rounded bg-[#646009] z-50 hover:bg-opacity-90 active:scale-95">
-            <Image src={SettingsIcon} alt="Settings Icon" className=" prevent-select" draggable="false" />
+            <Image src={SettingsIcon} alt="Settings Icon" className=" select-none" draggable="false" />
           </button>
         </div>
 
@@ -75,7 +75,7 @@ const Banner: React.FC<BannerProps> = ({ username, bxpAmount, userImage, userBac
               target="_blank"
               className="flex w-10 h-10 justify-center items-center bg-[#FFF200] rounded-md"
             >
-              <Image src={XIcon} alt="XIcon" className="w-5 h-5 prevent-select" draggable="false" />
+              <Image src={XIcon} alt="XIcon" className="w-5 h-5 select-none" draggable="false" />
             </a>
 
             <a
@@ -83,11 +83,11 @@ const Banner: React.FC<BannerProps> = ({ username, bxpAmount, userImage, userBac
               target="_blank"
               className="flex w-10 h-10 justify-center items-center bg-[#FFF200] rounded-md"
             >
-              <Image src={DiscordIcon} alt="XIcon" className="w-5 h-5 prevent-select" draggable="false" />
+              <Image src={DiscordIcon} alt="XIcon" className="w-5 h-5 select-none" draggable="false" />
             </a>
 
             <div className="flex w-10 h-10 justify-center items-center bg-[#FFF200] rounded-md">
-              <Image src={WalletIcon} alt="XIcon" className="w-5 h-5 prevent-select" draggable="false" />
+              <Image src={WalletIcon} alt="XIcon" className="w-5 h-5 select-none" draggable="false" />
             </div>
           </div>
           {/* End of social media part */}
