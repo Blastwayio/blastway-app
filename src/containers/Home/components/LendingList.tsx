@@ -34,7 +34,6 @@ const LendingList: React.FC<LendingListProps> = ({ assets }) => {
         {assets
           .sort((a, b) => a.symbol.localeCompare(b.symbol))
           .map((asset, index) => {
-            console.log("asset", asset);
             const totalLiquidityFormatted = new Intl.NumberFormat("en-US", {
               notation: "compact",
               compactDisplay: "short",
