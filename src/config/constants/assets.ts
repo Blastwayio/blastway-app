@@ -1,11 +1,11 @@
 import { CTokenConfig } from "@/types";
 import { CHAIN_ID } from "..";
 import ADDRESSES from "./addresses";
-import USDC from "/public/images/tokens/usdc.svg";
-import USDT from "/public/images/tokens/usdt.svg";
-import ETH from "/public/images/tokens/eth.svg";
+import USDC from "/public/images/tokens/usdc.webp";
+import USDT from "/public/images/tokens/usdt.webp";
+import ETH from "/public/images/tokens/eth.webp";
 import BLUR from "/public/images/tokens/blur.webp";
-import BLAST from "/public/images/tokens/blast.png";
+import BLAST from "/public/images/tokens/blast.webp";
 
 const assets: CTokenConfig[] = [
   {
@@ -20,6 +20,7 @@ const assets: CTokenConfig[] = [
       image: USDC,
       address: ADDRESSES.TestUSDC[CHAIN_ID] as `0x${string}`,
       decimals: 18,
+      price: "1.00",
     },
   },
   {
@@ -63,6 +64,7 @@ const assets: CTokenConfig[] = [
       image: USDT,
       address: ADDRESSES.TestUSDT[CHAIN_ID] as `0x${string}`,
       decimals: 18,
+      price: "1.00",
     },
   },
   {
@@ -78,6 +80,8 @@ const assets: CTokenConfig[] = [
       image: BLAST,
       address: ADDRESSES.TestBLAST[CHAIN_ID] as `0x${string}`,
       decimals: 18,
+      apiPriceTokenSymbol: "FIL",
+      apiPriceQuoteTokenSymbol: "USDT",
     },
   },
 ].sort((a, b) => a.symbol.localeCompare(b.symbol));

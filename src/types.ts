@@ -1,11 +1,14 @@
-import ADDRESSES from "./config/constants/addresses";
+import { StaticImageData } from "next/image";
 
 export interface TokenConfig {
   name: string;
   symbol: string;
-  image: string;
+  image: StaticImageData;
   address: `0x${string}`;
   decimals: number;
+  price?: string;
+  apiPriceTokenSymbol?: string;
+  apiPriceQuoteTokenSymbol?: string;
 }
 
 export interface CTokenConfig extends TokenConfig {
