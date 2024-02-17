@@ -89,7 +89,7 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({ userDataAsset, asset, userDat
         <ValueSlider
           value={inputValue}
           onChange={(value) => handleInputChange(value)}
-          maxValue={userDataAsset.supplyBalance || 100}
+          maxValue={userDataAsset.supplyBalance}
         />
         {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
 

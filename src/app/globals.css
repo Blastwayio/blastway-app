@@ -141,6 +141,25 @@ body {
 .rc-slider-handle:hover {
   border-color: #e7db01 !important;
 }
+.rc-slider-disabled {
+  background-color: transparent !important;
+}
+
+.rc-slider-mark-text:first-child {
+  left: 0% !important;
+}
+.rc-slider-mark-text:nth-child(2) {
+  left: 25% !important;
+}
+.rc-slider-mark-text:nth-child(3) {
+  left: 50% !important;
+}
+.rc-slider-mark-text:nth-child(4) {
+  left: 75% !important;
+}
+.rc-slider-mark-text:last-child {
+  left: 100% !important;
+}
 
 @keyframes spanAnimation {
   0% {
