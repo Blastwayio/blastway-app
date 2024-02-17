@@ -213,3 +213,13 @@ body {
     rgba(117, 131, 93, 0.8) 88%
   );
 }
+
+/* Background color for progress bar */
+.bg-primary {
+  background: linear-gradient(
+    90deg,
+    rgba(98, 27, 149, 1) 10%,
+    rgba(147, 84, 140, 1) 52%,
+    rgba(37, 112, 180, 1) 100%
+  );
+}

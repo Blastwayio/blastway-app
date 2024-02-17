@@ -3,6 +3,7 @@ import LendingBanner from "@/containers/Home/components/LendingBanner";
 import LendingStats from "@/containers/Home/components/LendingStats";
 import LendingList from "@/containers/Home/components/LendingList";
 import CountDown from "./components/CountDown";
+import ProgressBar from "./components/ProgressBar";
 
 interface Props {
   bannerStats: any;
@@ -16,6 +17,7 @@ const HomeContainer = ({ bannerStats, stats, assets }: Props) => {
       <LendingBanner bannerStats={bannerStats} assets={assets} />
       {/* <LendingStats stats={stats} /> */}
       <CountDown />
+      <ProgressBar value={30} />
       <LendingList assets={assets} />
     </main>
   );
