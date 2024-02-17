@@ -127,7 +127,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
             </button>
           </div>
         </div>
-        <ValueSlider value={inputValue} onChange={(value) => handleInputChange(value)} maxValue={userMaxBorrowable} />
+        <ValueSlider value={inputValue} onChange={(value) => handleInputChange(value)} maxValue={userMaxBorrowable || 100} />
         {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
