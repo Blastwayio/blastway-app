@@ -83,7 +83,7 @@ const RepayTab: React.FC<RepayTabProps> = ({ userDataAsset, asset, userData }) =
         <ValueSlider
           value={inputValue}
           onChange={(value) => handleInputChange(value)}
-          maxValue={userDataAsset.borrowBalance || 100}
+          maxValue={userDataAsset.borrowBalance}
         />
         {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">

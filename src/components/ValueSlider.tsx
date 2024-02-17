@@ -37,6 +37,7 @@ const ValueSlider: React.FC<ValueSliderProps> = ({ value, onChange, maxValue }) 
           handle: { backgroundColor: "#e7db01", borderColor: "#e7db01" },
         }}
         className="focus-visible:shadow-green-600"
+        disabled={maxValue === 0}
       />
     </div>
   );

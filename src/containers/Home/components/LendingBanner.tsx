@@ -1,17 +1,11 @@
 import React from "react";
 import { CToken } from "@/types";
 
-interface BannerStatus {
-  statOne: string;
-  statTwo: string;
-}
-
 interface LendingBannerProps {
-  bannerStats: BannerStatus[];
   assets: CToken[];
 }
 
-const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) => {
+const LendingBanner: React.FC<LendingBannerProps> = ({ assets }) => {
   const maxSupplyApyToken = assets.sort((a, b) => +b.supplyApy - +a.supplyApy)[0];
   const minBorrowApyToken = assets.sort((a, b) => +a.borrowApy - +b.borrowApy)[0];
   return (
@@ -19,19 +13,13 @@ const LendingBanner: React.FC<LendingBannerProps> = ({ bannerStats, assets }) =>
       <div className="flex flex-col lg:flex-row px-0 md:h-[19rem] xl:h-[26rem] sm:px-4 justify-center items-center space-x-0  space-y-4 lg:space-x-4 lg:space-y-0">
         <div className="p-0.5 w-full h-full banner relative rounded-xl overflow-hidden">
           <span className="moving-span ">
-            <span className="block w-16 h-w-16 "></span>
+            <span className="block w-16 h-w-16 " />
           </span>
           <span className="moving-span-2 ">
-            <span className="block w-16 h-w-16 "></span>
+            <span className="block w-16 h-w-16 " />
           </span>
           <div className="w-full h-full backdrop-blur-3xl rounded-xl">
             <div className="relative w-full h-full select-none min-h-48 sm:min-h-64 flex bg-cover bg-banner bg-no-repeat bg-center   ">
-              {/* <Image
-            src={banner}
-            alt="banner"
-            className="bg-[#0E0E0E] rounded-xl border border-[#171717] w-full bg-cover"
-            draggable="false"
-          /> */}
               <div className="absolute inset-0 flex flex-col justify-center items-center px-2">
                 <span className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white">Unleash the Full</span>
                 <span className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white">

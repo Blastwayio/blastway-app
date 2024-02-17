@@ -54,15 +54,6 @@ const getCTokens = async () => {
         }%20${underlyingToken.apiPriceQuoteTokenSymbol || "USDC"}`
       );
 
-      console.log(
-        underlyingToken.symbol,
-        tokenPriceCall.data.pairs.filter(
-          (pair: any) =>
-            pair.baseToken.symbol.toLowerCase() ===
-            (underlyingToken.apiPriceTokenSymbol?.toLowerCase() || underlyingToken.symbol.toLowerCase())
-        )[0]
-      );
-
       const underlyingTokenPrice =
         underlyingToken.price ||
         (

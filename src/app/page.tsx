@@ -1,13 +1,6 @@
 import HomeContainer from "@/containers/Home";
 import getCTokens from "@/lib/getters/getCTokens";
 
-const bannerStats = [
-  {
-    statOne: "43",
-    statTwo: "45",
-  },
-];
-
 const stats = [
   {
     marketSize: "12M",
@@ -22,5 +15,5 @@ const stats = [
 export default async function Home() {
   const cTokens = await getCTokens();
 
-  return <HomeContainer assets={cTokens} bannerStats={bannerStats} stats={stats} />;
+  return <HomeContainer assets={cTokens} stats={stats} />;
 }
