@@ -49,20 +49,30 @@ const getCTokens = async () => {
       ])) as any;
 
       const tokenPriceCall = await axios.get(
-        `https://api.dexscreener.com/latest/dex/search?q=${underlyingToken.symbol}%20USDC`
+        `https://api.dexscreener.com/latest/dex/search?q=${
+          underlyingToken.apiPriceTokenSymbol || underlyingToken.symbol
+        }%20${underlyingToken.apiPriceQuoteTokenSymbol || "USDC"}`
+      );
+
+      console.log(
+        underlyingToken.symbol,
+        tokenPriceCall.data.pairs.filter(
+          (pair: any) =>
+            pair.baseToken.symbol.toLowerCase() ===
+            (underlyingToken.apiPriceTokenSymbol?.toLowerCase() || underlyingToken.symbol.toLowerCase())
+        )[0]
       );
 
       const underlyingTokenPrice =
-        underlyingToken.symbol === "USDC" ||
-        underlyingToken.symbol === "USDT" ||
-        underlyingToken.symbol === "DAI" ||
-        underlyingToken.symbol === "USDB"
-          ? "1.00"
-          : (
-              tokenPriceCall.data.pairs.filter(
-                (pair: any) => pair.chainId === CHAIN.name.toLowerCase().split(" ")[0]
-              )[0] || tokenPriceCall.data.pairs.filter((pair: any) => pair.dexId === "uniswap")[0]
-            ).priceUsd;
+        underlyingToken.price ||
+        (
+          tokenPriceCall.data.pairs.filter((pair: any) => pair.chainId === CHAIN.name.toLowerCase().split(" ")[0])[0] ||
+          tokenPriceCall.data.pairs.filter(
+            (pair: any) =>
+              pair.baseToken.symbol.toLowerCase() ===
+              (underlyingToken.apiPriceTokenSymbol?.toLowerCase() || underlyingToken.symbol.toLowerCase())
+          )[0]
+        ).priceUsd;
 
       const oneCTokenInUnderlying = Number(exchangeRateStored) / 10 ** (18 + underlyingToken.decimals - decimals);
 
