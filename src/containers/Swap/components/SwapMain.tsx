@@ -1,8 +1,8 @@
 import Image from "next/image";
 import SwapButton from "@/components/SwapButton";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import SwapArrows from "../../../../public/images/swap/swap-arrows.svg";
-import ETHTokenImage from "../../../../public/images/tokens/eth.svg";
+import SwapArrows from "/public/images/swap/swap-arrows.svg";
+import ETHTokenImage from "/public/images/tokens/eth.webp";
 
 const SwapMain = () => {
   return (
