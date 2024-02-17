@@ -43,7 +43,6 @@ const assets: CTokenConfig[] = [
     image: BLUR,
     address: ADDRESSES.ctokens.cBLUR[CHAIN_ID] as `0x${string}`,
     decimals: 8,
-    canEarnPoints: "borrow" as "deposit" | "borrow" | "both",
     underlyingToken: {
       name: "BLUR",
       symbol: "BLUR",
@@ -72,6 +71,7 @@ const assets: CTokenConfig[] = [
     image: BLAST,
     address: ADDRESSES.ctokens.cBLAST[CHAIN_ID] as `0x${string}`,
     decimals: 8,
+    canEarnPoints: "borrow" as "deposit" | "borrow" | "both",
     underlyingToken: {
       name: "BLAST",
       symbol: "BLAST",

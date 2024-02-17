@@ -27,8 +27,10 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
   const { onEnterMarkets } = useEnterMarkets([asset.address]);
   const { onExitMarket } = useExitMarket(asset.address);
 
-  const userBorrowLimitFormatted = borrowLimit ? +borrowLimit : 0;
+  const userMaxBorrowable = (borrowLimit! - totalBorrowBalance!) / +asset.underlyingToken.price;
   const inputTokenPrice = inputValue;
+
+  console.log("userMaxBorrowable", (borrowLimit! - totalBorrowBalance!) / +asset.underlyingToken.price);
 
   const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
@@ -79,7 +81,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
   }, [userDataAsset.isInMarket]);
 
   useEffect(() => {
-    if (inputTokenPrice > borrowLimit!) {
+    if (inputTokenPrice > userMaxBorrowable!) {
       setDisabled(true);
       setWarningText(
         `Borrow limit exceeded. Add more collateral (${
@@ -125,11 +127,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
             </button>
           </div>
         </div>
-        <ValueSlider
-          value={inputValue}
-          onChange={(value) => handleInputChange(value)}
-          maxValue={userBorrowLimitFormatted || 100}
-        />
+        <ValueSlider value={inputValue} onChange={(value) => handleInputChange(value)} maxValue={userMaxBorrowable} />
         {warningText && <p className="text-yellow-600 text-center mt-4">{warningText}</p>}
         <div className="bg-[#141414] w-full rounded-lg p-4">
           <div className="flex justify-between items-center py-2">
