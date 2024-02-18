@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import TempImage from "@/../public/images/temp-image.png";
+import TempImage from "@/../public/images/pacman.jpg";
 import LinkImage from "@/../public/images/link-img.svg";
 import SupplyImage from "@/../public/images/suply-img.png";
 import ETHImage from "@/../public/images/eth-img.png";
@@ -117,11 +117,11 @@ const DashboardContainer = () => {
         <div className="mt-2 flex flex-col gap-6">
           <div className="bg-[#0E0E0E] p-4 rounded-md flex justify-between">
             <div className="flex gap-6 items-center">
-              <Image src={TempImage} alt="Profile Image." draggable={false} />
+              <Image src={TempImage} alt="Profile Image." draggable={false} width={144} height={144} />
 
               <div className="flex flex-col">
-                <p className="text-4xl font-medium">Nashorn</p>
-                <p className="text-base font-medium text-[#868686]">0xdcb559921cc27....abb504</p>
+                <p className="text-4xl font-medium">Blast.eth</p>
+                <p className="text-base font-medium text-[#868686]">0x0de6c8d9c20f...0688D618F9ee</p>
               </div>
             </div>
 
