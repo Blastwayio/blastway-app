@@ -59,6 +59,9 @@ const PRODUCTION_ADDRESSES = {
   faucet: {
     168587773: "0xd052ddef382a7D61F55608e90799A71B6EF54EE3",
   },
+  swapRouter: {
+    168587773: "0xc47d832aC7486E05E1Fdf8945009F12ab0654Eb7",
+  },
 
   // tokens
   USDC: {
@@ -88,6 +91,12 @@ const PRODUCTION_ADDRESSES = {
   },
   TestBLAST: {
     168587773: "0xdEEdE5A7fc65A4a154C8B5F60FeF257930387F64",
+  },
+  ThrusterUSDC: {
+    168587773: "0xD3E6fB238cC85B50f27eAbbd0d7C58F05A4C28C3",
+  },
+  ThrusterUSDT: {
+    168587773: "0x671F1Aab1aa66fCd2d7e706c9101E3Dd8a15bfC4",
   },
   /*   DAI: {
     10: "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
@@ -165,6 +174,9 @@ const DEVELOPMENT_ADDRESSES = {
   faucet: {
     168587773: "0xd052ddef382a7D61F55608e90799A71B6EF54EE3",
   },
+  swapRouter: {
+    168587773: "0xc47d832aC7486E05E1Fdf8945009F12ab0654Eb7",
+  },
 
   // tokens
   USDC: {
@@ -194,6 +206,12 @@ const DEVELOPMENT_ADDRESSES = {
   },
   TestBLAST: {
     168587773: "0xdEEdE5A7fc65A4a154C8B5F60FeF257930387F64",
+  },
+  ThrusterUSDC: {
+    168587773: "0xD3E6fB238cC85B50f27eAbbd0d7C58F05A4C28C3",
+  },
+  ThrusterUSDT: {
+    168587773: "0x671F1Aab1aa66fCd2d7e706c9101E3Dd8a15bfC4",
   },
   /*   DAI: {
     10: "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",

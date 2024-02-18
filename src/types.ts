@@ -42,3 +42,13 @@ export interface CToken extends CTokenConfig {
   isComped: boolean;
   underlyingToken: Token;
 }
+
+export interface SwapParams {
+  fromToken: string;
+  toToken: string;
+  fromAmount: number;
+  toAmount: number;
+  slippage: number;
+  recipient?: string;
+  deadline?: number;
+}
