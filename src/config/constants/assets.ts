@@ -3,7 +3,7 @@ import { CHAIN_ID } from "..";
 import ADDRESSES from "./addresses";
 import USDC from "/public/images/tokens/usdc.webp";
 import USDT from "/public/images/tokens/usdt.webp";
-import ETH from "/public/images/tokens/eth.webp";
+import WETH from "/public/images/tokens/weth.webp";
 import BLUR from "/public/images/tokens/blur.webp";
 import BLAST from "/public/images/tokens/blast.webp";
 
@@ -26,14 +26,14 @@ const assets: CTokenConfig[] = [
   {
     name: "bWETH",
     symbol: "bWETH",
-    image: ETH,
+    image: WETH,
     address: ADDRESSES.ctokens.cWETH[CHAIN_ID] as `0x${string}`,
     decimals: 8,
     canEarnPoints: "borrow" as "deposit" | "borrow" | "both",
     underlyingToken: {
       name: "WETH",
       symbol: "WETH",
-      image: ETH,
+      image: WETH,
       address: ADDRESSES.TestWETH[CHAIN_ID] as `0x${string}`,
       decimals: 18,
     },

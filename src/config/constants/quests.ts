@@ -1,5 +1,6 @@
 import QuestDiscordImage from "/public/images/quest/quest-discord-image.webp";
 import QuestTwitterImage from "/public/images/quest/quest-twitter-image.webp";
+import QuestRetweetImage from "/public/images/quest/quest-retweet-image.webp";
 
 
 
@@ -22,7 +23,7 @@ const quests = [
     contractAddress: "0x522a5805216919D93a998853265F91098d833F20",
     chainId: 168587773,
     questLink: "https://twitter.com/intent/like?tweet_id=1756782590629925041",
-    questImage: QuestTwitterImage
+    questImage: QuestRetweetImage
 
   },
   {
