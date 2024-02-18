@@ -7,7 +7,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useUserData } from "@/hooks/useUserData";
-import ProgressBar from "../Home/components/ProgressBar";
+import { Progress } from "@/components/ui/progress";
 
 interface Props {
   assets: CToken[];
@@ -26,15 +26,10 @@ const LendingContainer = ({ assets }: Props) => {
 
   // if asset is not found, soft navigate to the first asset
   useEffect(() => {
-    if (!searchParamsAsset)
-      return router.push(
-        `${pathname}?asset=${assets[0].underlyingToken.symbol}`
-      );
+    if (!searchParamsAsset) return router.push(`${pathname}?asset=${assets[0].underlyingToken.symbol}`);
 
     const asset = assets.find(
-      (asset) =>
-        asset.underlyingToken.symbol.toLowerCase() ===
-        searchParamsAsset.toLowerCase()
+      (asset) => asset.underlyingToken.symbol.toLowerCase() === searchParamsAsset.toLowerCase()
     );
 
     if (!asset)
@@ -45,12 +40,8 @@ const LendingContainer = ({ assets }: Props) => {
     const fromNotFoundAsset = searchParams.get("fromNotFoundAsset");
 
     if (fromNotFoundAsset) {
-      toast.info(
-        `Asset ${fromNotFoundAsset} not found. Redirected to ${assets[0].underlyingToken.symbol}`
-      );
-      return router.replace(
-        `${pathname}?asset=${assets[0].underlyingToken.symbol}`
-      );
+      toast.info(`Asset ${fromNotFoundAsset} not found. Redirected to ${assets[0].underlyingToken.symbol}`);
+      return router.replace(`${pathname}?asset=${assets[0].underlyingToken.symbol}`);
     }
 
     setAsset(asset);
@@ -59,7 +50,10 @@ const LendingContainer = ({ assets }: Props) => {
   return (
     <main className="px-4 py-4 sm:px-10 sm:ml-60 sm:align-center space-y-4">
       <LendingTopStats asset={asset} />
-      <ProgressBar value={73} />
+      <div className="flex flex-col items-center gap-2">
+        <p className="text-white">Borrow Percentage</p>
+        <Progress value={userData.borrowPercentage!} />
+      </div>
       <LendingMain asset={asset} userData={userData} />
     </main>
   );
