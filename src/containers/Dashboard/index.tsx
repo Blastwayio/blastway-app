@@ -16,13 +16,14 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
+  ScriptableContext,
 } from "chart.js";
-import { ColumnDef } from "@tanstack/react-table";
 import { HistoryTable } from "./components/HistoryTable";
 import { HistoryType, HistoryColumns } from "./components/HistoryColumns";
 import LendingTabs from "./components/LendingTabs";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 const historyData: HistoryType[] = [
   {
@@ -94,17 +95,42 @@ const historyData: HistoryType[] = [
 ];
 
 const DashboardContainer = () => {
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      x: {
+        display: false,
+      },
+      y: {
+        display: false,
+      },
+    },
+  };
+
   const labels = [1, 2, 3, 4, 5, 6];
 
   const data = {
     labels: labels,
     datasets: [
       {
-        label: "Revenue",
         data: [65, 59, 80, 34, 12, 17],
-        fill: false,
-        borderColor: "rgb(75, 192, 192)",
-        tension: 0.4,
+        backgroundColor: (context: ScriptableContext<"line">) => {
+          const ctx = context.chart.ctx;
+          const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+          gradient.addColorStop(0, "rgba(71, 255, 71, 0.40)");
+          gradient.addColorStop(1, "rgba(39, 118, 39, 0.00)");
+          return gradient;
+        },
+        fill: "start",
+        borderColor: "rgb(37, 205, 37)",
+        borderDash: [4, 4],
+        borderWidth: 1,
+        tension: 0.2,
+        pointRadius: 0,
       },
     ],
   };
@@ -126,7 +152,7 @@ const DashboardContainer = () => {
             </div>
 
             <div>
-              <Line data={data} />
+              <Line data={data} options={options} />
             </div>
           </div>
 
@@ -153,16 +179,16 @@ const DashboardContainer = () => {
           </div>
 
           <div className="flex gap-6 items-start">
-            <div className="w-fit flex flex-col gap-4">
+            <div className="w-1/2 flex flex-col gap-4">
               <div className="flex justify-between">
                 <p className="text-2xl text-white font-medium">History</p>
                 <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
               </div>
 
-              <HistoryTable data={historyData} columns={HistoryColumns} />
+              <LendingTabs />
             </div>
 
-            <div className="w-full flex flex-col gap-4">
+            <div className="w-1/2 flex flex-col gap-4">
               <div className="flex justify-between">
                 <p className="text-2xl text-white font-medium">Lending</p>
                 <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
