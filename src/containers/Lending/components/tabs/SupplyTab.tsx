@@ -113,7 +113,7 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
           <div className="flex items-center space-x-2">
             <button className="flex items-center bg-[#171717] space-x-2 w-20 px-2 py-2 rounded-l-full">
               <div className="flex items-center gap-1">
-                <Image src={asset.image} alt={asset.underlyingToken.symbol} className="rounded-full h-4" />
+                <Image src={asset.image} alt={asset.underlyingToken.symbol} className="rounded-full h-4 w-auto" />
                 <span className="text-[#8A8A8A] text-sm">{asset.underlyingToken.symbol}</span>
               </div>
             </button>
