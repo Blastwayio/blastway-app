@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { CHAIN_ID } from "@/config";
 import ADDRESSES from "@/config/constants/addresses";
 import useSwap from "@/hooks/useSwap";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useState } from "react";
 
 export default function SwapButton({ fromAmount, toAmount }: { fromAmount: number; toAmount: number }) {
@@ -29,8 +30,15 @@ export default function SwapButton({ fromAmount, toAmount }: { fromAmount: numbe
   };
 
   return (
-    <Button onClick={handleSwap} loading={loading} className="mb-4 mx-auto w-full">
-      Swap
-    </Button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button onClick={handleSwap} loading={loading} disabled className="mb-4 mx-auto w-full">
+          Swap
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent className="bg-[#18181b] border-none text-white">
+        <p>The swap feature is currently disabled, coming soon!</p>
+      </TooltipContent>
+    </Tooltip>
   );
 }

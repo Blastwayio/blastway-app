@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SwapButton from "@/containers/Swap/components/SwapButton";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import SwapArrows from "/public/images/swap/swap-arrows.svg";
 import USDCTokenImage from "/public/images/tokens/usdc.webp";
 import USDTTokenImage from "/public/images/tokens/usdt.webp";
@@ -94,15 +93,7 @@ const SwapMain = () => {
             </div>
           </div>
         </div>
-
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <SwapButton fromAmount={fromAmount} toAmount={toAmount} />
-          </TooltipTrigger>
-          <TooltipContent className="bg-[#18181b] border-none text-white">
-            <p>The swap feature is currently disabled, coming soon!</p>
-          </TooltipContent>
-        </Tooltip>
+        <SwapButton fromAmount={fromAmount} toAmount={toAmount} />
       </div>
     </div>
   );
