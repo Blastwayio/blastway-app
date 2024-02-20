@@ -20,79 +20,9 @@ import {
   ScriptableContext,
 } from "chart.js";
 import { HistoryTable } from "./components/HistoryTable";
-import { HistoryType, HistoryColumns } from "./components/HistoryColumns";
 import LendingTabs from "./components/LendingTabs";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
-
-const historyData: HistoryType[] = [
-  {
-    transactionType: "Supply",
-    balance: "60 ETH",
-    status: "Pending...",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "54 ETH",
-    status: "Pending...",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "45 ETH",
-    status: "Pending...",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "18 ETH",
-    status: "Pending...",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "24 ETH",
-    status: "Pending...",
-    date: "11/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "9 ETH",
-    status: "Pending...",
-    date: "03/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "90 ETH",
-    status: "Success!",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "32 ETH",
-    status: "Success!",
-    date: "15/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "129 ETH",
-    status: "Failed!",
-    date: "19/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "32 ETH",
-    status: "Pending...",
-    date: "17/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "32 ETH",
-    status: "Pending...",
-    date: "10/04/2024",
-  },
-];
 
 const DashboardContainer = () => {
   const options = {
@@ -185,7 +115,7 @@ const DashboardContainer = () => {
                 <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
               </div>
 
-              <LendingTabs />
+              <HistoryTable />
             </div>
 
             <div className="w-1/2 flex flex-col gap-4">
