@@ -4,7 +4,7 @@ import Image from "next/image";
 import TempImage from "@/../public/images/pacman.jpg";
 import LinkImage from "@/../public/images/link-img.svg";
 import SupplyImage from "@/../public/images/suply-img.png";
-import ETHImage from "@/../public/images/eth-img.png";
+import CryptoImage from "@/../public/images/eth-img.png";
 import PendingImage from "@/../public/images/pending-img.png";
 import { Line } from "react-chartjs-2";
 import {
@@ -19,8 +19,8 @@ import {
   Filler,
   ScriptableContext,
 } from "chart.js";
-import { HistoryTable } from "./components/HistoryTable";
 import LendingTabs from "./components/LendingTabs";
+import HistoryTable from "./components/HistoryTable";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
@@ -64,6 +64,54 @@ const DashboardContainer = () => {
       },
     ],
   };
+
+  const historyData = [
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "32 ETH",
+      statusImage: PendingImage,
+      status: "Pending...",
+      date: "13/04/2024",
+    },
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "20 ETH",
+      statusImage: PendingImage,
+      status: "Success!",
+      date: "12/04/2024",
+    },
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "61 ETH",
+      statusImage: PendingImage,
+      status: "Failed!",
+      date: "12/04/2024",
+    },
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "17 ETH",
+      statusImage: PendingImage,
+      status: "Success!",
+      date: "28/09/2000",
+    },
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "40 ETH",
+      statusImage: PendingImage,
+      status: "Pending...",
+      date: "10/07/2022",
+    },
+  ];
 
   return (
     <main className="px-4 sm:px-10 sm:ml-60">
@@ -115,7 +163,7 @@ const DashboardContainer = () => {
                 <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
               </div>
 
-              <HistoryTable />
+              <HistoryTable datas={historyData} />
             </div>
 
             <div className="w-1/2 flex flex-col gap-4">
