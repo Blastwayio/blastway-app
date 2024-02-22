@@ -91,7 +91,7 @@ const DashboardContainer = () => {
       balance: "61 ETH",
       statusImage: PendingImage,
       status: "Failed!",
-      date: "12/04/2024",
+      date: "10/04/2023",
     },
     {
       supplyImage: SupplyImage,
@@ -111,7 +111,34 @@ const DashboardContainer = () => {
       status: "Pending...",
       date: "10/07/2022",
     },
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "40 ETH",
+      statusImage: PendingImage,
+      status: "Pending...",
+      date: "21/09/2024",
+    },
   ];
+
+  const sortedHistoryData = historyData.sort(function (a, b) {
+    const firstDateString = a.date.split("/");
+    const secondDateString = b.date.split("/");
+
+    const firstDate = new Date(Number(firstDateString[2]), Number(firstDateString[1]) - 1, Number(firstDateString[0]));
+    const secondDate = new Date(
+      Number(secondDateString[2]),
+      Number(secondDateString[1]) - 1,
+      Number(secondDateString[0])
+    );
+
+    if (firstDate > secondDate) {
+      return -1;
+    }
+
+    return 0;
+  });
 
   return (
     <main className="px-4 sm:px-10 sm:ml-60">
@@ -163,7 +190,7 @@ const DashboardContainer = () => {
                 <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
               </div>
 
-              <HistoryTable datas={historyData} />
+              <HistoryTable datas={sortedHistoryData} />
             </div>
 
             <div className="w-1/2 flex flex-col gap-4">
