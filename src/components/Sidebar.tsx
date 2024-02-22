@@ -249,9 +249,9 @@ const Sidebar: React.FC = () => {
       >
         <div className="flex flex-col justify-between min-h-screen overflow-y-auto border-r border-[#232323] bg-[#0e0e0e]">
           <div>
-            <a href="/" className="flex w-full">
+            <Link href="/" className="flex w-full">
               <Image className="ml-4 py-8" src={logo} alt="logo" width={225} />
-            </a>
+            </Link>
             <ul className="text-center text-white text-sm py-8 space-y-4">
               {menuItem("/", "Markets")}
               {menuItem("/lending", "Lending")}
