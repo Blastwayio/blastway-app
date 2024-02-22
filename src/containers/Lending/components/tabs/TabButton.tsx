@@ -6,21 +6,24 @@ import { CToken } from "@/types";
 import { Button } from "@/components/ui/button";
 
 interface Props {
-  text: string;
+  text: "Supply" | "Withdraw" | "Borrow" | "Repay";
   method: () => Promise<void>;
   asset: CToken;
   inputValue: number;
+  setInputValue: (value: number) => void;
   disabled: boolean;
 }
 
-const TabButton = ({ text, method, asset, inputValue, disabled }: Props) => {
+const TabButton = ({ text, method, asset, inputValue, disabled, setInputValue }: Props) => {
   const [loading, setLoading] = useState(false);
 
   const { address: account } = useAccount();
 
   const { onApprove, allowanceData } = useApprove(asset.underlyingToken.address, asset.address);
 
-  const isApproved = BigInt(allowanceData || "0") >= BigInt(inputValue * 10 ** asset.underlyingToken.decimals);
+  const needCheckApprove = ["Supply", "Repay"].includes(text);
+  const isApproved =
+    BigInt(allowanceData || "0") >= BigInt(inputValue * 10 ** asset.underlyingToken.decimals) || !needCheckApprove;
 
   const handleApprove = async () => {
     try {
@@ -37,6 +40,7 @@ const TabButton = ({ text, method, asset, inputValue, disabled }: Props) => {
     try {
       setLoading(true);
       await method();
+      setInputValue(0);
     } catch (error) {
       console.log(error);
     } finally {

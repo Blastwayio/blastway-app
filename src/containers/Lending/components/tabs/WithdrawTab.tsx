@@ -146,6 +146,7 @@ const WithdrawTab: React.FC<WithdrawTabProps> = ({ userDataAsset, asset, userDat
         method={async () => await onWithdraw(BigInt(inputValue * 10 ** asset.underlyingToken.decimals))}
         asset={asset}
         inputValue={inputValue}
+        setInputValue={setInputValue}
         disabled={disabled}
       />
     </>
