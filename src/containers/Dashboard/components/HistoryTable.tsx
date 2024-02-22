@@ -155,17 +155,17 @@ const HistoryTable = ({ datas }: DatasType) => {
           return (
             <div className="h-10 flex">
               <div className="w-1/4 flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
-                <Image className="w-4 h-4" src={data.supplyImage} alt="Crypto image." />
+                <Image className="w-4 h-4" src={data.supplyImage} alt="Crypto image." draggable={false} />
                 <p className="w-1/2 text-sm">{data.transactionType}</p>
               </div>
 
               <div className="w-1/4 bg-[#141414] flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
-                <Image className="w-4 h-4" src={data.cryptoImage} alt="Crypto image." />
+                <Image className="w-4 h-4" src={data.cryptoImage} alt="Crypto image." draggable={false} />
                 <p className="w-1/2 text-sm">{data.balance}</p>
               </div>
 
               <div className="w-1/4 flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
-                <Image className="w-4 h-4" src={data.statusImage} alt="Status image." />
+                <Image className="w-4 h-4" src={data.statusImage} alt="Status image." draggable={false} />
                 <p className="w-1/2 text-sm">{data.status}</p>
               </div>
 

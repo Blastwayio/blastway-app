@@ -12,3 +12,7 @@ export function formatAddress(address: string, startingChars = 6, endingChars = 
 export function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+export function numberWithCommas(x: any) {
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
