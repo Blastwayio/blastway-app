@@ -4,7 +4,7 @@ import Image from "next/image";
 import TempImage from "@/../public/images/pacman.jpg";
 import LinkImage from "@/../public/images/link-img.svg";
 import SupplyImage from "@/../public/images/suply-img.png";
-import ETHImage from "@/../public/images/eth-img.png";
+import CryptoImage from "@/../public/images/eth-img.png";
 import PendingImage from "@/../public/images/pending-img.png";
 import { Line } from "react-chartjs-2";
 import {
@@ -16,98 +16,102 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
+  ScriptableContext,
 } from "chart.js";
-import { ColumnDef } from "@tanstack/react-table";
-import { HistoryTable } from "./components/HistoryTable";
-import { HistoryType, HistoryColumns } from "./components/HistoryColumns";
 import LendingTabs from "./components/LendingTabs";
+import HistoryTable from "./components/HistoryTable";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
-
-const historyData: HistoryType[] = [
-  {
-    transactionType: "Supply",
-    balance: "60 ETH",
-    status: "Pending...",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "54 ETH",
-    status: "Pending...",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "45 ETH",
-    status: "Pending...",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "18 ETH",
-    status: "Pending...",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "24 ETH",
-    status: "Pending...",
-    date: "11/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "9 ETH",
-    status: "Pending...",
-    date: "03/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "90 ETH",
-    status: "Success!",
-    date: "12/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "32 ETH",
-    status: "Success!",
-    date: "15/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "129 ETH",
-    status: "Failed!",
-    date: "19/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "32 ETH",
-    status: "Pending...",
-    date: "17/04/2024",
-  },
-  {
-    transactionType: "Supply",
-    balance: "32 ETH",
-    status: "Pending...",
-    date: "10/04/2024",
-  },
-];
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 const DashboardContainer = () => {
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      x: {
+        display: false,
+      },
+      y: {
+        display: false,
+      },
+    },
+  };
+
   const labels = [1, 2, 3, 4, 5, 6];
 
   const data = {
     labels: labels,
     datasets: [
       {
-        label: "Revenue",
         data: [65, 59, 80, 34, 12, 17],
-        fill: false,
-        borderColor: "rgb(75, 192, 192)",
-        tension: 0.4,
+        backgroundColor: (context: ScriptableContext<"line">) => {
+          const ctx = context.chart.ctx;
+          const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+          gradient.addColorStop(0, "rgba(71, 255, 71, 0.40)");
+          gradient.addColorStop(1, "rgba(39, 118, 39, 0.00)");
+          return gradient;
+        },
+        fill: "start",
+        borderColor: "rgb(37, 205, 37)",
+        borderDash: [4, 4],
+        borderWidth: 1,
+        tension: 0.2,
+        pointRadius: 0,
       },
     ],
   };
+
+  const historyData = [
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "32 ETH",
+      statusImage: PendingImage,
+      status: "Pending...",
+      date: "13/04/2024",
+    },
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "20 ETH",
+      statusImage: PendingImage,
+      status: "Success!",
+      date: "12/04/2024",
+    },
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "61 ETH",
+      statusImage: PendingImage,
+      status: "Failed!",
+      date: "12/04/2024",
+    },
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "17 ETH",
+      statusImage: PendingImage,
+      status: "Success!",
+      date: "28/09/2000",
+    },
+    {
+      supplyImage: SupplyImage,
+      transactionType: "Supply",
+      cryptoImage: CryptoImage,
+      balance: "40 ETH",
+      statusImage: PendingImage,
+      status: "Pending...",
+      date: "10/07/2022",
+    },
+  ];
 
   return (
     <main className="px-4 sm:px-10 sm:ml-60">
@@ -126,7 +130,7 @@ const DashboardContainer = () => {
             </div>
 
             <div>
-              <Line data={data} />
+              <Line data={data} options={options} />
             </div>
           </div>
 
@@ -153,16 +157,16 @@ const DashboardContainer = () => {
           </div>
 
           <div className="flex gap-6 items-start">
-            <div className="w-fit flex flex-col gap-4">
+            <div className="w-1/2 flex flex-col gap-4">
               <div className="flex justify-between">
                 <p className="text-2xl text-white font-medium">History</p>
                 <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
               </div>
 
-              <HistoryTable data={historyData} columns={HistoryColumns} />
+              <HistoryTable datas={historyData} />
             </div>
 
-            <div className="w-full flex flex-col gap-4">
+            <div className="w-1/2 flex flex-col gap-4">
               <div className="flex justify-between">
                 <p className="text-2xl text-white font-medium">Lending</p>
                 <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
