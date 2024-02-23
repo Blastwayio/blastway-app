@@ -47,7 +47,7 @@ const LendingContainer = ({ assets }: Props) => {
   }, [searchParamsAsset, assets, pathname, router, searchParams]);
 
   return (
-    <main className="px-4 py-4 sm:px-10 sm:ml-60 sm:align-center space-y-4">
+    <main className="px-4 sm:px-10 sm:ml-60 sm:mt-8 sm:align-center space-y-4">
       <LendingTopStats asset={asset} />
       <LendingMain asset={asset} userData={userData} />
     </main>

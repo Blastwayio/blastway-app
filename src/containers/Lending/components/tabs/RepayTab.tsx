@@ -112,6 +112,7 @@ const RepayTab: React.FC<RepayTabProps> = ({ userDataAsset, asset, userData }) =
         method={async () => await onRepay(BigInt(inputValue * 10 ** asset.underlyingToken.decimals))}
         asset={asset}
         inputValue={inputValue}
+        setInputValue={setInputValue}
         disabled={disabled}
       />
     </>

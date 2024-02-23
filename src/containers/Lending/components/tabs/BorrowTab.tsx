@@ -27,10 +27,17 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
   const { onEnterMarkets } = useEnterMarkets([asset.address]);
   const { onExitMarket } = useExitMarket(asset.address);
 
-  const userMaxBorrowable = (borrowLimit! - totalBorrowBalance!) / +asset.underlyingToken.price;
+  const userMaxBorrowable = borrowLimit! / +asset.underlyingToken.price;
   const inputTokenPrice = inputValue;
 
-  console.log("userMaxBorrowable", (borrowLimit! - totalBorrowBalance!) / +asset.underlyingToken.price);
+  console.log(
+    "borrow limit: ",
+    borrowLimit,
+    "totalBorrowBalance: ",
+    totalBorrowBalance,
+    "userMaxBorrowable",
+    userMaxBorrowable
+  );
 
   const totalBalanceFormatted = new Intl.NumberFormat("en-US", {
     notation: "compact",
@@ -171,6 +178,7 @@ const BorrowTab: React.FC<BorrowTabProps> = ({ asset, userDataAsset, userData })
         method={async () => await onBorrow(BigInt(inputValue * 10 ** asset.underlyingToken.decimals))}
         asset={asset}
         inputValue={inputValue}
+        setInputValue={setInputValue}
         disabled={disabled}
       />
     </>

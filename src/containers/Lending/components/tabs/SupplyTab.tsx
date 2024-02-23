@@ -190,6 +190,7 @@ const SupplyTab: React.FC<SupplyTabProps> = ({ userDataAsset, asset, userData })
         method={async () => await onSupply(BigInt(inputValue * 10 ** asset.underlyingToken.decimals))}
         asset={asset}
         inputValue={inputValue}
+        setInputValue={setInputValue}
         disabled={disabled}
       />
     </>
