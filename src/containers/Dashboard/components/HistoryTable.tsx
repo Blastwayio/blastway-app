@@ -32,17 +32,15 @@ const columns = [
 ];
 
 interface DatasType {
-  datas: [
-    {
-      supplyImage: StaticImageData;
-      transactionType: string;
-      cryptoImage: StaticImageData;
-      balance: string;
-      statusImage: StaticImageData;
-      status: string;
-      date: string;
-    }
-  ];
+  datas: {
+    supplyImage: StaticImageData;
+    transactionType: string;
+    cryptoImage: StaticImageData;
+    balance: string;
+    statusImage: StaticImageData;
+    status: string;
+    date: string;
+  }[];
 }
 
 const HistoryTable = ({ datas }: DatasType) => {
@@ -127,6 +125,7 @@ const HistoryTable = ({ datas }: DatasType) => {
         {columns.map((column) => {
           return (
             <div
+              key={column.name}
               className={`w-1/4 flex justify-center items-center gap-1 ${column.color} text-[#848484] text-sm py-2 ${column.borderRadius}`}
             >
               <p
@@ -151,9 +150,9 @@ const HistoryTable = ({ datas }: DatasType) => {
         })}
       </div>
       <div className="w-full h-[13.8rem] overflow-auto rounded-b-md no-scrollbar">
-        {newData.map((data) => {
+        {newData.map((data, index) => {
           return (
-            <div className="h-10 flex">
+            <div key={`${data.transactionType}#${index}`} className="h-10 flex">
               <div className="w-1/4 flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
                 <Image className="w-4 h-4" src={data.supplyImage} alt="Crypto image." draggable={false} />
                 <p className="w-1/2 text-sm">{data.transactionType}</p>
