@@ -1,12 +1,12 @@
-"use client";
-import React, { useState } from "react";
-import { useUserData } from "@/hooks/useUserData";
-import { CToken } from "@/types";
+'use client';
+import React, { useState } from 'react';
+import { useUserData } from '@/hooks/useUserData';
+import { CToken } from '@/types';
 
-import WithdrawTab from "./tabs/WithdrawTab";
-import BorrowTab from "./tabs/BorrowTab";
-import RepayTab from "./tabs/RepayTab";
-import SupplyTab from "./tabs/SupplyTab";
+import WithdrawTab from './tabs/WithdrawTab';
+import BorrowTab from './tabs/BorrowTab';
+import RepayTab from './tabs/RepayTab';
+import SupplyTab from './tabs/SupplyTab';
 
 interface LendingMainProps {
   asset: CToken;
@@ -16,7 +16,7 @@ interface LendingMainProps {
 const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
   const { tokenData: userTokenData } = userData;
 
-  const [activeTab, setActiveTab] = useState("Supply");
+  const [activeTab, setActiveTab] = useState('Supply');
 
   const userDataAsset = userTokenData!.find(
     (userDataAsset: any) => userDataAsset.symbol.toLowerCase() === asset.symbol.toLowerCase()
@@ -24,34 +24,34 @@ const LendingMain: React.FC<LendingMainProps> = ({ asset, userData }) => {
 
   const tabs = [
     {
-      title: "Supply",
+      title: 'Supply',
       tab: <SupplyTab userDataAsset={userDataAsset} asset={asset} userData={userData} />,
     },
     {
-      title: "Withdraw",
+      title: 'Withdraw',
       tab: <WithdrawTab userDataAsset={userDataAsset} asset={asset} userData={userData} />,
     },
     {
-      title: "Borrow",
+      title: 'Borrow',
       tab: <BorrowTab userDataAsset={userDataAsset} asset={asset} userData={userData} />,
     },
     {
-      title: "Repay",
+      title: 'Repay',
       tab: <RepayTab userDataAsset={userDataAsset} asset={asset} userData={userData} />,
     },
   ];
 
   return (
     <>
-      <div className="flex flex-col sm:flex-row sm:flex-col-2 w-full space-y-4">
-        <div className="bg-[#0E0E0E] w-full xl:w-8/12 px-2 sm:px-6 py-4 rounded-xl mx-auto border border-[#171717] flex flex-col">
-          <div className="w-full flex justify-between bg-[#161616] py-1.5 px-1 sm:px-1.5 rounded-lg">
+      <div className="sm:flex-col-2 flex w-full flex-col space-y-4 sm:flex-row">
+        <div className="mx-auto flex w-full flex-col rounded-xl border border-[#171717] bg-[#0E0E0E] px-2 py-4 sm:px-6 xl:w-8/12">
+          <div className="flex w-full justify-between rounded-lg bg-[#161616] px-1 py-1.5 sm:px-1.5">
             {tabs.map((tab, index) => (
               <button
                 key={index}
                 className={`w-1/4 ${
-                  activeTab === tab.title ? "bg-[#323232]" : "text-[#8A8A8A]"
-                } py-2 rounded text-white text-xs sm:text-sm`}
+                  activeTab === tab.title ? 'bg-[#323232]' : 'text-[#8A8A8A]'
+                } rounded py-2 text-xs text-white sm:text-sm`}
                 onClick={() => setActiveTab(tab.title)}
               >
                 {tab.title}

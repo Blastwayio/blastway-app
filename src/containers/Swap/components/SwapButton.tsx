@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { CHAIN_ID } from "@/config";
-import ADDRESSES from "@/config/constants/addresses";
-import useSwap from "@/hooks/useSwap";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { useState } from "react";
+import { Button } from '@/components/ui/button';
+import { CHAIN_ID } from '@/config';
+import ADDRESSES from '@/config/constants/addresses';
+import useSwap from '@/hooks/useSwap';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { useState } from 'react';
 
 export default function SwapButton({ fromAmount, toAmount }: { fromAmount: number; toAmount: number }) {
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ export default function SwapButton({ fromAmount, toAmount }: { fromAmount: numbe
         fromAmount,
         toAmount,
         slippage: 20,
-        recipient: "",
+        recipient: '',
         deadline: 0,
       });
     } catch (error) {
@@ -32,11 +32,11 @@ export default function SwapButton({ fromAmount, toAmount }: { fromAmount: numbe
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button onClick={handleSwap} loading={loading} disabled className="mb-4 mx-auto w-full">
+        <Button onClick={handleSwap} loading={loading} disabled className="mx-auto mb-4 w-full">
           Swap
         </Button>
       </TooltipTrigger>
-      <TooltipContent className="bg-[#18181b] border-none text-white">
+      <TooltipContent className="border-none bg-[#18181b] text-white">
         <p>The swap feature is currently disabled, coming soon!</p>
       </TooltipContent>
     </Tooltip>

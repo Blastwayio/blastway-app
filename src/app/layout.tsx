@@ -1,20 +1,20 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import "react-toastify/dist/ReactToastify.css";
-import Providers from "@/context/Providers";
-import Sidebar from "@/components/Sidebar";
-import { cookieToInitialState } from "wagmi";
-import { headers } from "next/headers";
-import { config } from "@/config/Walletconnect";
-import Footer from "@/components/Footer/Footer";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import 'react-toastify/dist/ReactToastify.css';
+import Providers from '@/context/Providers';
+import Sidebar from '@/components/Sidebar';
+import { cookieToInitialState } from 'wagmi';
+import { headers } from 'next/headers';
+import { config } from '@/config/Walletconnect';
+import Footer from '@/components/Footer/Footer';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Blastway",
+  title: 'Blastway',
   description:
-    "The next generation innovative lending protocol with yield earnings and ecosystem incubator built on Blast.",
+    'The next generation innovative lending protocol with yield earnings and ecosystem incubator built on Blast.',
 };
 
 export default function RootLayout({
@@ -22,11 +22,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialState = cookieToInitialState(config, headers().get("cookie"));
+  const initialState = cookieToInitialState(config, headers().get('cookie'));
 
   return (
     <html lang="en">
-      <body className={`${inter.className} grid grid-rows-[auto_1fr_auto] relative min-h-screen overflow-x-hidden`}>
+      <body className={`${inter.className} relative grid min-h-screen grid-rows-[auto_1fr_auto] overflow-x-hidden`}>
         <Providers initialState={initialState}>
           <Sidebar />
           {children}

@@ -1,12 +1,8 @@
-import { Button } from "./ui/button";
+import { Button } from './ui/button';
 
 export default function CloseModalButton() {
   return (
-    <Button
-      className="w-[80%] mb-4 mx-auto px-10 text-white"
-      variant={"destructive"}
-      onClick={() => open()}
-    >
+    <Button className="mx-auto mb-4 w-[80%] px-10 text-white" variant={'destructive'} onClick={() => open()}>
       Close
     </Button>
   );

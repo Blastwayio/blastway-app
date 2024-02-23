@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Button } from "./ui/button";
-import { useState } from "react"; // Import useState
-import useRequestTokens from "@/hooks/useRequestTokens";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Button } from './ui/button';
+import { useState } from 'react'; // Import useState
+import useRequestTokens from '@/hooks/useRequestTokens';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 export default function FaucetButton() {
   const [disabled, setDisabled] = useState(false);
@@ -25,15 +25,15 @@ export default function FaucetButton() {
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
-          className="w-[80%] mb-4 mx-auto text-black"
+          className="mx-auto mb-4 w-[80%] text-black"
           onClick={onButtonClick}
           disabled={!allowedToWithdraw || disabled}
         >
-          {"Token Faucet"}
+          {'Token Faucet'}
         </Button>
       </TooltipTrigger>
       {!allowedToWithdraw && (
-        <TooltipContent className="bg-[#18181b] border-none text-white">
+        <TooltipContent className="border-none bg-[#18181b] text-white">
           <p>You can claim again in 24 hours</p>
         </TooltipContent>
       )}

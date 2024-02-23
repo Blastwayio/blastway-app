@@ -1,13 +1,13 @@
-"use client";
-import React, { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import logo from "/public/images/Logo.svg";
-import MLogo from "/public/images/mini-logo.svg";
-import ConnectButton from "./ConnectButton";
-import FaucetButton from "./FaucetButton";
-import { usePathname } from "next/navigation";
-import FaucetGasButton from "./FaucetGasButton";
+'use client';
+import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import logo from '/public/images/Logo.svg';
+import MLogo from '/public/images/mini-logo.svg';
+import ConnectButton from './ConnectButton';
+import FaucetButton from './FaucetButton';
+import { usePathname } from 'next/navigation';
+import FaucetGasButton from './FaucetGasButton';
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +20,9 @@ const Sidebar: React.FC = () => {
         setIsOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
 
@@ -35,23 +35,23 @@ const Sidebar: React.FC = () => {
       return pathname === path || pathname.startsWith(`${path}/`);
     };
 
-    const isRootPath = href === "/";
+    const isRootPath = href === '/';
     let isActive = isRootPath ? isPathActive(href) : isPathActive(href);
 
     return (
       <li className="w-60 pr-4">
         <Link
-          href={isDisabled ? "#" : href}
+          href={isDisabled ? '#' : href}
           passHref
-          className={`gap-2 flex items-center p-3 rounded-r-xl ${
+          className={`flex items-center gap-2 rounded-r-xl p-3 ${
             isActive
-              ? "p-3 bg-[#131313] text-white shadow-xl w-full"
-              : "text-gray-400 transition-colors duration-300 hover:text-white"
+              ? 'w-full bg-[#131313] p-3 text-white shadow-xl'
+              : 'text-gray-400 transition-colors duration-300 hover:text-white'
           } group`}
         >
-          {label === "Markets" && (
+          {label === 'Markets' && (
             <svg
-              className={isActive ? "text-[#FFF200]" : isDisabled ? "text-gray-600" : "text-gray-400"}
+              className={isActive ? 'text-[#FFF200]' : isDisabled ? 'text-gray-600' : 'text-gray-400'}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -70,9 +70,9 @@ const Sidebar: React.FC = () => {
               />
             </svg>
           )}
-          {label === "Lending" && (
+          {label === 'Lending' && (
             <svg
-              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
+              className={isActive ? 'text-[#FFF200]' : 'text-gray-400'}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -95,9 +95,9 @@ const Sidebar: React.FC = () => {
               />
             </svg>
           )}
-          {label === "Swap" && (
+          {label === 'Swap' && (
             <svg
-              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
+              className={isActive ? 'text-[#FFF200]' : 'text-gray-400'}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -124,9 +124,9 @@ const Sidebar: React.FC = () => {
               />
             </svg>
           )}
-          {label === "Quests" && (
+          {label === 'Quests' && (
             <svg
-              className={isActive ? "text-[#FFF200]" : "text-gray-400"}
+              className={isActive ? 'text-[#FFF200]' : 'text-gray-400'}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -190,9 +190,9 @@ const Sidebar: React.FC = () => {
               <path d="M3 18H2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           )}
-          {label === "Dashboard" && (
+          {label === 'Dashboard' && (
             <svg
-              className={`${isActive ? "text-[#FFF200]" : "text-gray-400"} lucide lucide-square-user-round`}
+              className={`${isActive ? 'text-[#FFF200]' : 'text-gray-400'} lucide lucide-square-user-round`}
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -217,15 +217,15 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col p-2 mt-2 sm:hidden">
-        <div className="flex justify-between items-center">
+      <div className="mt-2 flex flex-col p-2 sm:hidden">
+        <div className="flex items-center justify-between">
           <button
             onClick={toggleMenu}
             data-drawer-target="logo-sidebar"
             data-drawer-toggle="logo-sidebar"
             aria-controls="logo-sidebar"
             type="button"
-            className="items-center text-sm text-white rounded-lg sm:hidden "
+            className="items-center rounded-lg text-sm text-white sm:hidden "
           >
             <span className="sr-only">Open sidebar</span>
             <Image src={MLogo} alt="logo" width={24} />
@@ -234,7 +234,7 @@ const Sidebar: React.FC = () => {
             <ConnectButton />
           </div>
         </div>
-        <div className="flex items-center mx-auto px-2 gap-2 sm:hidden">
+        <div className="mx-auto flex items-center gap-2 px-2 sm:hidden">
           <FaucetGasButton />
           <FaucetButton />
         </div>
@@ -242,26 +242,26 @@ const Sidebar: React.FC = () => {
 
       <aside
         ref={sidebarRef}
-        className={`fixed top-0 left-0 z-50 min-h-screen transition-transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed left-0 top-0 z-50 min-h-screen transition-transform ${
+          isOpen ? 'translate-x-0' : '-translate-x-full'
         } sm:translate-x-0`}
         aria-label="Sidebar"
       >
-        <div className="flex flex-col justify-between min-h-screen overflow-y-auto border-r border-[#232323] bg-[#0e0e0e]">
+        <div className="flex min-h-screen flex-col justify-between overflow-y-auto border-r border-[#232323] bg-[#0e0e0e]">
           <div>
             <Link href="/" className="flex w-full">
               <Image className="ml-4 py-8" src={logo} alt="logo" width={225} />
             </Link>
-            <ul className="text-center text-white text-sm py-8 space-y-4">
-              {menuItem("/", "Markets")}
-              {menuItem("/lending", "Lending")}
-              {menuItem("/swap", "Swap")}
-              {menuItem("/quests", "Quests")}
+            <ul className="space-y-4 py-8 text-center text-sm text-white">
+              {menuItem('/', 'Markets')}
+              {menuItem('/lending', 'Lending')}
+              {menuItem('/swap', 'Swap')}
+              {menuItem('/quests', 'Quests')}
               {/* @todo: add profile page later, use if needed as a reference */}
-              {menuItem("/dashboard", "Dashboard")}
+              {menuItem('/dashboard', 'Dashboard')}
             </ul>
           </div>
-          <div className="hidden sm:flex flex-col">
+          <div className="hidden flex-col sm:flex">
             <ConnectButton />
             <FaucetGasButton />
             <FaucetButton />

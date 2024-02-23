@@ -1,14 +1,14 @@
-import HomeContainer from "@/containers/Home";
-import getCTokens from "@/lib/getters/getCTokens";
+import HomeContainer from '@/containers/Home';
+import getCTokens from '@/lib/getters/getCTokens';
 
 const stats = [
   {
-    marketSize: "12M",
-    marketSizePercent: "45",
-    dLPLocked: "56M",
-    dLPLockedPercentage: "50",
-    feesPaid: "1.1M",
-    assetAmount: "3",
+    marketSize: '12M',
+    marketSizePercent: '45',
+    dLPLocked: '56M',
+    dLPLockedPercentage: '50',
+    feesPaid: '1.1M',
+    assetAmount: '3',
   },
 ];
 

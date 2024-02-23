@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { useAccount } from "wagmi";
-import ConnectButton from "@/components/ConnectButton";
-import useApprove from "@/hooks/useApprove";
-import { CToken } from "@/types";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { useAccount } from 'wagmi';
+import ConnectButton from '@/components/ConnectButton';
+import useApprove from '@/hooks/useApprove';
+import { CToken } from '@/types';
+import { Button } from '@/components/ui/button';
 
 interface Props {
-  text: "Supply" | "Withdraw" | "Borrow" | "Repay";
+  text: 'Supply' | 'Withdraw' | 'Borrow' | 'Repay';
   method: () => Promise<void>;
   asset: CToken;
   inputValue: number;
@@ -21,9 +21,9 @@ const TabButton = ({ text, method, asset, inputValue, disabled, setInputValue }:
 
   const { onApprove, allowanceData } = useApprove(asset.underlyingToken.address, asset.address);
 
-  const needCheckApprove = ["Supply", "Repay"].includes(text);
+  const needCheckApprove = ['Supply', 'Repay'].includes(text);
   const isApproved =
-    BigInt(allowanceData || "0") >= BigInt(inputValue * 10 ** asset.underlyingToken.decimals) || !needCheckApprove;
+    BigInt(allowanceData || '0') >= BigInt(inputValue * 10 ** asset.underlyingToken.decimals) || !needCheckApprove;
 
   const handleApprove = async () => {
     try {
@@ -54,8 +54,8 @@ const TabButton = ({ text, method, asset, inputValue, disabled, setInputValue }:
 
   if (!isApproved) {
     return (
-      <Button onClick={handleApprove} loading={loading} className="w-full py-2 mt-8">
-        {loading ? "Approving..." : "Approve"}
+      <Button onClick={handleApprove} loading={loading} className="mt-8 w-full py-2">
+        {loading ? 'Approving...' : 'Approve'}
       </Button>
     );
   }
@@ -65,7 +65,7 @@ const TabButton = ({ text, method, asset, inputValue, disabled, setInputValue }:
       disabled={disabled || (isApproved && inputValue === 0)}
       loading={loading}
       onClick={handleMethod}
-      className="w-full py-2 mt-8 text-black"
+      className="mt-8 w-full py-2 text-black"
     >
       {loading ? `${text}ing...` : text}
     </Button>

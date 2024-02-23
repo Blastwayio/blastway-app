@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import type { CToken } from "@/types";
-import LendingMain from "./components/LendingMain";
-import LendingTopStats from "./components/LendingTopStats";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { useUserData } from "@/hooks/useUserData";
+import type { CToken } from '@/types';
+import LendingMain from './components/LendingMain';
+import LendingTopStats from './components/LendingTopStats';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useUserData } from '@/hooks/useUserData';
 
 interface Props {
   assets: CToken[];
@@ -19,7 +19,7 @@ const LendingContainer = ({ assets }: Props) => {
 
   const userData = useUserData(assets);
 
-  const searchParamsAsset = searchParams.get("asset");
+  const searchParamsAsset = searchParams.get('asset');
 
   const [asset, setAsset] = useState(assets[0]);
 
@@ -36,7 +36,7 @@ const LendingContainer = ({ assets }: Props) => {
         `${pathname}?asset=${assets[0].underlyingToken.symbol}&fromNotFoundAsset=${searchParamsAsset}`
       );
 
-    const fromNotFoundAsset = searchParams.get("fromNotFoundAsset");
+    const fromNotFoundAsset = searchParams.get('fromNotFoundAsset');
 
     if (fromNotFoundAsset) {
       toast.info(`Asset ${fromNotFoundAsset} not found. Redirected to ${assets[0].underlyingToken.symbol}`);
@@ -47,7 +47,7 @@ const LendingContainer = ({ assets }: Props) => {
   }, [searchParamsAsset, assets, pathname, router, searchParams]);
 
   return (
-    <main className="px-4 sm:px-10 sm:ml-60 sm:mt-8 sm:align-center space-y-4">
+    <main className="sm:align-center space-y-4 px-4 sm:ml-60 sm:mt-8 sm:px-10">
       <LendingTopStats asset={asset} />
       <LendingMain asset={asset} userData={userData} />
     </main>

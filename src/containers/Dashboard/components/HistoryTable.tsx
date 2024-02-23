@@ -1,33 +1,30 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Image, { StaticImageData } from "next/image";
-import DownArrow from "@/../public/images/down-arrow-img.png";
-import SupplyImage from "@/../public/images/suply-img.png";
-import CryptoImage from "@/../public/images/eth-img.png";
-import PendingImage from "@/../public/images/pending-img.png";
-import { useState } from "react";
+import * as React from 'react';
+import Image, { StaticImageData } from 'next/image';
+import DownArrow from '@/../public/images/down-arrow-img.png';
+import { useState } from 'react';
 
 const columns = [
   {
-    borderRadius: "rounded-tl-md",
-    color: "bg-[#0E0E0E]",
-    name: "Transaction Type",
+    borderRadius: 'rounded-tl-md',
+    color: 'bg-[#0E0E0E]',
+    name: 'Transaction Type',
   },
   {
-    borderRadius: "",
-    color: "bg-[#1B1B1B]",
-    name: "Balance",
+    borderRadius: '',
+    color: 'bg-[#1B1B1B]',
+    name: 'Balance',
   },
   {
-    borderRadius: "",
-    color: "bg-[#0E0E0E]",
-    name: "Status",
+    borderRadius: '',
+    color: 'bg-[#0E0E0E]',
+    name: 'Status',
   },
   {
-    borderRadius: "rounded-tr-md",
-    color: "bg-[#1B1B1B]",
-    name: "Date",
+    borderRadius: 'rounded-tr-md',
+    color: 'bg-[#1B1B1B]',
+    name: 'Date',
   },
 ];
 
@@ -53,15 +50,15 @@ const HistoryTable = ({ datas }: DatasType) => {
 
       setNewData((prev) =>
         prev.sort(function (a, b) {
-          if (a.transactionType > b.transactionType && columnName == "Transaction Type") {
+          if (a.transactionType > b.transactionType && columnName == 'Transaction Type') {
             return -1;
-          } else if (a.balance > b.balance && columnName == "Balance") {
+          } else if (a.balance > b.balance && columnName == 'Balance') {
             return -1;
-          } else if (a.status > b.status && columnName == "Status") {
+          } else if (a.status > b.status && columnName == 'Status') {
             return -1;
-          } else if (columnName == "Date") {
-            const firstDateString = a.date.split("/");
-            const secondDateString = b.date.split("/");
+          } else if (columnName == 'Date') {
+            const firstDateString = a.date.split('/');
+            const secondDateString = b.date.split('/');
 
             const firstDate = new Date(
               Number(firstDateString[2]),
@@ -87,15 +84,15 @@ const HistoryTable = ({ datas }: DatasType) => {
 
       setNewData((prev) =>
         prev.sort(function (a, b) {
-          if (a.transactionType < b.transactionType && columnName == "Transaction Type") {
+          if (a.transactionType < b.transactionType && columnName == 'Transaction Type') {
             return -1;
-          } else if (a.balance < b.balance && columnName == "Balance") {
+          } else if (a.balance < b.balance && columnName == 'Balance') {
             return -1;
-          } else if (a.status < b.status && columnName == "Status") {
+          } else if (a.status < b.status && columnName == 'Status') {
             return -1;
-          } else if (columnName == "Date") {
-            const firstDateString = a.date.split("/");
-            const secondDateString = b.date.split("/");
+          } else if (columnName == 'Date') {
+            const firstDateString = a.date.split('/');
+            const secondDateString = b.date.split('/');
 
             const firstDate = new Date(
               Number(firstDateString[2]),
@@ -120,13 +117,13 @@ const HistoryTable = ({ datas }: DatasType) => {
   };
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="flex w-full flex-col">
       <div className="flex items-center">
         {columns.map((column) => {
           return (
             <div
               key={column.name}
-              className={`w-1/4 flex justify-center items-center gap-1 ${column.color} text-[#848484] text-sm py-2 ${column.borderRadius}`}
+              className={`flex w-1/4 items-center justify-center gap-1 ${column.color} py-2 text-sm text-[#848484] ${column.borderRadius}`}
             >
               <p
                 className="cursor-pointer text-sm"
@@ -138,7 +135,7 @@ const HistoryTable = ({ datas }: DatasType) => {
               </p>
 
               <Image
-                className="cursor-pointer w-4"
+                className="w-4 cursor-pointer"
                 src={DownArrow}
                 alt="Down arrow image."
                 onClick={() => {
@@ -149,26 +146,26 @@ const HistoryTable = ({ datas }: DatasType) => {
           );
         })}
       </div>
-      <div className="w-full h-[13.8rem] overflow-auto rounded-b-md no-scrollbar">
+      <div className="no-scrollbar h-[13.8rem] w-full overflow-auto rounded-b-md">
         {newData.map((data, index) => {
           return (
-            <div key={`${data.transactionType}#${index}`} className="h-10 flex">
-              <div className="w-1/4 flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
-                <Image className="w-4 h-4" src={data.supplyImage} alt="Crypto image." draggable={false} />
+            <div key={`${data.transactionType}#${index}`} className="flex h-10">
+              <div className="flex w-1/4 items-center justify-center gap-2 border-b-[1px] border-[#1B1B1B]">
+                <Image className="h-4 w-4" src={data.supplyImage} alt="Crypto image." draggable={false} />
                 <p className="w-1/2 text-sm">{data.transactionType}</p>
               </div>
 
-              <div className="w-1/4 bg-[#141414] flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
-                <Image className="w-4 h-4" src={data.cryptoImage} alt="Crypto image." draggable={false} />
+              <div className="flex w-1/4 items-center justify-center gap-2 border-b-[1px] border-[#1B1B1B] bg-[#141414]">
+                <Image className="h-4 w-4" src={data.cryptoImage} alt="Crypto image." draggable={false} />
                 <p className="w-1/2 text-sm">{data.balance}</p>
               </div>
 
-              <div className="w-1/4 flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
-                <Image className="w-4 h-4" src={data.statusImage} alt="Status image." draggable={false} />
+              <div className="flex w-1/4 items-center justify-center gap-2 border-b-[1px] border-[#1B1B1B]">
+                <Image className="h-4 w-4" src={data.statusImage} alt="Status image." draggable={false} />
                 <p className="w-1/2 text-sm">{data.status}</p>
               </div>
 
-              <p className="w-1/4 bg-[#141414] flex justify-center items-center text-sm border-b-[1px] border-[#1B1B1B]">
+              <p className="flex w-1/4 items-center justify-center border-b-[1px] border-[#1B1B1B] bg-[#141414] text-sm">
                 {data.date}
               </p>
             </div>
