@@ -217,7 +217,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col p-2 mt-2">
+      <div className="flex flex-col p-2 mt-2 sm:hidden">
         <div className="flex justify-between items-center">
           <button
             onClick={toggleMenu}
@@ -242,7 +242,7 @@ const Sidebar: React.FC = () => {
 
       <aside
         ref={sidebarRef}
-        className={`fixed top-0 left-0 z-50 w-34 min-h-screen transition-transform ${
+        className={`fixed top-0 left-0 z-50 min-h-screen transition-transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } sm:translate-x-0`}
         aria-label="Sidebar"

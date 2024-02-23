@@ -21,6 +21,7 @@ import {
 } from "chart.js";
 import LendingTabs from "./components/LendingTabs";
 import HistoryTable from "./components/HistoryTable";
+import ConstructionBanner from "@/components/Banner/Construction";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
@@ -141,70 +142,73 @@ const DashboardContainer = () => {
   });
 
   return (
-    <main className="px-4 sm:px-10 sm:ml-60">
-      <div className="text-white">
-        <p className="text-white text-2xl">Dashboard</p>
+    <>
+      <ConstructionBanner />
+      <main className="px-4 sm:px-10 sm:ml-60 sm:mt-8">
+        <div className="text-white">
+          <p className="text-white text-2xl">Dashboard</p>
 
-        <div className="mt-2 flex flex-col gap-6">
-          <div className="bg-[#0E0E0E] p-4 rounded-md flex justify-between">
-            <div className="flex gap-6 items-center">
-              <Image src={TempImage} alt="Profile Image." draggable={false} width={144} height={144} />
+          <div className="mt-2 flex flex-col gap-6">
+            <div className="bg-[#0E0E0E] p-4 rounded-md flex justify-between">
+              <div className="flex gap-6 items-center">
+                <Image src={TempImage} alt="Profile Image." draggable={false} width={144} height={144} />
 
-              <div className="flex flex-col">
-                <p className="text-4xl font-medium">Blast.eth</p>
-                <p className="text-base font-medium text-[#868686]">0x0de6c8d9c20f...0688D618F9ee</p>
+                <div className="flex flex-col">
+                  <p className="text-4xl font-medium">Blast.eth</p>
+                  <p className="text-base font-medium text-[#868686]">0x0de6c8d9c20f...0688D618F9ee</p>
+                </div>
+              </div>
+
+              <div>
+                <Line data={data} options={options} />
               </div>
             </div>
 
-            <div>
-              <Line data={data} options={options} />
-            </div>
-          </div>
-
-          <div className="bg-[#0E0E0E] p-4 flex justify-between items-center">
-            <div className="flex flex-col items-center">
-              <p className="text-[#868686] text-base font-medium">Health Factor</p>
-              <p>100%</p>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <p className="text-[#868686] text-base font-medium">Net APR</p>
-              <p>0%</p>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <p className="text-[#868686] text-base font-medium">Supply</p>
-              <p>1000$</p>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <p className="text-[#868686] text-base font-medium">Monthly Yield</p>
-              <p>0$</p>
-            </div>
-          </div>
-
-          <div className="flex gap-6 items-start">
-            <div className="w-1/2 flex flex-col gap-4">
-              <div className="flex justify-between">
-                <p className="text-2xl text-white font-medium">History</p>
-                <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
+            <div className="bg-[#0E0E0E] p-4 flex justify-between items-center">
+              <div className="flex flex-col items-center">
+                <p className="text-[#868686] text-base font-medium">Health Factor</p>
+                <p>100%</p>
               </div>
 
-              <HistoryTable datas={sortedHistoryData} />
-            </div>
-
-            <div className="w-1/2 flex flex-col gap-4">
-              <div className="flex justify-between">
-                <p className="text-2xl text-white font-medium">Lending</p>
-                <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
+              <div className="flex flex-col items-center">
+                <p className="text-[#868686] text-base font-medium">Net APR</p>
+                <p>0%</p>
               </div>
 
-              <LendingTabs />
+              <div className="flex flex-col items-center">
+                <p className="text-[#868686] text-base font-medium">Supply</p>
+                <p>1000$</p>
+              </div>
+
+              <div className="flex flex-col items-center">
+                <p className="text-[#868686] text-base font-medium">Monthly Yield</p>
+                <p>0$</p>
+              </div>
+            </div>
+
+            <div className="flex gap-6 items-start">
+              <div className="w-1/2 flex flex-col gap-4">
+                <div className="flex justify-between">
+                  <p className="text-2xl text-white font-medium">History</p>
+                  <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
+                </div>
+
+                <HistoryTable datas={sortedHistoryData} />
+              </div>
+
+              <div className="w-1/2 flex flex-col gap-4">
+                <div className="flex justify-between">
+                  <p className="text-2xl text-white font-medium">Lending</p>
+                  <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
+                </div>
+
+                <LendingTabs />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 };
 

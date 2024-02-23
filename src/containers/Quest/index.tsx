@@ -1,3 +1,4 @@
+import ConstructionBanner from "@/components/Banner/Construction";
 import Banner from "./components/Banner";
 import Info from "./components/Info";
 import Quests from "./components/Quests";
@@ -11,11 +12,14 @@ const dummyUserData = {
 
 const QuestContainer = () => {
   return (
-    <main className="flex flex-col gap-8 px-4 py-8 sm:px-10 sm:ml-60 sm:align-center">
-      <Banner {...dummyUserData} />
-      <Info />
-      <Quests />
-    </main>
+    <>
+      <ConstructionBanner />
+      <main className="flex flex-col gap-8 px-4 py-8 sm:px-10 sm:ml-60 sm:mt-8 sm:align-center">
+        <Banner {...dummyUserData} />
+        <Info />
+        <Quests />
+      </main>
+    </>
   );
 };
 
