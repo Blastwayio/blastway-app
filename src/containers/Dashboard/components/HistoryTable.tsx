@@ -151,7 +151,7 @@ const HistoryTable = ({ datas }: DatasType) => {
           );
         })}
       </div>
-      <div className="w-full h-[13.8rem] overflow-auto rounded-b-md">
+      <div className="w-full h-[13.8rem] overflow-auto rounded-b-md no-scrollbar">
         {newData.map((data) => {
           return (
             <div className="h-10 flex">
