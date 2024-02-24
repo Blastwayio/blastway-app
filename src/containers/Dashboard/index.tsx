@@ -170,25 +170,25 @@ const DashboardContainer = () => {
             </div>
           </div>
 
-          <div className="bg-[#0E0E0E] p-4 flex justify-between items-center">
+          <div className="bg-[#0E0E0E] p-4 flex justify-between items-center text-[#868686] text-sm font-medium  md:text-sm">
             <div className="flex flex-col items-center">
-              <p className="text-[#868686] text-base font-medium">Health Factor</p>
-              <p>100%</p>
+              <p>Health Factor</p>
+              <p className="text-white">100%</p>
             </div>
 
             <div className="flex flex-col items-center">
-              <p className="text-[#868686] text-base font-medium">Net APR</p>
-              <p>0%</p>
+              <p className="">Net APR</p>
+              <p className="text-white">0%</p>
             </div>
 
             <div className="flex flex-col items-center">
-              <p className="text-[#868686] text-base font-medium">Supply</p>
-              <p>1000$</p>
+              <p>Supply</p>
+              <p className="text-white">1000$</p>
             </div>
 
             <div className="flex flex-col items-center">
-              <p className="text-[#868686] text-base font-medium">Monthly Yield</p>
-              <p>0$</p>
+              <p>Monthly Yield</p>
+              <p className="text-white">0$</p>
             </div>
           </div>
 
