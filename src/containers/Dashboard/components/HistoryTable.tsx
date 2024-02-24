@@ -142,6 +142,7 @@ const HistoryTable = ({ datas }: DatasType) => {
                 className="cursor-pointer w-4"
                 src={DownArrow}
                 alt="Down arrow image."
+                draggable={false}
                 onClick={() => {
                   clickedSortButton(column.name);
                 }}

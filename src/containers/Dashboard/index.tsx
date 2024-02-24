@@ -143,20 +143,29 @@ const DashboardContainer = () => {
   return (
     <main className="px-4 sm:px-10 sm:ml-60">
       <div className="text-white">
-        <p className="text-white text-2xl">Dashboard</p>
+        <p className="text-2xl">Dashboard</p>
 
         <div className="mt-2 flex flex-col gap-6">
-          <div className="bg-[#0E0E0E] p-4 rounded-md flex justify-between">
-            <div className="flex gap-6 items-center">
-              <Image src={TempImage} alt="Profile Image." draggable={false} width={144} height={144} />
+          <div className="bg-[#0E0E0E] p-4 rounded-md flex justify-between items-center">
+            <div className="w-1/2 flex gap-2 items-center lg:gap-6 md:gap-2 sm:gap-2">
+              <Image
+                className="w-1/2"
+                src={TempImage}
+                alt="Profile Image."
+                draggable={false}
+                width={144}
+                height={144}
+              />
 
               <div className="flex flex-col">
-                <p className="text-4xl font-medium">Blast.eth</p>
-                <p className="text-base font-medium text-[#868686]">0x0de6c8d9c20f...0688D618F9ee</p>
+                <p className="text-lg font-medium xl:text-4xl lg:text-2xl md:text-xl sm:text-lg">Blast.eth</p>
+                <p className="text-xs font-medium text-[#868686] xl:text-base lg:text-sm md:text-xs sm:text-xs">
+                  0x0de6c8d...D618F9ee
+                </p>
               </div>
             </div>
 
-            <div>
+            <div className="w-1/3">
               <Line data={data} options={options} />
             </div>
           </div>
