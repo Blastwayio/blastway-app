@@ -148,14 +148,7 @@ const DashboardContainer = () => {
         <div className="mt-2 flex flex-col gap-6">
           <div className="bg-[#0E0E0E] p-4 rounded-md flex justify-between items-center">
             <div className="w-1/2 flex gap-2 items-center lg:gap-6 md:gap-2 sm:gap-2">
-              <Image
-                className="w-1/2"
-                src={TempImage}
-                alt="Profile Image."
-                draggable={false}
-                width={144}
-                height={144}
-              />
+              <Image className="w-1/2" src={TempImage} alt="Profile Image." draggable={false} />
 
               <div className="flex flex-col">
                 <p className="text-lg font-medium xl:text-4xl lg:text-2xl md:text-xl sm:text-lg">Blast.eth</p>
@@ -165,7 +158,7 @@ const DashboardContainer = () => {
               </div>
             </div>
 
-            <div className="w-1/3">
+            <div className="w-[35%] lg:w-[40%]">
               <Line data={data} options={options} />
             </div>
           </div>
