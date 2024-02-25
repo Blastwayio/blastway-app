@@ -123,14 +123,14 @@ const HistoryTable = ({ datas }: DatasType) => {
 
   return (
     <div className="w-full flex flex-col">
-      <div className="flex items-center">
+      <div className="flex">
         {columns.map((column) => {
           return (
             <div
-              className={`w-1/4 flex justify-center items-center gap-1 ${column.color} text-[#848484] text-sm py-2 ${column.borderRadius}`}
+              className={`w-1/4 flex justify-center items-center gap-1 ${column.color} py-2 text-[#848484] text-[10px] ${column.borderRadius} xl:text-base lg:py-2 lg:text-xs md:text-[10px] sm:text-[7px] sm:py-0`}
             >
               <p
-                className="cursor-pointer text-sm"
+                className="cursor-pointer"
                 onClick={() => {
                   clickedSortButton(column.name);
                 }}
@@ -139,7 +139,7 @@ const HistoryTable = ({ datas }: DatasType) => {
               </p>
 
               <Image
-                className="cursor-pointer w-4"
+                className="hidden cursor-pointer xl:w-4 lg:w-3 lg:block"
                 src={DownArrow}
                 alt="Down arrow image."
                 draggable={false}
@@ -154,23 +154,38 @@ const HistoryTable = ({ datas }: DatasType) => {
       <div className="w-full h-[13.8rem] overflow-auto rounded-b-md no-scrollbar">
         {newData.map((data) => {
           return (
-            <div className="h-10 flex">
-              <div className="w-1/4 flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
-                <Image className="w-4 h-4" src={data.supplyImage} alt="Crypto image." draggable={false} />
-                <p className="w-1/2 text-sm">{data.transactionType}</p>
+            <div className="h-10 flex text-[10px] xl:text-base lg:text-xs md:text-[10px] sm:text-[7px]">
+              <div className="w-1/4 flex justify-center items-center gap-1 border-b-[1px] border-[#1B1B1B]">
+                <Image
+                  className="hidden xl:w-4 xl:h-4 lg:w-3 lg:h-3 lg:block"
+                  src={data.supplyImage}
+                  alt="Crypto image."
+                  draggable={false}
+                />
+                <p>{data.transactionType}</p>
               </div>
 
-              <div className="w-1/4 bg-[#141414] flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
-                <Image className="w-4 h-4" src={data.cryptoImage} alt="Crypto image." draggable={false} />
-                <p className="w-1/2 text-sm">{data.balance}</p>
+              <div className="w-1/4 bg-[#141414] flex justify-center items-center gap-1 border-b-[1px] border-[#1B1B1B]">
+                <Image
+                  className="hidden xl:w-4 xl:h-4 lg:w-3 lg:h-3 lg:block"
+                  src={data.cryptoImage}
+                  alt="Crypto image."
+                  draggable={false}
+                />
+                <p>{data.balance}</p>
               </div>
 
-              <div className="w-1/4 flex justify-center items-center gap-2 border-b-[1px] border-[#1B1B1B]">
-                <Image className="w-4 h-4" src={data.statusImage} alt="Status image." draggable={false} />
-                <p className="w-1/2 text-sm">{data.status}</p>
+              <div className="w-1/4 flex justify-center items-center gap-1 border-b-[1px] border-[#1B1B1B]">
+                <Image
+                  className="hidden xl:w-4 xl:h-4 lg:w-3 lg:h-3 lg:block"
+                  src={data.statusImage}
+                  alt="Status image."
+                  draggable={false}
+                />
+                <p className="w-12 xl:w-20 lg:w-14 md:w-12 sm:w-8">{data.status}</p>
               </div>
 
-              <p className="w-1/4 bg-[#141414] flex justify-center items-center text-sm border-b-[1px] border-[#1B1B1B]">
+              <p className="w-1/4 bg-[#141414] flex justify-center items-center border-b-[1px] border-[#1B1B1B]">
                 {data.date}
               </p>
             </div>

@@ -148,7 +148,7 @@ const DashboardContainer = () => {
         <div className="mt-2 flex flex-col gap-6">
           <div className="bg-[#0E0E0E] p-4 rounded-md flex justify-between items-center">
             <div className="w-1/2 flex gap-2 items-center lg:gap-6 md:gap-2 sm:gap-2">
-              <Image className="w-1/2" src={TempImage} alt="Profile Image." draggable={false} />
+              <Image className="w-[30%]" src={TempImage} alt="Profile Image." draggable={false} />
 
               <div className="flex flex-col">
                 <p className="text-lg font-medium xl:text-4xl lg:text-2xl md:text-xl sm:text-lg">Blast.eth</p>
@@ -158,7 +158,7 @@ const DashboardContainer = () => {
               </div>
             </div>
 
-            <div className="w-[35%] lg:w-[40%]">
+            <div className="w-[30%] lg:w-[35%]">
               <Line data={data} options={options} />
             </div>
           </div>
@@ -186,19 +186,23 @@ const DashboardContainer = () => {
           </div>
 
           <div className="flex gap-6 items-start">
-            <div className="w-1/2 flex flex-col gap-4">
+            <div className="w-[60%] flex flex-col gap-4">
               <div className="flex justify-between">
-                <p className="text-2xl text-white font-medium">History</p>
-                <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
+                <p className="text-base text-white font-medium xl:text-2xl lg:text-xl md:text-lg sm:text-base">
+                  History
+                </p>
+                <Image src={LinkImage} alt="Link image." className="cursor-pointer w-5 xl:w-8 lg:w-7 md:w-6" />
               </div>
 
               <HistoryTable datas={sortedHistoryData} />
             </div>
 
-            <div className="w-1/2 flex flex-col gap-4">
+            <div className="w-[40%] flex flex-col gap-4">
               <div className="flex justify-between">
-                <p className="text-2xl text-white font-medium">Lending</p>
-                <Image src={LinkImage} alt="Link image." className="cursor-pointer" />
+                <p className="text-base text-white font-medium xl:text-2xl lg:text-xl md:text-lg sm:text-base">
+                  Lending
+                </p>
+                <Image src={LinkImage} alt="Link image." className="cursor-pointer w-5 xl:w-8 lg:w-7 md:w-6" />
               </div>
 
               <LendingTabs />
