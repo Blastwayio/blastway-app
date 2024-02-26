@@ -185,8 +185,8 @@ const DashboardContainer = () => {
             </div>
           </div>
 
-          <div className="flex gap-6 items-start">
-            <div className="w-[60%] flex flex-col gap-4">
+          <div className="flex flex-col gap-14 lg:flex-row lg:gap-6 lg:items-start">
+            <div className="w-full lg:w-[60%] flex flex-col gap-4">
               <div className="flex justify-between">
                 <p className="text-base text-white font-medium xl:text-2xl lg:text-xl md:text-lg sm:text-base">
                   History
@@ -197,7 +197,7 @@ const DashboardContainer = () => {
               <HistoryTable datas={sortedHistoryData} />
             </div>
 
-            <div className="w-[40%] flex flex-col gap-4">
+            <div className="w-full lg:w-[40%] flex flex-col gap-4">
               <div className="flex justify-between">
                 <p className="text-base text-white font-medium xl:text-2xl lg:text-xl md:text-lg sm:text-base">
                   Lending

@@ -126,7 +126,7 @@ const HistoryTable = ({ datas }: DatasType) => {
           return (
             <div
               key={column.name}
-              className={`w-1/4 flex justify-center items-center gap-1 ${column.color} py-2 text-[#848484] text-[10px] ${column.borderRadius} xl:text-base lg:py-2 lg:text-xs md:text-[10px] sm:text-[7px] sm:py-0`}
+              className={`w-1/4 flex justify-center items-center gap-1 ${column.color} py-2 text-[#848484] text-xs text-center ${column.borderRadius} xl:text-base lg:py-2 lg:text-xs md:text-sm sm:text-xs sm:py-0`}
             >
               <p
                 className="cursor-pointer"
@@ -155,7 +155,7 @@ const HistoryTable = ({ datas }: DatasType) => {
           return (
             <div
               key={`${data.transactionType}#${index}`}
-              className="h-10 flex text-[10px] xl:text-base lg:text-xs md:text-[10px] sm:text-[7px]"
+              className="h-10 flex text-xs xl:text-base lg:text-xs md:text-sm sm:text-xs"
             >
               <div className="w-1/4 flex justify-center items-center gap-1 border-b-[1px] border-[#1B1B1B]">
                 <Image
@@ -184,7 +184,7 @@ const HistoryTable = ({ datas }: DatasType) => {
                   alt="Status image."
                   draggable={false}
                 />
-                <p className="w-12 xl:w-20 lg:w-14 md:w-12 sm:w-8">{data.status}</p>
+                <p className="w-14 xl:w-20 lg:w-14 md:w-14 sm:w-14">{data.status}</p>
               </div>
 
               <p className="w-1/4 bg-[#141414] flex justify-center items-center border-b-[1px] border-[#1B1B1B]">
