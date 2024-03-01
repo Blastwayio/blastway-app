@@ -20,7 +20,7 @@ const SwapMain = () => {
 
   const { data: userUsdcBalanceData } = useReadContract({
     abi: erc20Abi,
-    address: ADDRESSES.ThrusterUSDC[CHAIN_ID] as `0x${string}`,
+    address: ADDRESSES.USDB[CHAIN_ID] as `0x${string}`,
     functionName: "balanceOf",
     args: [account!],
   });

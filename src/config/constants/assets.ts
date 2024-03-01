@@ -6,82 +6,36 @@ import USDT from "/public/images/tokens/usdt.webp";
 import WETH from "/public/images/tokens/weth.webp";
 import BLUR from "/public/images/tokens/blur.webp";
 import BLAST from "/public/images/tokens/blast.webp";
+import USDB from "/public/images/tokens/usdb.webp";
 
 const assets: CTokenConfig[] = [
-  {
-    name: "bUSDC",
-    symbol: "bUSDC",
-    image: USDC,
-    address: ADDRESSES.ctokens.cUSDC[CHAIN_ID] as `0x${string}`,
-    decimals: 8,
-    underlyingToken: {
-      name: "USDC",
-      symbol: "USDC",
-      image: USDC,
-      address: ADDRESSES.TestUSDC[CHAIN_ID] as `0x${string}`,
-      decimals: 18,
-      price: "1.00",
-    },
-  },
   {
     name: "bWETH",
     symbol: "bWETH",
     image: WETH,
     address: ADDRESSES.ctokens.cWETH[CHAIN_ID] as `0x${string}`,
     decimals: 8,
-    canEarnPoints: "borrow" as "deposit" | "borrow" | "both",
     underlyingToken: {
       name: "WETH",
       symbol: "WETH",
       image: WETH,
-      address: ADDRESSES.TestWETH[CHAIN_ID] as `0x${string}`,
+      address: ADDRESSES.WETH[CHAIN_ID] as `0x${string}`,
       decimals: 18,
     },
   },
   {
-    name: "bBLUR",
-    symbol: "bBLUR",
-    image: BLUR,
-    address: ADDRESSES.ctokens.cBLUR[CHAIN_ID] as `0x${string}`,
+    name: "bUSDB",
+    symbol: "bUSDB",
+    image: USDB,
+    address: ADDRESSES.ctokens.cUSDB[CHAIN_ID] as `0x${string}`,
     decimals: 8,
     underlyingToken: {
-      name: "BLUR",
-      symbol: "BLUR",
-      image: BLUR,
-      address: ADDRESSES.TestBLUR[CHAIN_ID] as `0x${string}`,
-      decimals: 18,
-    },
-  },
-  {
-    name: "bUSDT",
-    symbol: "bUSDT",
-    image: USDT,
-    address: ADDRESSES.ctokens.cUSDT[CHAIN_ID] as `0x${string}`,
-    decimals: 8,
-    underlyingToken: {
-      name: "USDT",
-      symbol: "USDT",
-      image: USDT,
-      address: ADDRESSES.TestUSDT[CHAIN_ID] as `0x${string}`,
+      name: "USDB",
+      symbol: "USDB",
+      image: USDB,
+      address: ADDRESSES.USDB[CHAIN_ID] as `0x${string}`,
       decimals: 18,
       price: "1.00",
-    },
-  },
-  {
-    name: "bBLAST",
-    symbol: "bBLAST",
-    image: BLAST,
-    address: ADDRESSES.ctokens.cBLAST[CHAIN_ID] as `0x${string}`,
-    decimals: 8,
-    canEarnPoints: "borrow" as "deposit" | "borrow" | "both",
-    underlyingToken: {
-      name: "BLAST",
-      symbol: "BLAST",
-      image: BLAST,
-      address: ADDRESSES.TestBLAST[CHAIN_ID] as `0x${string}`,
-      decimals: 18,
-      apiPriceTokenSymbol: "FIL",
-      apiPriceQuoteTokenSymbol: "USDT",
     },
   },
 ].sort((a, b) => a.symbol.localeCompare(b.symbol));

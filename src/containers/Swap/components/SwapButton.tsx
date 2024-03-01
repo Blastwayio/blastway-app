@@ -14,8 +14,8 @@ export default function SwapButton({ fromAmount, toAmount }: { fromAmount: numbe
     try {
       setLoading(true);
       await onSwap({
-        fromToken: ADDRESSES.ThrusterUSDC[CHAIN_ID],
-        toToken: ADDRESSES.ThrusterUSDT[CHAIN_ID],
+        fromToken: ADDRESSES.USDB[CHAIN_ID],
+        toToken: ADDRESSES.WETH[CHAIN_ID],
         fromAmount,
         toAmount,
         slippage: 20,

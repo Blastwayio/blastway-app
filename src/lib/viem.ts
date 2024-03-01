@@ -1,4 +1,5 @@
 import { CHAIN, CHAIN_ID } from "@/config";
+import { RPC_URL } from "@/config/constants/rpcUrls";
 import { createPublicClient, http } from "viem";
 
 export const publicClient = createPublicClient({
@@ -6,5 +7,5 @@ export const publicClient = createPublicClient({
     multicall: true,
   },
   chain: CHAIN,
-  transport: http(process.env.RPC_URL),
+  transport: http(RPC_URL),
 });

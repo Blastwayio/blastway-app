@@ -12,6 +12,7 @@ export const RPC_URLS = {
   137: "https://polygon-rpc.com/", // Polygon Mainnet
   324: "https://mainnet.era.zksync.io", // ZKSync Mainnet
   420: "https://goerli.optimism.io", // Optimism Goerli Testnet
+  81457: "https://rpc.blast.io", // Blast Mainnet
   42161: "https://arbitrum-mainnet.infura.io", // Arbitrum Mainnet
   43114: "https://avalanche-mainnet.infura.io", // AVAX Mainnet
   80001: "https://matic-mumbai.chainstacklabs.com", // Polygon Testnet (Polygon)
